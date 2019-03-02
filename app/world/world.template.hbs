@@ -1,0 +1,29 @@
+<div class="px-4">
+	<table id="usersMaster" class="table">
+		<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col" class="text-center">Name</th>
+				<th scope="col" class="text-center">Email</th>
+				<th scope="col" class="text-center">Gender</th>
+				<th scope="col" class="text-center text-muted">View</th>
+				<th scope="col" class="text-center text-muted">Edit</th>
+				<th scope="col" class="text-center text-muted">Delete</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{{#each users}}
+			<tr>
+				<td>{{userId}}</td>
+				<td class="text-center text-nowrap">{{name}}</td>
+				<td class="text-center">{{email}}</td>
+				<td class="text-center"><i class="fa fa-{{gender}}"></i></td>
+				<td class="text-center"><a href="/user.html?userId={{userId}}" data-route-link><i class="fa fa-eye"></i></a></td>
+				<td class="text-center"><a href="/users-management.html?userId={{userId}}" data-route-link><i class="fa fa-pencil-square-o"></i></a></td>
+				<td class="text-center"><a href="#" data-action="delete" data-user-id="{{userId}}"><i class="fa fa-trash-o"></i></a></td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</div>
