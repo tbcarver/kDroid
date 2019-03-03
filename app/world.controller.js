@@ -1,5 +1,6 @@
 
 import { worldView } from "./world.view.js";
+import { robotView } from "./robot.view.js";
 import { appState } from "./appState.js";
 
 var worldController = {};
@@ -10,7 +11,7 @@ worldController.load = function(worldOptions) {
     appState.world.columnsCount = worldOptions.columnsCount;
 
     worldView.renderGrid(appState.world);
-    worldView.renderRobot(appState.robot, appState.world);
+    robotView.renderRobot(appState.robot, appState.world);
 };
 
 

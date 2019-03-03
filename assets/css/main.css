@@ -5,17 +5,23 @@ html, body {
   border: 0;
 }
 
-.kDroidTable {
+.kDroidGrid {
 	border: 2px solid #4d4d4d;
 	border-collapse: collapse;
 	border-spacing: 0;
 	box-sizing: border-box;
 	margin: 10px;
+	position: relative;
 }
 
-.kDroidTable td {
+.kDroidGrid td {
 	border: 1px solid #dadada;
 	box-sizing: border-box;
+}
+
+.kDroid {
+	display: block;
+	position: absolute;
 }
 
 .form-control-text {

@@ -9,9 +9,9 @@ worldView.renderGrid = function(world) {
 	var rowsCount = world.rowsCount;
 	var columnsCount = world.columnsCount;
 
-	var cellSize = calculateCellSize(rowsCount, columnsCount);
+	var cellSize = this.calculateCellSize(rowsCount, columnsCount);
 
-	var tableElement = dom.createElement("table", { className: "kDroidTable" });
+	var tableElement = dom.createElement("table", { className: "kDroidGrid" });
 	tableElement.style.width = (cellSize * columnsCount) + "px";
 
 	var tableCellElements = [];
@@ -45,7 +45,7 @@ worldView.renderGrid = function(world) {
 	});
 };
 
-function calculateCellSize(rowsCount, columnsCount) {
+worldView.calculateCellSize = function(rowsCount, columnsCount) {
 
 	var totalWidth = window.innerWidth / columnsCount;
 	var totalHeight = window.innerHeight / rowsCount;
@@ -62,12 +62,6 @@ function calculateCellSize(rowsCount, columnsCount) {
 	cellSize = Math.floor(cellSize / cellCount);
 
 	return cellSize;
-}
-
-worldView.renderRobot = function(robot, world) {
-
-
-
 }
 
 
