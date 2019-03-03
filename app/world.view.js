@@ -10,9 +10,10 @@ worldView.renderGrid = function(world) {
 	var columnsCount = world.columnsCount;
 
 	var cellSize = this.calculateCellSize(rowsCount, columnsCount);
+	var gridWidth = cellSize * columnsCount;
 
-	var tableElement = dom.createElement("table", { className: "kDroidGrid" });
-	tableElement.style.width = (cellSize * columnsCount) + "px";
+	var tableElement = dom.createElement("table", { id: "kDroidGrid" });
+	tableElement.style.width = gridWidth + "px";
 
 	var tableCellElements = [];
 
@@ -36,6 +37,7 @@ worldView.renderGrid = function(world) {
 
 	var worldPlaceHolder = document.querySelector("#worldPlaceHolder");
 
+	worldPlaceHolder.style.width = gridWidth + "px";
 	worldPlaceHolder.innerHTML = "";
 	worldPlaceHolder.appendChild(tableElement);
 

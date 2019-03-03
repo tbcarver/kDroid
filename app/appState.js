@@ -1,8 +1,8 @@
 
 var appState = {
     robot: {
-        rowIndex: 1,
-        columnIndex: 1
+        rowIndex: 0,
+        columnIndex: 0
     },
     world: {
         rowsCount: 0,

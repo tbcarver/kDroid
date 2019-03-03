@@ -5,8 +5,8 @@ import { worldController } from "./app/world.controller.js";
 window.addEventListener("DOMContentLoaded", function(event) {
 
 	var worldOptions = {
-		rowsCount: 5,
-		columnsCount: 10
+		rowsCount: 3,
+		columnsCount: 3
 	}
 
 	worldController.load(worldOptions);

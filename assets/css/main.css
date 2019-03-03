@@ -1,44 +1,33 @@
 
 html, body {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-.kDroidGrid {
-	border: 2px solid #4d4d4d;
+	margin: 0;
+	padding: 0;
+	border: 0;
+  }
+  
+#worldPlaceHolder{
+	margin:10px;
+	position: relative;
+  }
+  
+#kDroidGrid {
+	border: 1px solid #4d4d4d;
 	border-collapse: collapse;
 	border-spacing: 0;
 	box-sizing: border-box;
-	margin: 10px;
-	position: relative;
-}
-
-.kDroidGrid td {
+  }
+  
+#kDroidGrid td {
 	border: 1px solid #dadada;
 	box-sizing: border-box;
-}
-
-.kDroid {
+  }
+  
+#kDroid {
 	display: block;
 	position: absolute;
-}
-
-.form-control-text {
-	display: block;
+  }
+  
+#kDroid svg {
 	width: 100%;
-	padding-top: 0.375rem;
-	padding-bottom: 0.375rem;
-	margin-bottom: 0;
-	line-height: 1.5;
-}
-
-.home-link {
-	position: absolute;
-	top: 0;
-	right: 0;
-}
-
-.bg-very-dark {
-	background-color: #282c31;
-}
+	height: 100%;
+  }
