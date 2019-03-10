@@ -7,12 +7,24 @@ function test(robotController) {
 	// robotController.turnLeft();
 	// robotController.turnLeft();
 	// robotController.turnLeft();
-	robotController.move();
-	robotController.move();
-	robotController.turnLeft();
-	robotController.turnLeft();
-	robotController.turnLeft();
-	robotController.move();
+	// robotController.turnLeft();
+	// robotController.turnLeft();
+	// robotController.turnLeft();
+	// // robotController.turnLeft();
+	// robotController.turnLeft();
+			robotController.move();
+			robotController.move();
+			robotController.turnLeft();
+			robotController.turnLeft();
+			robotController.move();
+			robotController.move();
+			robotController.turnLeft();
+			robotController.move();
+			robotController.move();
+			robotController.turnLeft();
+			robotController.turnLeft();
+			robotController.move();
+			robotController.move();
 	// robotController.turnLeft();
 	// robotController.turnLeft();
 	// robotController.turnLeft();
@@ -23,7 +35,7 @@ function test(robotController) {
 	window.setTimeout(function(){
 
 		// robotController.turnLeft();
-	}, 1000);
+	}, 3000);
 }
 
 

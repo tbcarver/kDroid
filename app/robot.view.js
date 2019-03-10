@@ -19,6 +19,9 @@ robotView.renderRobot = function(robot, world) {
     this.robotElement.style.left = left + "px";
     this.robotElement.style.width = world.cellSize + "px";
     this.robotElement.style.height = world.cellSize + "px";
+
+    this.robotSvgElement.style.transform = directionRotations[robot.direction];
+    console.log(this.robotSvgElement.style.transform);
 }
 
 robotView.initializeRobotElement = function() {
@@ -28,50 +31,52 @@ robotView.initializeRobotElement = function() {
 
     var worldTableElement = dom("#worldPlaceHolder");
     worldTableElement.appendChild(this.robotElement);
+
+    this.robotSvgElement = this.robotElement.querySelector("svg");
 }
 
-robotView.moveNorth = function(nextRowIndex, nextColumnIndex, cellSize, duration) {
+robotView.moveNorth = function(cellSize, duration) {
 
     var keyframes = {
         transform: [
-            "translateY(" + ((nextColumnIndex - 1) * cellSize) + "px)",
-            "translateY(" + (nextColumnIndex * cellSize) + "px)",
+            "translateY(0px)",
+            "translateY(" + -cellSize + "px)",
         ]
     };
 
-    move(this.robotElement, keyframes, duration, cellSize, 0);
+    move(this.robotElement, keyframes, duration, -cellSize, 0);
 }
 
-robotView.moveEast = function(nextRowIndex, nextColumnIndex, cellSize, duration) {
+robotView.moveEast = function(cellSize, duration) {
 
     var keyframes = {
         transform: [
-            "translateX(" + ((1 - 1) * cellSize) + "px)",
-            "translateX(" + (1 * cellSize) + "px)",
+            "translateX(0px)",
+            "translateX(" + cellSize + "px)",
         ]
     };
 
     move(this.robotElement, keyframes, duration, 0, cellSize);
 }
 
-robotView.moveSouth = function(nextRowIndex, nextColumnIndex, cellSize, duration) {
+robotView.moveSouth = function(cellSize, duration) {
 
     var keyframes = {
         transform: [
-            "translateY(" + ((1 - 1) * cellSize) + "px)",
-            "translateY(" + (1  * cellSize) + "px)",
+            "translateY(0px)",
+            "translateY(" + cellSize + "px)",
         ]
     };
 
     move(this.robotElement, keyframes, duration, cellSize, 0);
 }
 
-robotView.moveWest = function(nextRowIndex, nextColumnIndex, cellSize, duration) {
+robotView.moveWest = function(cellSize, duration) {
 
     var keyframes = {
         transform: [
-            "translateX(" + ((nextRowIndex - 1) * cellSize) + "px)",
-            "translateX(" + (nextRowIndex * cellSize) + "px)",
+            "translateX(0px)",
+            "translateX(" + -cellSize+ "px)",
         ]
     };
 
@@ -82,50 +87,46 @@ function move(element, keyframes, duration, forwardsTopOffset, forwardsLeftOffse
 
     var options = {
         duration: duration,
-        easing: "linear",
+        easing: "ease-in-out",
     }
 
     animationView.stackAnimation(element, keyframes, options, function() {
 
         element.style.top = coreString.addNumberInString(element.style.top, forwardsTopOffset);
         element.style.left = coreString.addNumberInString(element.style.left, forwardsLeftOffset);
-
-        console.log(forwardsTopOffset, forwardsLeftOffset);
+        console.log(element.style.top, element.style.left);
     });
 }
 
-var nextDirectionKeyframes = {
-    north: [
-        "rotate(90deg)",
-        "rotate(0deg)"
-    ],
-    east: [
-        "rotate(180deg)",
-        "rotate(90deg)"
-    ],
-    south: [
-        "rotate(270deg)",
-        "rotate(180deg)"
-    ],
-    west: [
-        "rotate(0deg)",
-        "rotate(-90deg)"
-    ]
+var directionRotations = {
+    north: "rotate(-90deg)",
+    east: "rotate(0deg)",
+    south: "rotate(-270deg)",
+    west: "rotate(-180deg)"
 };
 
 robotView.turnLeft = function(nextDirection, duration) {
 
     var keyframes = {
-        transform: nextDirectionKeyframes[nextDirection]
+        transform: [
+            "rotate(0deg)",
+            "rotate(-90deg)"
+        ]
     };
 
     var options = {
-        duration: duration / 4,
-        easing: "linear",
-        fill: "forwards"
+        duration: duration / 3,
+        easing: "linear"
     }
 
-    // animationView.stackAnimation(this.robotElement, keyframes, options);
+    var robotSvgElement = this.robotSvgElement;
+    var svgRotation = directionRotations[nextDirection];
+
+    animationView.stackAnimation(this.robotElement, keyframes, options, function() {
+
+        robotSvgElement.style.transform = svgRotation;
+        console.log(svgRotation);
+    });
 }
 
 

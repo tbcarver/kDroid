@@ -47,7 +47,7 @@ robotController.move = function() {
     robotState.rowIndex = robotState.rowIndex + robotMoveDirectionOffsets[robotState.direction].rowOffset;
     robotState.columnIndex = robotState.columnIndex + robotMoveDirectionOffsets[robotState.direction].columnOffset;
 
-    robotViewMove(robotState.rowIndex, robotState.columnIndex, worldState.cellSize, robotState.moveDuration);
+    robotViewMove(worldState.cellSize, robotState.moveDuration);
     console.log("robot moved " + robotState.direction);
 };
 
