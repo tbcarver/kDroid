@@ -34,23 +34,49 @@ robotView.initializeRobotElement = function() {
     worldTableElement.appendChild(this.robotElement);
 }
 
-robotView.moveEast = function(robot, world) {
+robotView.move = function(direction, currentIndex, nextIndex, delay) {
 
-    var cellSize = worldView.calculateCellSize(world.rowsCount, world.columnsCount);
-    var nextRowIndex = robot.rowIndex + 1;
+    var keyframes = [{}, {}];
 
-    var keyframes = [
-        { left: (cellSize * robot.rowIndex) + "px" },
-        { left: (cellSize * nextRowIndex) + "px" }
-    ];
+    keyframes[0][direction] = (84 * currentIndex) + "px";
+    keyframes[1][direction] = (84 * nextIndex) + "px";
 
-    var animation = this.robotElement.animate(keyframes, moveOptions);
+    var moveOptions = {
+        duration: moveDuration,
+        easing: "linear",
+        fill: "forwards"
+    }
 
-    animation.pause();
-    animation.addEventListener("finish", function(event) {
-        document.getElementById("kDroid").style.left = (84 * nextIndex) + "px";
-    })
-    animation.play();
+    if (delay) {
+
+        moveOptions.delay = delay;
+    }
+
+    kDroidElement.animate(keyframes, moveOptions);
+}
+
+function moveEast(delay) {
+
+    move("left", currentRowIndex, currentRowIndex + 1, delay);
+    currentRowIndex++;
+}
+
+function moveWest(delay) {
+
+    move("left", currentRowIndex, currentRowIndex - 1, delay);
+    currentRowIndex--;
+}
+
+function moveSouth(delay) {
+
+    move("top", currentColumnIndex, currentColumnIndex + 1, delay);
+    currentColumnIndex++;
+}
+
+function moveNorth(delay) {
+
+    move("top", currentColumnIndex, currentColumnIndex - 1, delay);
+    currentColumnIndex--;
 }
 
 

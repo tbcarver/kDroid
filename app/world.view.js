@@ -2,7 +2,9 @@
 import { dom } from "../lib/core/web/dom.js";
 
 var worldView = {};
-var worldTableMarginsTotal = 10 * 2;
+
+// Add 1 to account for the table border of 3px
+var worldTableMarginsTotal = (10 + 1) * 2;
 
 worldView.renderGrid = function(world) {
 

@@ -11,7 +11,6 @@ worldController.load = function(worldOptions) {
     appState.world.columnsCount = worldOptions.columnsCount;
 
     worldView.renderGrid(appState.world);
-    robotView.renderRobot(appState.robot, appState.world);
 };
 
 

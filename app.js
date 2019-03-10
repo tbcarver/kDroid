@@ -1,5 +1,6 @@
 
 import { worldController } from "./app/world.controller.js";
+import { robotController } from "./app/robot.controller.js";
 // import { messageBoxController } from "./app/components/message-box.controller.js"
 
 window.addEventListener("DOMContentLoaded", function(event) {
@@ -10,6 +11,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
 	}
 
 	worldController.load(worldOptions);
+    robotController.load();
 });
 
 // window.addEventListener("error", function(event) {
