@@ -1,12 +1,9 @@
 
 import { dom } from "../lib/core/web/dom.js";
 import { worldView } from "./world.view.js";
+import { animationView } from "./animation.view.js";
 
 var robotView = {};
-var moveOptions = {
-    duration: 500,
-    easing: "linear"
-};
 
 robotView.renderRobot = function(robot, world) {
 
@@ -15,14 +12,13 @@ robotView.renderRobot = function(robot, world) {
         this.initializeRobotElement();
     }
 
-    var cellSize = worldView.calculateCellSize(world.rowsCount, world.columnsCount);
-    var top = cellSize * robot.rowIndex;
-    var left = cellSize * robot.columnIndex;
+    var top = world.cellSize * robot.rowIndex;
+    var left = world.cellSize * robot.columnIndex;
 
     this.robotElement.style.top = top + "px";
     this.robotElement.style.left = left + "px";
-    this.robotElement.style.width = cellSize + "px";
-    this.robotElement.style.height = cellSize + "px";
+    this.robotElement.style.width = world.cellSize + "px";
+    this.robotElement.style.height = world.cellSize + "px";
 }
 
 robotView.initializeRobotElement = function() {
@@ -34,34 +30,19 @@ robotView.initializeRobotElement = function() {
     worldTableElement.appendChild(this.robotElement);
 }
 
-robotView.move = function(direction, currentIndex, nextIndex, delay) {
+robotView.moveEast = function(currentRowIndex, cellSize, duration) {
 
-    var keyframes = [{}, {}];
+    var keyframes = {
+        transform: [
+            "translateX(" + (currentRowIndex * cellSize) + "px)",
+            "translateX(" + ((currentRowIndex + 1) * cellSize) + "px)",
+        ]
+    };
 
-    keyframes[0][direction] = (84 * currentIndex) + "px";
-    keyframes[1][direction] = (84 * nextIndex) + "px";
-
-    var moveOptions = {
-        duration: moveDuration,
-        easing: "linear",
-        fill: "forwards"
-    }
-
-    if (delay) {
-
-        moveOptions.delay = delay;
-    }
-
-    kDroidElement.animate(keyframes, moveOptions);
+    move(this.robotElement, keyframes, duration);
 }
 
-function moveEast(delay) {
-
-    move("left", currentRowIndex, currentRowIndex + 1, delay);
-    currentRowIndex++;
-}
-
-function moveWest(delay) {
+function moveWest(duration) {
 
     move("left", currentRowIndex, currentRowIndex - 1, delay);
     currentRowIndex--;
@@ -77,6 +58,17 @@ function moveNorth(delay) {
 
     move("top", currentColumnIndex, currentColumnIndex - 1, delay);
     currentColumnIndex--;
+}
+
+function move(element, keyframes, duration) {
+
+    var options = {
+        duration: duration,
+        easing: "linear",
+        fill: "forwards"
+    }
+
+    animationView.stackAnimation(element, keyframes, options);
 }
 
 
