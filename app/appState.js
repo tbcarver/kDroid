@@ -9,7 +9,11 @@ var appState = {
     world: {
         rowsCount: 0,
         columnsCount: 0,
-        cellSize: 0
+        cellSize: 0,
+        topWalls: [],
+        leftWalls: [],
+        tileCounts: [],
+        tileColor: '#000'
     }
 };
 

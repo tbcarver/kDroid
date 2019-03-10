@@ -1,6 +1,7 @@
 
 import { appState } from "./appState.js";
 import { robotView } from "./robot.view.js";
+import { worldView } from "./world.view.js";
 
 var robotState = appState.robot;
 var worldState = appState.world;
@@ -21,20 +22,20 @@ var robotViewMoveHandlers = {
 
 var robotMoveDirectionOffsets = {
     north: {
-        rowOffset: 0,
-        columnOffset: -1
-    },
-    east: {
-        rowOffset: 1,
+        rowOffset: -1,
         columnOffset: 0
     },
-    south: {
+    east: {
         rowOffset: 0,
         columnOffset: 1
     },
-    west: {
-        rowOffset: -1,
+    south: {
+        rowOffset: 1,
         columnOffset: 0
+    },
+    west: {
+        rowOffset: 0,
+        columnOffset: -1
     }
 };
 
@@ -47,9 +48,15 @@ robotController.move = function() {
     robotState.rowIndex = robotState.rowIndex + robotMoveDirectionOffsets[robotState.direction].rowOffset;
     robotState.columnIndex = robotState.columnIndex + robotMoveDirectionOffsets[robotState.direction].columnOffset;
 
-    robotViewMove(worldState.cellSize, robotState.moveDuration);
+    robotViewMove(robotState.moveDuration, worldState.cellSize);
     console.log("robot moved " + robotState.direction);
 };
+
+function assertCanMove() {
+
+
+
+}
 
 var turnLeftDirections = {
     north: "west",
@@ -65,10 +72,14 @@ robotController.turnLeft = function() {
     console.log("robot turned " + robotState.direction);
 };
 
-function assertCanMove() {
+robotController.putDownTile = function() {
 
+    var tileCount = worldState.tileCounts[robotState.rowIndex, robotState.columnIndex];
+    tileCount++;    
+    worldState.tileCounts[robotState.rowIndex, robotState.columnIndex] = tileCount;
 
-
+    worldView.putDownTile(robotState.rowIndex, robotState.columnIndex, tileCount, worldState.tileColor,
+        robotState.moveDuration, worldState.cellSize);
 }
 
 

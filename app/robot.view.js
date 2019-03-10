@@ -35,7 +35,7 @@ robotView.initializeRobotElement = function() {
     this.robotSvgElement = this.robotElement.querySelector("svg");
 }
 
-robotView.moveNorth = function(cellSize, duration) {
+robotView.moveNorth = function(duration, cellSize) {
 
     var keyframes = {
         transform: [
@@ -47,7 +47,7 @@ robotView.moveNorth = function(cellSize, duration) {
     move(this.robotElement, keyframes, duration, -cellSize, 0);
 }
 
-robotView.moveEast = function(cellSize, duration) {
+robotView.moveEast = function(duration, cellSize) {
 
     var keyframes = {
         transform: [
@@ -59,7 +59,7 @@ robotView.moveEast = function(cellSize, duration) {
     move(this.robotElement, keyframes, duration, 0, cellSize);
 }
 
-robotView.moveSouth = function(cellSize, duration) {
+robotView.moveSouth = function(duration, cellSize) {
 
     var keyframes = {
         transform: [
@@ -71,7 +71,7 @@ robotView.moveSouth = function(cellSize, duration) {
     move(this.robotElement, keyframes, duration, cellSize, 0);
 }
 
-robotView.moveWest = function(cellSize, duration) {
+robotView.moveWest = function(duration, cellSize) {
 
     var keyframes = {
         transform: [
