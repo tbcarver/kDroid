@@ -5,7 +5,7 @@ var animationView = {
 	currentEndTime: 0
 };
 
-animationView.stackAnimation = function(element, keyFrames, options) {
+animationView.stackAnimation = function(element, keyFrames, options, onFinishHandler) {
 
 	webAnimationExtensions.getTimelineCurrentTime(function(currentTime) {
 
@@ -22,8 +22,9 @@ animationView.stackAnimation = function(element, keyFrames, options) {
 
 		options.delay = delay;
 		console.log(delay);
+		console.log(keyFrames);
 
-		element.animate(keyFrames, options);
+		element.animate(keyFrames, options).onfinish = onFinishHandler;
 		
 		this.currentEndTime = delay + options.duration + currentTime;
 

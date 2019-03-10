@@ -1,7 +1,7 @@
 
 import { dom } from "../lib/core/web/dom.js";
-import { worldView } from "./world.view.js";
 import { animationView } from "./animation.view.js";
+import { coreString } from "../lib/core/extensions/core-string.js";
 
 var robotView = {};
 
@@ -30,45 +30,102 @@ robotView.initializeRobotElement = function() {
     worldTableElement.appendChild(this.robotElement);
 }
 
-robotView.moveEast = function(currentRowIndex, cellSize, duration) {
+robotView.moveNorth = function(nextRowIndex, nextColumnIndex, cellSize, duration) {
 
     var keyframes = {
         transform: [
-            "translateX(" + (currentRowIndex * cellSize) + "px)",
-            "translateX(" + ((currentRowIndex + 1) * cellSize) + "px)",
+            "translateY(" + ((nextColumnIndex - 1) * cellSize) + "px)",
+            "translateY(" + (nextColumnIndex * cellSize) + "px)",
         ]
     };
 
-    move(this.robotElement, keyframes, duration);
+    move(this.robotElement, keyframes, duration, cellSize, 0);
 }
 
-function moveWest(duration) {
+robotView.moveEast = function(nextRowIndex, nextColumnIndex, cellSize, duration) {
 
-    move("left", currentRowIndex, currentRowIndex - 1, delay);
-    currentRowIndex--;
+    var keyframes = {
+        transform: [
+            "translateX(" + ((1 - 1) * cellSize) + "px)",
+            "translateX(" + (1 * cellSize) + "px)",
+        ]
+    };
+
+    move(this.robotElement, keyframes, duration, 0, cellSize);
 }
 
-function moveSouth(delay) {
+robotView.moveSouth = function(nextRowIndex, nextColumnIndex, cellSize, duration) {
 
-    move("top", currentColumnIndex, currentColumnIndex + 1, delay);
-    currentColumnIndex++;
+    var keyframes = {
+        transform: [
+            "translateY(" + ((1 - 1) * cellSize) + "px)",
+            "translateY(" + (1  * cellSize) + "px)",
+        ]
+    };
+
+    move(this.robotElement, keyframes, duration, cellSize, 0);
 }
 
-function moveNorth(delay) {
+robotView.moveWest = function(nextRowIndex, nextColumnIndex, cellSize, duration) {
 
-    move("top", currentColumnIndex, currentColumnIndex - 1, delay);
-    currentColumnIndex--;
+    var keyframes = {
+        transform: [
+            "translateX(" + ((nextRowIndex - 1) * cellSize) + "px)",
+            "translateX(" + (nextRowIndex * cellSize) + "px)",
+        ]
+    };
+
+    move(this.robotElement, keyframes, duration, 0, -cellSize);
 }
 
-function move(element, keyframes, duration) {
+function move(element, keyframes, duration, forwardsTopOffset, forwardsLeftOffset) {
 
     var options = {
         duration: duration,
         easing: "linear",
+    }
+
+    animationView.stackAnimation(element, keyframes, options, function() {
+
+        element.style.top = coreString.addNumberInString(element.style.top, forwardsTopOffset);
+        element.style.left = coreString.addNumberInString(element.style.left, forwardsLeftOffset);
+
+        console.log(forwardsTopOffset, forwardsLeftOffset);
+    });
+}
+
+var nextDirectionKeyframes = {
+    north: [
+        "rotate(90deg)",
+        "rotate(0deg)"
+    ],
+    east: [
+        "rotate(180deg)",
+        "rotate(90deg)"
+    ],
+    south: [
+        "rotate(270deg)",
+        "rotate(180deg)"
+    ],
+    west: [
+        "rotate(0deg)",
+        "rotate(-90deg)"
+    ]
+};
+
+robotView.turnLeft = function(nextDirection, duration) {
+
+    var keyframes = {
+        transform: nextDirectionKeyframes[nextDirection]
+    };
+
+    var options = {
+        duration: duration / 4,
+        easing: "linear",
         fill: "forwards"
     }
 
-    animationView.stackAnimation(element, keyframes, options);
+    // animationView.stackAnimation(this.robotElement, keyframes, options);
 }
 
 

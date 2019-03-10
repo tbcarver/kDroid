@@ -5,15 +5,37 @@ import { robotView } from "./robot.view.js";
 var robotState = appState.robot;
 var worldState = appState.world;
 
-var robotViewMoveHandlers = {
-    east: robotView.moveEast
-}
-
 var robotController = {};
 
 robotController.load = function() {
 
     robotView.renderRobot(robotState, worldState);
+};
+
+var robotViewMoveHandlers = {
+    north: robotView.moveNorth,
+    east: robotView.moveEast,
+    south: robotView.moveSouth,
+    west: robotView.moveWest
+}
+
+var robotMoveDirectionOffsets = {
+    north: {
+        rowOffset: 0,
+        columnOffset: -1
+    },
+    east: {
+        rowOffset: 1,
+        columnOffset: 0
+    },
+    south: {
+        rowOffset: 0,
+        columnOffset: 1
+    },
+    west: {
+        rowOffset: -1,
+        columnOffset: 0
+    }
 };
 
 robotController.move = function() {
@@ -22,9 +44,25 @@ robotController.move = function() {
 
     var robotViewMove = robotViewMoveHandlers[robotState.direction].bind(robotView);
 
-    robotViewMove(robotState.rowIndex, worldState.cellSize, robotState.moveDuration);
-    robotState.rowIndex++;
-    console.log("robot moved")
+    robotState.rowIndex = robotState.rowIndex + robotMoveDirectionOffsets[robotState.direction].rowOffset;
+    robotState.columnIndex = robotState.columnIndex + robotMoveDirectionOffsets[robotState.direction].columnOffset;
+
+    robotViewMove(robotState.rowIndex, robotState.columnIndex, worldState.cellSize, robotState.moveDuration);
+    console.log("robot moved " + robotState.direction);
+};
+
+var turnLeftDirections = {
+    north: "west",
+    east: "north",
+    south: "east",
+    west: "south"
+};
+
+robotController.turnLeft = function() {
+
+    robotState.direction = turnLeftDirections[robotState.direction];
+    robotView.turnLeft(robotState.direction, robotState.moveDuration);
+    console.log("robot turned " + robotState.direction);
 };
 
 function assertCanMove() {

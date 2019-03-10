@@ -1,14 +1,29 @@
 
 function test(robotController) {
 
+	// robotController.move();
+	// robotController.move();
+	// robotController.turnLeft();
+	// robotController.turnLeft();
+	// robotController.turnLeft();
+	// robotController.turnLeft();
 	robotController.move();
 	robotController.move();
+	robotController.turnLeft();
+	robotController.turnLeft();
+	robotController.turnLeft();
+	robotController.move();
+	// robotController.turnLeft();
+	// robotController.turnLeft();
+	// robotController.turnLeft();
+	// robotController.move();
+	// robotController.move();
+	// robotController.turnLeft();
 
 	window.setTimeout(function(){
 
-		robotController.move();
-		robotController.move();
-	}, 3000);
+		// robotController.turnLeft();
+	}, 1000);
 }
 
 
