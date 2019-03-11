@@ -110,8 +110,6 @@ function initializeOuterWalls(worldState) {
 
 	worldState.topWalls = topWalls;
 	worldState.leftWalls = leftWalls;
-	console.log(topWalls);
-	console.log(leftWalls);
 }
 
 function initializeTilesCounts(worldState) {

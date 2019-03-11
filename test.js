@@ -55,8 +55,6 @@ function test() {
 	turnLeft();
 	turnLeft();
 
-	console.log(isFrontClear());
-
 	// move();
 	// move();
 	// turnLeft();

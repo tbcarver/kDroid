@@ -85,7 +85,6 @@ robotController.isFrontBlocked = function() {
         wallColumnIndex++;
     }
 
-    console.log(robotState.direction, wallRowIndex, wallColumnIndex);
     return walls.includesKey(wallRowIndex, wallColumnIndex);
 }
 
