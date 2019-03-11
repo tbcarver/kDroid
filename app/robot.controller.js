@@ -48,8 +48,8 @@ robotController.move = function() {
     robotState.rowIndex = robotState.rowIndex + robotMoveDirectionOffsets[robotState.direction].rowOffset;
     robotState.columnIndex = robotState.columnIndex + robotMoveDirectionOffsets[robotState.direction].columnOffset;
 
-    robotViewMove(robotState.moveDuration, worldState.cellSize);
-    console.log("robot moved " + robotState.direction);
+    robotViewMove(worldState.duration, worldState.cellSize);
+    // console.log("robot moved " + robotState.direction);
 };
 
 function assertCanMove() {
@@ -68,8 +68,8 @@ var turnLeftDirections = {
 robotController.turnLeft = function() {
 
     robotState.direction = turnLeftDirections[robotState.direction];
-    robotView.turnLeft(robotState.direction, robotState.moveDuration);
-    console.log("robot turned " + robotState.direction);
+    robotView.turnLeft(robotState.direction, worldState.duration);
+    // console.log("robot turned " + robotState.direction);
 };
 
 robotController.putDownTile = function() {
@@ -79,7 +79,7 @@ robotController.putDownTile = function() {
     worldState.tileCounts[robotState.rowIndex, robotState.columnIndex] = tileCount;
 
     worldView.putDownTile(robotState.rowIndex, robotState.columnIndex, tileCount, worldState.tileColor,
-        robotState.moveDuration, worldState.cellSize);
+        worldState.worldState, worldState.cellSize);
 }
 
 

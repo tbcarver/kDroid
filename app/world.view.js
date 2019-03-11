@@ -7,10 +7,7 @@ var worldView = {};
 // Add 1 to account for the table border of 3px
 var worldTableMarginsTotal = (10 + 1) * 2;
 
-worldView.renderGrid = function(world) {
-
-	var rowsCount = world.rowsCount;
-	var columnsCount = world.columnsCount;
+worldView.renderGrid = function(rowsCount, columnsCount) {
 
 	var cellSize = calculateCellSize(rowsCount, columnsCount);
 	var gridWidth = cellSize * columnsCount;

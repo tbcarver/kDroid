@@ -21,7 +21,6 @@ robotView.renderRobot = function(robot, world) {
     this.robotElement.style.height = world.cellSize + "px";
 
     this.robotSvgElement.style.transform = directionRotations[robot.direction];
-    console.log(this.robotSvgElement.style.transform);
 }
 
 robotView.initializeRobotElement = function() {
@@ -94,7 +93,6 @@ function move(element, keyframes, duration, forwardsTopOffset, forwardsLeftOffse
 
         element.style.top = coreString.addNumberInString(element.style.top, forwardsTopOffset);
         element.style.left = coreString.addNumberInString(element.style.left, forwardsLeftOffset);
-        console.log(element.style.top, element.style.left);
     });
 }
 
@@ -125,7 +123,6 @@ robotView.turnLeft = function(nextDirection, duration) {
     animationView.stackAnimation(this.robotElement, keyframes, options, function() {
 
         robotSvgElement.style.transform = svgRotation;
-        console.log(svgRotation);
     });
 }
 

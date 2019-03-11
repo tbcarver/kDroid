@@ -1,20 +1,14 @@
 
-import { worldController } from "./app/world.controller.js";
-import { robotController } from "./app/robot.controller.js";
+import { appController } from "./app/app.controller.js";
+import { appCommands } from "./appCommands.js";
 import { test } from "./test.js";
 // import { messageBoxController } from "./app/components/message-box.controller.js"
 
 window.addEventListener("DOMContentLoaded", function(event) {
 
-	var worldOptions = {
-		rowsCount: 3,
-		columnsCount: 3
-	}
-
-	worldController.load(worldOptions);
-	robotController.load();
+	appCommands.initialize();
 	
-	test(robotController);
+	test();
 });
 
 // window.addEventListener("error", function(event) {

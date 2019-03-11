@@ -1,44 +1,57 @@
 
-function test(robotController) {
+function test() {
 
-	// robotController.move();
-	// robotController.move();
-	// robotController.turnLeft();
-	// robotController.turnLeft();
-	// robotController.turnLeft();
-	// robotController.turnLeft();
-	// robotController.turnLeft();
-	// robotController.turnLeft();
-	// robotController.turnLeft();
-	// // robotController.turnLeft();
-	// robotController.turnLeft();
-			robotController.move();
-			robotController.move();
-			robotController.putDownTile();
-			// robotController.turnLeft();
-			// robotController.turnLeft();
-			// robotController.move();
-			// robotController.move();
-			// robotController.turnLeft();
-			// robotController.move();
-			// robotController.move();
-			// robotController.turnLeft();
-			// robotController.turnLeft();
-			// robotController.move();
-			// robotController.move();
-			// robotController.turnLeft();
-			// robotController.turnLeft();
-			// robotController.turnLeft();
-	// robotController.turnLeft();
-	// robotController.turnLeft();
-	// robotController.turnLeft();
-	// robotController.move();
-	// robotController.move();
-	// robotController.turnLeft();
+	// move();
+	// move();
+	// turnLeft();
+	// turnLeft();
+	// turnLeft();
+	// turnLeft();
+	// turnLeft();
+	// turnLeft();
+	// turnLeft();
+	// // turnLeft();
+	// turnLeft();
+
+// 	setWorldSize(sizeNumber) - sets the size of the world
+// 	setRandomWorldSize() - sets a random world size from 1 to 16
+// 	setWorldSpeed(speedNumber) - sets the speed of the world, 0 (slowest) to 100 (fastest)
+// 	setWorldRandomTiles(countOfTilesNumber) - sets tiles in random locations throughout the world, 0 sets a random amount of tiles
+
+// setRobotPosition(streetNumber, avenueNumber) - sets the start position of the robot
+// setRobotDirection(directionNumber) - sets the start direction of the robot
+// setRobotTiles(number) - sets the start amount of tiles the robots has, -1 if infinite tiles
+
+	setRandomWorldSize(2, 2);
+	setWorldSpeed(90);
+	loadWorld();
+
+	move();
+	move();
+	turnLeft();
+	turnLeft();
+	move();
+	move();
+	turnLeft();
+	move();
+	move();
+	turnLeft();
+	turnLeft();
+	move();
+	move();
+	turnLeft();
+	turnLeft();
+	turnLeft();
+	// turnLeft();
+	// turnLeft();
+	// turnLeft();
+	// move();
+	// move();
+	// turnLeft();
 
 	window.setTimeout(function(){
 
-		// robotController.turnLeft();
+		// turnLeft();
 	}, 3000);
 }
 

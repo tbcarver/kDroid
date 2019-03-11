@@ -21,7 +21,6 @@ animationView.stackAnimation = function(element, keyFrames, options, onFinishHan
 		}
 
 		options.delay = delay;
-		console.log(keyFrames);
 
 		element.animate(keyFrames, options).onfinish = onFinishHandler;
 		
