@@ -10,8 +10,12 @@ appCommands.initialize = function() {
 	window.setRandomWorldSize = appController.setRandomWorldStateSize;
 	window.setWorldSpeed = appController.setWorldStateSpeed;
 	window.loadWorld = appController.load;
+
 	window.move = robotController.move;
 	window.turnLeft = robotController.turnLeft;
+
+	window.isFrontClear = robotController.isFrontClear;
+	window.isFrontBlocked = robotController.isFrontBlocked;
 }
 
 export { appCommands }

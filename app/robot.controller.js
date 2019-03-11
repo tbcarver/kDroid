@@ -58,6 +58,37 @@ function assertCanMove() {
 
 }
 
+robotController.isFrontClear = function() {
+
+    return !isFrontBlocked();
+}
+
+robotController.isFrontBlocked = function() {
+
+    var walls = worldState.topWalls;
+
+    if (robotState.direction === "east" || robotState.direction === "west") {
+
+        walls = worldState.leftWalls;
+    }
+
+    var wallRowIndex = robotState.rowIndex;
+    var wallColumnIndex = robotState.columnIndex;
+
+    if (robotState.direction === "south") {
+
+        wallRowIndex++;
+    }
+
+    if (robotState.direction === "east") {
+
+        wallColumnIndex++;
+    }
+
+    console.log(robotState.direction, wallRowIndex, wallColumnIndex);
+    return walls.includesKey(wallRowIndex, wallColumnIndex);
+}
+
 var turnLeftDirections = {
     north: "west",
     east: "north",
@@ -75,7 +106,7 @@ robotController.turnLeft = function() {
 robotController.putDownTile = function() {
 
     var tileCount = worldState.tileCounts[robotState.rowIndex, robotState.columnIndex];
-    tileCount++;    
+    tileCount++;
     worldState.tileCounts[robotState.rowIndex, robotState.columnIndex] = tileCount;
 
     worldView.putDownTile(robotState.rowIndex, robotState.columnIndex, tileCount, worldState.tileColor,

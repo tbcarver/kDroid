@@ -22,26 +22,57 @@ function test() {
 // setRobotDirection(directionNumber) - sets the start direction of the robot
 // setRobotTiles(number) - sets the start amount of tiles the robots has, -1 if infinite tiles
 
-	setRandomWorldSize(2, 2);
-	setWorldSpeed(90);
+	setRandomWorldSize();
+	setWorldSpeed(95);
 	loadWorld();
 
-	move();
-	move();
-	turnLeft();
-	turnLeft();
-	move();
-	move();
-	turnLeft();
-	move();
-	move();
-	turnLeft();
-	turnLeft();
-	move();
-	move();
+	// move();
+	// move();
+	// console.log(isFrontClear());
+
+	while (isFrontClear()) {
+		move();
+	}
 	turnLeft();
 	turnLeft();
 	turnLeft();
+	while (isFrontClear()) {
+		move();
+	}
+	turnLeft();
+	turnLeft();
+	turnLeft();
+	while (isFrontClear()) {
+		move();
+	}
+	turnLeft();
+	turnLeft();
+	turnLeft();
+	while (isFrontClear()) {
+		move();
+	}
+	turnLeft();
+	turnLeft();
+	turnLeft();
+
+	console.log(isFrontClear());
+
+	// move();
+	// move();
+	// turnLeft();
+	// turnLeft();
+	// move();
+	// move();
+	// turnLeft();
+	// move();
+	// move();
+	// turnLeft();
+	// turnLeft();
+	// move();
+	// move();
+	// turnLeft();
+	// turnLeft();
+	// turnLeft();
 	// turnLeft();
 	// turnLeft();
 	// turnLeft();

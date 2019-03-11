@@ -3,6 +3,7 @@ import { worldController } from "./world.controller.js";
 import { robotController } from "./robot.controller.js";
 import { appState } from "./appState.js";
 import { coreMath } from "../lib/core/extensions/core-math.js"
+import { DoubleKeyHashSet } from "../lib/core/collections/double-key-hash-set.js";
 
 var worldState = appState.world;
 
@@ -78,8 +79,8 @@ appController.setWorldStateSpeed = function(speed) {
 
 function initializeOuterWalls(worldState) {
 
-	var topWalls = [];
-	var leftWalls = [];
+	var topWalls = new DoubleKeyHashSet();
+	var leftWalls = new DoubleKeyHashSet();
 
 	for (var rowIndex = 0; rowIndex < worldState.rowsCount; rowIndex++) {
 
@@ -87,22 +88,22 @@ function initializeOuterWalls(worldState) {
 
 			if (rowIndex === 0) {
 
-				topWalls.push({ rowIndex: rowIndex, columnIndex: columnIndex });
+				topWalls.add(rowIndex, columnIndex);
 			}
 
 			if (rowIndex === worldState.rowsCount - 1) {
 
-				topWalls.push({ rowIndex: rowIndex + 1, columnIndex: columnIndex });
+				topWalls.add(rowIndex + 1, columnIndex);
 			}
 
 			if (columnIndex === 0) {
 
-				leftWalls.push({ rowIndex: rowIndex, columnIndex: columnIndex });
+				leftWalls.add(rowIndex, columnIndex);
 			}
 
 			if (columnIndex === worldState.columnsCount - 1) {
 
-				leftWalls.push({ rowIndex: rowIndex, columnIndex: columnIndex + 1 });
+				leftWalls.add(rowIndex, columnIndex + 1);
 			}
 		}
 	}

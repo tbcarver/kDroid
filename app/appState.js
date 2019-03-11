@@ -10,8 +10,8 @@ var appState = {
         columnsCount: 0,
         cellSize: 0,
         duration: 1000,
-        topWalls: [],
-        leftWalls: [],
+        topWalls: {},
+        leftWalls: {},
         tileCounts: [],
         tileColor: '#000'
     }

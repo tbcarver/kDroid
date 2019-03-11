@@ -5,7 +5,8 @@ import { animationView } from "./animation.view.js";
 var worldView = {};
 
 // Add 1 to account for the table border of 3px
-var worldTableMarginsTotal = (10 + 1) * 2;
+var worldPlaceHolderMargin = 20;
+var worldTableMarginsTotal = (worldPlaceHolderMargin + 1) * 2;
 
 worldView.renderGrid = function(rowsCount, columnsCount) {
 
