@@ -32,9 +32,7 @@ worldView.renderGrid = function(worldState) {
 			tableCellElement.style.width = cellSize + "px";
 			tableCellElement.style.height = cellSize + "px";
 			tableCellElement.style.backgroundColor = worldState.backgroundColor;
-			console.log(worldState.backgroundColor);
 			tableCellElement.style.border = "1px solid " + worldState.borderBackgroundColor;
-			console.log(worldState.borderBackgroundColor);
 
 			rowElement.appendChild(tableCellElement);
 			tableCellElements.push(tableCellElement);

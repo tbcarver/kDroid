@@ -10,8 +10,7 @@ var robotController = {};
 
 robotController.load = function() {
 
-    robotView.renderRobot(robotState.rowIndex, robotState.columnIndex, robotState.direction,
-        robotState.backgroundColor, worldState.cellSize);
+    robotView.renderRobot(robotState, worldState.cellSize);
 };
 
 var robotViewMoveHandlers = {

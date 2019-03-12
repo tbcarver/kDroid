@@ -5,22 +5,23 @@ import { coreString } from "../lib/core/extensions/core-string.js";
 
 var robotView = {};
 
-robotView.renderRobot = function(rowIndex, columnIndex, direction, backgroundColor, cellSize) {
+robotView.renderRobot = function(robotState, cellSize) {
 
     if (!this.robotElement) {
 
-        this.initializeRobotElement(backgroundColor, cellSize);
+        this.initializeRobotElement(robotState.backgroundColor, cellSize);
     }
 
-    var top = cellSize * rowIndex;
-    var left = cellSize * columnIndex;
+    var top = cellSize * robotState.rowIndex;
+    var left = cellSize * robotState.columnIndex;
 
     this.robotElement.style.top = top + "px";
     this.robotElement.style.left = left + "px";
     this.robotElement.style.width = cellSize + "px";
     this.robotElement.style.height = cellSize + "px";
 
-    this.robotSvgElement.style.transform = directionRotations[direction];
+    this.robotSvgElement.style.transform = directionRotations[robotState.direction];
+    console.log(robotState);
 }
 
 robotView.initializeRobotElement = function(backgroundColor, cellSize) {

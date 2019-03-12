@@ -83,13 +83,39 @@ appController.setWorldStateSpeed = function(speed) {
 	worldState.duration = ((slowestDuration - fastestDuration) * (invertedSpeed / 100)) + fastestDuration;
 }
 
+appController.setRobotStateDirection = function(direction) {
+
+	if (direction) {
+
+		robotState.direction = direction;
+	}
+}
+
+var directions = [
+	"north",
+	"east",
+	"south",
+	"west"
+]
+
+appController.setRandomRobotStateDirection = function(direction) {
+
+	if (!direction) {
+
+		var randomIndex = coreMath.randomInteger(0, directions.length - 1);
+		direction = directions[randomIndex];
+	}
+
+	robotState.direction = direction;
+}
+
 function initializeColors() {
 
 	var randomHue = Math.round(Math.random() * 255);
 
 	robotState.backgroundColor = "hsl(" + randomHue + ", 40%, 65%)";
 
-	worldState.backgroundColor = "hsl(" + randomHue + ", 100%, 100%)";
+	// worldState.backgroundColor = "hsl(" + randomHue + ", 100%, 100%)";
 	worldState.borderBackgroundColor = "hsl(" + randomHue + ", 40%, 90%)";
 	worldState.wallBackgroundColor = "hsl(" + randomHue + ", 50%, 25%)";
 	worldState.tileBackgroundColor = "hsl(" + randomHue + ", 45%, 45%)";

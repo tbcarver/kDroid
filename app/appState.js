@@ -3,21 +3,21 @@ var appState = {
     robot: {
         rowIndex: 0,
         columnIndex: 0,
-        backgroundColor: "#000",
+        backgroundColor: "#fff",
         direction: "east"
     },
     world: {
         rowsCount: 0,
         columnsCount: 0,
         cellSize: 0,
-        backgroundColor: "#000",
-        borderBackgroundColor: "#000",
+        backgroundColor: "#fff",
+        borderBackgroundColor: "#fff",
         duration: 1000,
         topWalls: {},
         leftWalls: {},
-        wallBackgroundColor: "#000",
+        wallBackgroundColor: "#fff",
         tileCounts: [],
-        tileBackgroundColor: "#000"
+        tileBackgroundColor: "#fff"
     }
 };
 
