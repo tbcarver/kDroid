@@ -10,7 +10,8 @@ var robotController = {};
 
 robotController.load = function() {
 
-    robotView.renderRobot(robotState, worldState);
+    robotView.renderRobot(robotState.rowIndex, robotState.columnIndex, robotState.direction,
+        robotState.backgroundColor, worldState.cellSize);
 };
 
 var robotViewMoveHandlers = {
@@ -104,12 +105,24 @@ robotController.turnLeft = function() {
 
 robotController.putDownTile = function() {
 
-    var tileCount = worldState.tileCounts[robotState.rowIndex, robotState.columnIndex];
+    var tileCount = worldState.tileCounts[robotState.rowIndex][robotState.columnIndex];
     tileCount++;
-    worldState.tileCounts[robotState.rowIndex, robotState.columnIndex] = tileCount;
+    worldState.tileCounts[robotState.rowIndex][robotState.columnIndex] = tileCount;
 
-    worldView.putDownTile(robotState.rowIndex, robotState.columnIndex, tileCount, worldState.tileColor,
-        worldState.worldState, worldState.cellSize);
+    worldView.putDownTile(robotState.rowIndex, robotState.columnIndex, tileCount, worldState.tileBackgroundColor,
+        worldState.duration, worldState.cellSize);
+}
+
+robotController.isOnTile = function() {
+
+    var tileCount = worldState.tileCounts[robotState.rowIndex][robotState.columnIndex];
+
+    return (tileCount > 0);
+}
+
+robotController.isNotOnTile = function() {
+
+    return !isOnTile();
 }
 
 

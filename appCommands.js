@@ -12,10 +12,13 @@ appCommands.initialize = function() {
 	window.loadWorld = appController.load;
 
 	window.move = robotController.move;
-	window.turnLeft = robotController.turnLeft;
-
 	window.isFrontClear = robotController.isFrontClear;
 	window.isFrontBlocked = robotController.isFrontBlocked;
+	window.turnLeft = robotController.turnLeft;
+
+	window.putDownTile = robotController.putDownTile;
+	window.isOnTile = robotController.isOnTile;
+	window.isNotOnTile = robotController.isNotOnTile;
 }
 
 export { appCommands }

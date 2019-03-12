@@ -6,14 +6,15 @@ import { coreMath } from "../lib/core/extensions/core-math.js"
 import { DoubleKeyHashSet } from "../lib/core/collections/double-key-hash-set.js";
 
 var worldState = appState.world;
+var robotState = appState.robot;
 
 var appController = {};
 
 appController.load = function() {
 
+	initializeColors(worldState);
 	initializeOuterWalls(worldState);
 	initializeTilesCounts(worldState);
-	initializeTilesColor(worldState);
 
 	worldController.load();
 	robotController.load();
@@ -40,6 +41,11 @@ appController.setRandomWorldStateSize = function(rowsCount, columnsCount) {
 		if (rowsCount !== -1) {
 
 			randomRowsCount = rowsCount;
+
+			if (!columnsCount) {
+
+				randomColumnsCount = rowsCount;
+			}
 		}
 	}
 
@@ -75,6 +81,25 @@ appController.setWorldStateSpeed = function(speed) {
 	var slowestDuration = 2000;
 
 	worldState.duration = ((slowestDuration - fastestDuration) * (invertedSpeed / 100)) + fastestDuration;
+}
+
+function initializeColors() {
+
+	var randomHue = Math.round(Math.random() * 255);
+
+	robotState.backgroundColor = "hsl(" + randomHue + ", 40%, 65%)";
+	// robotState.backgroundColor = "#333333";
+
+	// if (randomHue < 128) {
+
+	// 	randomHue = randomHue + 128;
+
+	// } else {
+
+	// 	randomHue = 256 - 128 - randomHue;
+	// }
+
+	worldState.tileBackgroundColor = "hsl(" + randomHue + ", 45%, 45%)";
 }
 
 function initializeOuterWalls(worldState) {
@@ -129,13 +154,6 @@ function initializeTilesCounts(worldState) {
 	}
 
 	worldState.tileCounts = tileCounts;
-}
-
-function initializeTilesColor() {
-
-	var randomHue = Math.round(Math.random() * 255);
-
-	worldState.tileColor = "hsl(" + randomHue + ", 46%, 42%)";
 }
 
 

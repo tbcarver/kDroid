@@ -13,47 +13,86 @@ function test() {
 	// // turnLeft();
 	// turnLeft();
 
-// 	setWorldSize(sizeNumber) - sets the size of the world
-// 	setRandomWorldSize() - sets a random world size from 1 to 16
-// 	setWorldSpeed(speedNumber) - sets the speed of the world, 0 (slowest) to 100 (fastest)
-// 	setWorldRandomTiles(countOfTilesNumber) - sets tiles in random locations throughout the world, 0 sets a random amount of tiles
+	// 	setWorldSize(sizeNumber) - sets the size of the world
+	// 	setRandomWorldSize() - sets a random world size from 1 to 16
+	// 	setWorldSpeed(speedNumber) - sets the speed of the world, 0 (slowest) to 100 (fastest)
+	// 	setWorldRandomTiles(countOfTilesNumber) - sets tiles in random locations throughout the world, 0 sets a random amount of tiles
 
-// setRobotPosition(streetNumber, avenueNumber) - sets the start position of the robot
-// setRobotDirection(directionNumber) - sets the start direction of the robot
-// setRobotTiles(number) - sets the start amount of tiles the robots has, -1 if infinite tiles
+	// setRobotPosition(streetNumber, avenueNumber) - sets the start position of the robot
+	// setRobotDirection(directionNumber) - sets the start direction of the robot
+	// setRobotTiles(number) - sets the start amount of tiles the robots has, -1 if infinite tiles
 
-	setRandomWorldSize();
-	setWorldSpeed(95);
+	setRandomWorldSize(3);
+	setWorldSpeed(70);
 	loadWorld();
+
+	
+	turnRight();
+	move();
+	turnLeft();
+	move();
+
+	// tileToWall();
+	// turnAround();
+	// goToWall();
+	// turnLeft();
+	// while (isFrontClear()) {
+
+	// 	if (isOnTile()) {
+
+	// 		move();
+	// 		turnLeft();
+	// 		alternateTileToWall();
+	// 	} else {
+			
+	// 		move();
+	// 		turnLeft();
+	// 		tileToWall();
+	// 	}
+
+	// 	turnAround();
+	// 	goToWall();
+	// 	turnLeft();
+	// }
+
 
 	// move();
 	// move();
 	// console.log(isFrontClear());
 
-	while (isFrontClear()) {
-		move();
-	}
-	turnLeft();
-	turnLeft();
-	turnLeft();
-	while (isFrontClear()) {
-		move();
-	}
-	turnLeft();
-	turnLeft();
-	turnLeft();
-	while (isFrontClear()) {
-		move();
-	}
-	turnLeft();
-	turnLeft();
-	turnLeft();
-	while (isFrontClear()) {
-		move();
-	}
-	turnLeft();
-	turnLeft();
-	turnLeft();
+	// turnRight()
+	// putDownTile();
+	// while (isFrontClear()) {
+	// 	move();
+	// 	putDownTile();
+	// }
+	// turnLeft();
+	// turnLeft();
+	// turnLeft();
+	// putDownTile();
+	// while (isFrontClear()) {
+	// 	move();
+	// 	putDownTile();
+	// }
+	// turnLeft();
+	// turnLeft();
+	// turnLeft();
+	// putDownTile();
+	// while (isFrontClear()) {
+	// 	move();
+	// 	putDownTile();
+	// }
+	// turnLeft();
+	// turnLeft();
+	// turnLeft();
+	// putDownTile();
+	// while (isFrontClear()) {
+	// 	move();
+	// 	putDownTile();
+	// }
+	// turnLeft();
+	// turnLeft();
+	// turnLeft();
 
 	// move();
 	// move();
@@ -78,10 +117,54 @@ function test() {
 	// move();
 	// turnLeft();
 
-	window.setTimeout(function(){
+	window.setTimeout(function() {
 
 		// turnLeft();
 	}, 3000);
+
+	console.log("DONE");
+}
+
+function turnRight() {
+
+	turnLeft();
+	turnLeft();
+	turnLeft();
+}
+
+function turnAround() {
+
+	turnLeft();
+	turnLeft();
+}
+
+function goToWall() {
+
+	while (isFrontClear()) {
+		move();
+	}
+}
+
+function tileToWall() {
+
+	while (isFrontClear()) {
+		putDownTile();
+		move();
+		if (isFrontClear()) {
+			move();
+		}
+	}
+}
+
+function alternateTileToWall() {
+
+	while (isFrontClear()) {
+		move();
+		putDownTile();
+		if (isFrontClear()) {
+			move();
+		}
+	}
 }
 
 

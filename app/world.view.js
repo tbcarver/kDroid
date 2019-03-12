@@ -1,5 +1,6 @@
 
 import { dom } from "../lib/core/web/dom.js";
+import { coreMath } from "../lib/core/extensions/core-math.js";
 import { animationView } from "./animation.view.js";
 
 var worldView = {};
@@ -70,42 +71,43 @@ function calculateCellSize(rowsCount, columnsCount) {
 	return cellSize;
 }
 
-worldView.putDownTile = function(rowIndex, columnIndex, tileCount, tileColor, duration, cellSize) {
+worldView.putDownTile = function(rowIndex, columnIndex, tileCount, tileBackgroundColor, duration, cellSize) {
 
-	// var tileElement = dom.createElement("div", { className: "tile" });
+	var tileElement = dom.createElement("div", { className: "tile" });
+	var tileWidth = coreMath.pathagorinC(cellSize, cellSize);
 
-	// tileElement.style.top = (cellSize / 2) + "px";
-	// tileElement.style.left = (cellSize / 2) + "px";
-	// tileElement.style.background = tileColor;
+	tileElement.style.top = (cellSize / 2) - (tileWidth / 2) + "px";
+	tileElement.style.left = (cellSize / 2) - (tileWidth / 2) + "px";
+	tileElement.style.width = tileWidth + "px";
+	tileElement.style.height = tileWidth + "px";
+	tileElement.style.lineHeight = tileWidth + "px";
+	tileElement.style.fontSize = (tileWidth * .4) + "px";
+	tileElement.style.background = tileBackgroundColor;
 
-	// var cellElement = dom("#cell-" + rowIndex + "-" + columnIndex);
+	if (tileCount > 1) {
 
-	// cellElement.appendChild(tileElement);
+		tileElement.innerHTML = 1;
+	}
 
-	// // TODO: Figure out the math to make sure the size of the tile has a steady growth
+	var cellElement = dom("#cell-" + rowIndex + "-" + columnIndex);
 
-    // // var keyframes = {
-    // //     transform: [
-    // //         "scale(0)",
-    // //         "scale(50)"
-	// // 	]
-	// // };
+	cellElement.appendChild(tileElement);
 	
-	// var keyframes = [
-	// 	{color: "blue"},
-	// 	{color: "yellow"}
-	// ]
+	var keyframes = [
+		{transform: "scale(0)", visibility: "visible"},
+		{transform: "scale(1)", visibility: "visible"}
+	]
 
-    // var options = {
-    //     duration: duration,
-	// 	easing: "ease-in-out",
-	// 	fill: "forwards"
-    // }
+    var options = {
+        duration: duration / 2,
+		easing: "linear",
+		fill: "forwards"
+	}
 
-    // animationView.stackAnimation(tileElement, keyframes, options, function() {
+    animationView.stackAnimation(tileElement, keyframes, options, function() {
 
-	// 	// tileElement.style.background = tileColor;
-    // });
+		// tileElement.style.background = tileBackgroundColor;
+    });
 }
 
 

@@ -3,6 +3,7 @@ var appState = {
     robot: {
         rowIndex: 0,
         columnIndex: 0,
+        backgroundColor: "#000",
         direction: "east"
     },
     world: {
@@ -13,7 +14,7 @@ var appState = {
         topWalls: {},
         leftWalls: {},
         tileCounts: [],
-        tileColor: '#000'
+        tileBackgroundColor: "#000"
     }
 };
 
