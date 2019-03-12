@@ -111,6 +111,25 @@ robotController.putDownTile = function() {
     worldView.putDownTile(tileCount, robotState, worldState);
 }
 
+robotController.pickUpTile = function() {
+
+    assertCanPickUpTile();
+
+    var tileCount = worldState.tileCounts[robotState.rowIndex][robotState.columnIndex];
+    var previousTileCount = tileCount;
+
+    tileCount--;
+    worldState.tileCounts[robotState.rowIndex][robotState.columnIndex] = tileCount;
+
+    worldView.pickUpTile(previousTileCount, robotState, worldState);
+}
+
+function assertCanPickUpTile() {
+
+
+
+}
+
 robotController.isOnTile = function() {
 
     var tileCount = worldState.tileCounts[robotState.rowIndex][robotState.columnIndex];

@@ -19,6 +19,7 @@ appCommands.initialize = function() {
 	window.turnLeft = robotController.turnLeft;
 
 	window.putDownTile = robotController.putDownTile;
+	window.pickUpTile = robotController.pickUpTile;
 	window.isOnTile = robotController.isOnTile;
 	window.isNotOnTile = robotController.isNotOnTile;
 }

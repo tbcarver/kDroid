@@ -77,6 +77,7 @@ function calculateCellSize(rowsCount, columnsCount) {
 worldView.putDownTile = function(tileCount, robotState, worldState) {
 
 	var tileId = "tile-" + robotState.rowIndex + "-" + robotState.columnIndex + "-" + tileCount;
+	console.log(tileId);
 
 	var tileElement = dom.createElement("div", { id: tileId, className: "tile" });
 	var tileWidth = coreMath.pathagorinC(worldState.cellSize, worldState.cellSize);
@@ -96,8 +97,8 @@ worldView.putDownTile = function(tileCount, robotState, worldState) {
 		tileElement.innerHTML = tileCount;
 	}
 
-	var targetCellId = "#cell-" + robotState.rowIndex + "-" + robotState.columnIndex;
-	var targetCellElement = dom(targetCellId);
+	var targetCellId = "cell-" + robotState.rowIndex + "-" + robotState.columnIndex;
+	var targetCellElement = dom("#" +targetCellId);
 
 	targetCellElement.appendChild(tileElement);
 	
@@ -114,6 +115,30 @@ worldView.putDownTile = function(tileCount, robotState, worldState) {
     animationView.stackAnimation(tileElement, keyframes, options, function() {
 
 		tileElement.style.visibility = "visible";
+    });
+}
+
+worldView.pickUpTile = function(previousTileCount, robotState, worldState) {
+
+	var tileId = "tile-" + robotState.rowIndex + "-" + robotState.columnIndex + "-" + previousTileCount;
+	var tileElement = dom("#" + tileId);
+
+	var targetCellId = "cell-" + robotState.rowIndex + "-" + robotState.columnIndex;
+	var targetCellElement = dom("#" +targetCellId);
+	
+	var keyframes = [
+		{transform: "scale(1)", visibility: "visible"},
+		{transform: "scale(0)", visibility: "visible"}
+	]
+
+    var options = {
+        duration: worldState.duration / 2,
+		easing: "linear"
+	}
+
+    animationView.stackAnimation(tileElement, keyframes, options, function() {
+
+		targetCellElement.removeChild(tileElement);
     });
 }
 

@@ -22,22 +22,33 @@ function test() {
 	// setRobotDirection(directionNumber) - sets the start direction of the robot
 	// setRobotTiles(number) - sets the start amount of tiles the robots has, -1 if infinite tiles
 
-	setRandomWorldSize(1);
-	setWorldSpeed(70);
+	setRandomWorldSize(1, -1);
+	setWorldSpeed(80);
 	setRobotDirection("south");
 	loadWorld();
 
 	// putDownTile();
 	turnLeft();
 
-	tileCheckerBoard();
-	tileCheckerBoard();
-	tileCheckerBoard();
-	tileCheckerBoard();
-	tileCheckerBoard();
-	tileCheckerBoard();
-	tileCheckerBoard();
-	tileCheckerBoard();
+	tileToWall();
+	turnAround();
+	tileCheckeredToWall();
+	turnAround();
+	alternateTileCheckeredToWall();
+	turnAround();
+	cleanToWall();
+
+	// putDownTile();
+	// putDownTile();
+	// putDownTile();
+	// putDownTile();
+	// pickUpTile();
+	// pickUpTile();
+	// pickUpTile();
+	// pickUpTile();
+
+	// tileCheckerBoard();
+	// tileCheckerBoard();
 	// turnRight();
 	// putDownTile();
 	// move();
@@ -162,6 +173,24 @@ function tileToWall() {
 	putDownTile();
 	while (isFrontClear()) {
 		move();
+		putDownTile();
+	}
+}
+
+function cleanToWall() {
+
+	pickUpTile();
+	while (isFrontClear()) {
+		move();
+		pickUpTile();
+	}
+}
+
+function tileCheckeredToWall() {
+
+	putDownTile();
+	while (isFrontClear()) {
+		move();
 		if (isFrontClear()) {
 			move();
 			putDownTile();
@@ -169,7 +198,7 @@ function tileToWall() {
 	}
 }
 
-function alternateTileToWall() {
+function alternateTileCheckeredToWall() {
 
 	while (isFrontClear()) {
 		move();
@@ -182,7 +211,7 @@ function alternateTileToWall() {
 
 function tileCheckerBoard() {
 	
-	tileToWall();
+	tileCheckeredToWall();
 	turnAround();
 	goToWall();
 	turnLeft();
@@ -192,12 +221,12 @@ function tileCheckerBoard() {
 
 			move();
 			turnLeft();
-			alternateTileToWall();
+			alternateTileCheckeredToWall();
 		} else {
 			
 			move();
 			turnLeft();
-			tileToWall();
+			tileCheckeredToWall();
 		}
 
 		turnAround();
