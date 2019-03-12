@@ -21,7 +21,6 @@ robotView.renderRobot = function(robotState, cellSize) {
     this.robotElement.style.height = cellSize + "px";
 
     this.robotSvgElement.style.transform = directionRotations[robotState.direction];
-    console.log(robotState);
 }
 
 robotView.initializeRobotElement = function(backgroundColor, cellSize) {

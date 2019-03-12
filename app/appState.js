@@ -17,6 +17,7 @@ var appState = {
         leftWalls: {},
         wallBackgroundColor: "#fff",
         tileCounts: [],
+        tileColor: "#fff",
         tileBackgroundColor: "#fff"
     }
 };

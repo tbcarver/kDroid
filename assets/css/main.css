@@ -36,10 +36,8 @@ html, body {
 
 .tile {
 	border-radius: 100%;
-	color:#fff;
 	font-family: sans-serif;
 	position: absolute;
 	text-align:center;
 	will-change: transform;
-	visibility: hidden;
 }

@@ -108,8 +108,7 @@ robotController.putDownTile = function() {
     tileCount++;
     worldState.tileCounts[robotState.rowIndex][robotState.columnIndex] = tileCount;
 
-    worldView.putDownTile(robotState.rowIndex, robotState.columnIndex, tileCount, worldState.tileBackgroundColor,
-        worldState.duration, worldState.cellSize);
+    worldView.putDownTile(tileCount, robotState, worldState);
 }
 
 robotController.isOnTile = function() {
