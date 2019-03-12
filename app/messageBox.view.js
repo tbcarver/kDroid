@@ -1,25 +1,59 @@
 
 import { dom } from "../lib/core/web/dom.js";
+import { animationView } from "./animation.view.js";
 
 var messageBoxView = {};
 
-messageBoxView.render = function(message) {
+messageBoxView.render = function(message, worldState) {
 
-	if (message) {
+    var messageBoxElement = dom.createElement("div", { id: "messageBox" });
+    var messageBoxWidth = worldState.cellSize * worldState.rowsCount * .3;
+    var messageBoxHeight = worldState.cellSize * worldState.columnsCount * .3;
 
-		this.messageBoxElement.innerHTML = message;
-        this.messageBoxElement.style.display = "block";
+    if (messageBoxWidth > 300) {
 
-	} else {
+        messageBoxWidth = 300;
 
-        this.messageBoxElement.style.display = "none";
+    } else if (messageBoxWidth < 100) {
+
+        messageBoxWidth = worldState.cellSize * worldState.rowsCount * .1;
+    }
+
+    if (messageBoxHeight > 300) {
+
+        messageBoxHeight = 300;
+
+    } else if (messageBoxHeight < 100) {
+
+        messageBoxHeight = worldState.cellSize * worldState.columnsCount * .1;
+    }
+
+	messageBoxElement.style.width = messageBoxWidth + "px";
+    messageBoxElement.style.height = messageBoxHeight + "px";
+    messageBoxElement.style.padding = (messageBoxWidth * .1) + "px";
+	messageBoxElement.style.fontSize = (messageBoxHeight * .4) + "px";
+	messageBoxElement.style.color = worldState.backgroundColor;
+	messageBoxElement.style.background = worldState.messageBoxBackgroundColor;
+    messageBoxElement.style.visibility = "hidden";
+    
+    messageBoxElement.innerHTML = message;
+
+    var worldPlaceholderElement = dom("#worldPlaceholder");
+    worldPlaceholderElement.appendChild(messageBoxElement);
+	
+	var keyframes = [
+		{transform: "scale(0)", visibility: "visible"},
+		{transform: "scale(1)", visibility: "visible"}
+	]
+
+    var options = {
+        duration: worldState.duration / 2,
+        easing: "cubic-bezier(.38, 1.23, .71, 1.82)",
+        fill: "forwards"
 	}
+
+    animationView.stackAnimation(messageBoxElement, keyframes, options);
 };
 
-messageBoxView.initializeMessageBoxElement = function() {
 
-    this.messageBoxElement = dom.createElement("div", { id: "messageBox" });
-
-    var worldTableElement = dom("#worldPlaceHolder");
-    worldTableElement.appendChild(this.messageBoxElement);
-}
+export { messageBoxView }

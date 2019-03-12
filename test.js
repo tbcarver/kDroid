@@ -22,23 +22,43 @@ function test() {
 	// setRobotDirection(directionNumber) - sets the start direction of the robot
 	// setRobotTiles(number) - sets the start amount of tiles the robots has, -1 if infinite tiles
 
-	setRandomWorldSize(1, -1);
+	setRandomWorldSize();
 	setWorldSpeed(80);
 	// setRobotDirection("south");
+	setRandomRobotIcon();
+	// setRobotIcon("android");
 	loadWorld();
+
+	tileAll();
+	// turnAround();
+	// tileAll();
+	// turnAround();
+	// tileAll();
+	// turnAround();
+	// cleanAll();
+	// turnAround();
+	// cleanAll();
+	// turnAround();
+	// cleanAll();
 
 	// tileCheckerBoard();
 
 	// putDownTile();
 	// turnLeft();
 
-	tileToWall();
-	turnAround();
-	tileCheckeredToWall();
-	turnAround();
-	alternateTileCheckeredToWall();
-	turnAround();
-	cleanToWall();
+	// turnLeft();
+	// turnLeft();
+	// turnAround();
+	// move();
+	// putDownTile();
+
+	// tileToWall();
+	// turnAround();
+	// tileCheckeredToWall();
+	// turnAround();
+	// alternateTileCheckeredToWall();
+	// turnAround();
+	// cleanToWall();
 
 	// putDownTile();
 	// putDownTile();
@@ -56,29 +76,6 @@ function test() {
 	// move();
 	// turnLeft();
 	// move();
-
-	// tileToWall();
-	// turnAround();
-	// goToWall();
-	// turnLeft();
-	// while (isFrontClear()) {
-
-	// 	if (isOnTile()) {
-
-	// 		move();
-	// 		turnLeft();
-	// 		alternateTileToWall();
-	// 	} else {
-			
-	// 		move();
-	// 		turnLeft();
-	// 		tileToWall();
-	// 	}
-
-	// 	turnAround();
-	// 	goToWall();
-	// 	turnLeft();
-	// }
 
 
 	// move();
@@ -236,6 +233,40 @@ function tileCheckerBoard() {
 		turnLeft();
 	}
 	turnLeft();
+}
+
+function tileAll() {	
+
+	tileToWall();
+	turnAround();
+	goToWall();
+	turnLeft();
+	while (isFrontClear()) {
+
+		move();
+		turnLeft();
+		tileToWall();
+		turnAround();
+		goToWall();
+		turnLeft();
+	}
+}
+
+function cleanAll() {	
+
+	cleanToWall();
+	turnAround();
+	goToWall();
+	turnLeft();
+	while (isFrontClear()) {
+
+		move();
+		turnLeft();
+		cleanToWall();
+		turnAround();
+		goToWall();
+		turnLeft();
+	}
 }
 
 export { test }

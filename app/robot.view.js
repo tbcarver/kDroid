@@ -32,8 +32,8 @@ robotView.initializeRobotElement = function(backgroundColor, robotIconName, cell
 
     this.robotElement.innerHTML = robotIcons[robotIconName];
 
-    var worldTableElement = dom("#worldPlaceHolder");
-    worldTableElement.appendChild(this.robotElement);
+    var worldPlaceholderElement = dom("#worldPlaceholder");
+    worldPlaceholderElement.appendChild(this.robotElement);
 
     this.robotSvgElement = this.robotElement.querySelector("svg");
 }

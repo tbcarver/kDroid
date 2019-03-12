@@ -5,7 +5,7 @@ html, body {
 	border: 0;
   }
   
-#worldPlaceHolder{
+#worldPlaceholder{
 	margin:20px;
 	position: relative;
   }
@@ -39,5 +39,14 @@ html, body {
 	font-family: sans-serif;
 	position: absolute;
 	text-align:center;
+	will-change: transform;
+}
+
+#messageBox {
+	margin: auto;
+	border-radius: 10px;
+	text-align: center;
+	color: #ffffff;
+	font-family: sans-serif;
 	will-change: transform;
 }

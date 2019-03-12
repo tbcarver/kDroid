@@ -19,7 +19,8 @@ var appState = {
         wallBackgroundColor: "#fff",
         tileCounts: [],
         tileColor: "#fff",
-        tileBackgroundColor: "#fff"
+        tileBackgroundColor: "#fff",
+        messageBoxBackgroundColor: "#fff"
     }
 };
 

@@ -1,5 +1,5 @@
 
-import { webAnimationExtensions } from "../lib/coreVendor/webAnimationJs/webAnimationExtensions.js";
+import { webAnimationExtensions } from "../lib/core-vendor/web-animation-js/web-animation-extensions.js";
 
 var animationView = {
 	currentEndTime: 0

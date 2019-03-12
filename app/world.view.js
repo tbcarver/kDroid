@@ -6,8 +6,8 @@ import { animationView } from "./animation.view.js";
 var worldView = {};
 
 // Add 1 to account for the table border of 3px
-var worldPlaceHolderMargin = 20;
-var worldTableMarginsTotal = (worldPlaceHolderMargin + 1) * 2;
+var worldPlaceholderMargin = 20;
+var worldTableMarginsTotal = (worldPlaceholderMargin + 1) * 2;
 
 worldView.renderGrid = function(worldState) {
 
@@ -41,11 +41,11 @@ worldView.renderGrid = function(worldState) {
 		tableElement.appendChild(rowElement);
 	}
 
-	var worldPlaceHolder = document.querySelector("#worldPlaceHolder");
+	var worldPlaceholderElement = document.querySelector("#worldPlaceholder");
 
-	worldPlaceHolder.style.width = gridWidth + "px";
-	worldPlaceHolder.innerHTML = "";
-	worldPlaceHolder.appendChild(tableElement);
+	worldPlaceholderElement.style.width = gridWidth + "px";
+	worldPlaceholderElement.innerHTML = "";
+	worldPlaceholderElement.appendChild(tableElement);
 
 	tableCellElements.forEach(function(tableCellElement) {
 

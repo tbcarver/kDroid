@@ -1,6 +1,8 @@
 
+import { appView } from "./app.view.js";
 import { worldController } from "./world.controller.js";
 import { robotController } from "./robot.controller.js";
+import { robotIcons } from "./robotIcons.js";
 import { appState } from "./appState.js";
 import { coreMath } from "../lib/core/extensions/core-math.js"
 import { DoubleKeyHashSet } from "../lib/core/collections/double-key-hash-set.js";
@@ -15,6 +17,8 @@ appController.load = function() {
 	initializeColors(worldState);
 	initializeOuterWalls(worldState);
 	initializeTilesCounts(worldState);
+
+	appView.render();
 
 	worldController.load();
 	robotController.load();
@@ -77,10 +81,30 @@ appController.setWorldStateSpeed = function(speed) {
 	}
 
 	var invertedSpeed = 100 - speed;
-	var fastestDuration = 50;
+	var fastestDuration = 10;
 	var slowestDuration = 2000;
 
 	worldState.duration = ((slowestDuration - fastestDuration) * (invertedSpeed / 100)) + fastestDuration;
+}
+
+appController.setRobotStateIconName = function(iconName) {
+
+	if (iconName) {
+
+		robotState.iconName = iconName;
+	}
+}
+
+appController.setRandomRobotStateIconName = function(iconName) {
+
+	if (!iconName) {
+
+		var keys = Object.keys(robotIcons);
+		var randomIndex = coreMath.randomInteger(0, keys.length - 1);
+		iconName = keys[randomIndex];
+	}
+
+	robotState.iconName = iconName;
 }
 
 appController.setRobotStateDirection = function(direction) {
@@ -123,7 +147,8 @@ function initializeColors() {
 	// worldState.backgroundColor = "hsl(" + randomHue + ", 100%, 100%)";
 	worldState.borderBackgroundColor = "hsl(" + randomHue + ", 40%, 90%)";
 	worldState.wallBackgroundColor = "hsl(" + complimentaryHue + ", 50%, 25%)";
-	worldState.tileBackgroundColor = "hsl(" + randomHue + ", 45%, 65%)";
+	worldState.tileBackgroundColor = "hsl(" + randomHue + ", 45%, 65%)";	
+	worldState.messageBoxBackgroundColor = "hsl(" + complimentaryHue + ", 45%, 65%)";
 }
 
 function initializeOuterWalls(worldState) {
