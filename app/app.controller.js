@@ -88,17 +88,10 @@ function initializeColors() {
 	var randomHue = Math.round(Math.random() * 255);
 
 	robotState.backgroundColor = "hsl(" + randomHue + ", 40%, 65%)";
-	// robotState.backgroundColor = "#333333";
 
-	// if (randomHue < 128) {
-
-	// 	randomHue = randomHue + 128;
-
-	// } else {
-
-	// 	randomHue = 256 - 128 - randomHue;
-	// }
-
+	worldState.backgroundColor = "hsl(" + randomHue + ", 100%, 100%)";
+	worldState.borderBackgroundColor = "hsl(" + randomHue + ", 40%, 90%)";
+	worldState.wallBackgroundColor = "hsl(" + randomHue + ", 50%, 25%)";
 	worldState.tileBackgroundColor = "hsl(" + randomHue + ", 45%, 45%)";
 }
 

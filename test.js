@@ -26,11 +26,12 @@ function test() {
 	setWorldSpeed(70);
 	loadWorld();
 
-	
-	turnRight();
-	move();
-	turnLeft();
-	move();
+	tileCheckerBoard();
+	// turnRight();
+	// putDownTile();
+	// move();
+	// turnLeft();
+	// move();
 
 	// tileToWall();
 	// turnAround();
@@ -147,11 +148,12 @@ function goToWall() {
 
 function tileToWall() {
 
+	putDownTile();
 	while (isFrontClear()) {
-		putDownTile();
 		move();
 		if (isFrontClear()) {
 			move();
+			putDownTile();
 		}
 	}
 }
@@ -167,5 +169,30 @@ function alternateTileToWall() {
 	}
 }
 
+function tileCheckerBoard() {
+	
+	tileToWall();
+	turnAround();
+	goToWall();
+	turnLeft();
+	while (isFrontClear()) {
+
+		if (isOnTile()) {
+
+			move();
+			turnLeft();
+			alternateTileToWall();
+		} else {
+			
+			move();
+			turnLeft();
+			tileToWall();
+		}
+
+		turnAround();
+		goToWall();
+		turnLeft();
+	}
+}
 
 export { test }

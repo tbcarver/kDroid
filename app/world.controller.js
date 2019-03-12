@@ -8,7 +8,7 @@ var worldController = {};
 
 worldController.load = function() {
 
-    appState.world.cellSize = worldView.renderGrid(worldState.rowsCount, worldState.columnsCount);
+    appState.world.cellSize = worldView.renderGrid(worldState);
 };
 
 

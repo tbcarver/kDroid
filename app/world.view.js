@@ -9,27 +9,32 @@ var worldView = {};
 var worldPlaceHolderMargin = 20;
 var worldTableMarginsTotal = (worldPlaceHolderMargin + 1) * 2;
 
-worldView.renderGrid = function(rowsCount, columnsCount) {
+worldView.renderGrid = function(worldState) {
 
-	var cellSize = calculateCellSize(rowsCount, columnsCount);
-	var gridWidth = cellSize * columnsCount;
+	var cellSize = calculateCellSize(worldState.rowsCount, worldState.columnsCount);
+	var gridWidth = cellSize * worldState.columnsCount;
 
 	var tableElement = dom.createElement("table", { id: "kDroidGrid" });
 	tableElement.style.width = gridWidth + "px";
+	tableElement.style.border = "2px solid " + worldState.wallBackgroundColor;
 
 	var tableCellElements = [];
 
-	for (var rowIndex = 0; rowIndex < rowsCount; rowIndex++) {
+	for (var rowIndex = 0; rowIndex < worldState.rowsCount; rowIndex++) {
 
 		var rowElement = document.createElement("tr");
 
-		for (var columnIndex = 0; columnIndex < columnsCount; columnIndex++) {
+		for (var columnIndex = 0; columnIndex < worldState.columnsCount; columnIndex++) {
 
 			var cellId = "cell-" + rowIndex + "-" + columnIndex;
 			var tableCellElement = dom.createElement("td", { id: cellId });
 
 			tableCellElement.style.width = cellSize + "px";
 			tableCellElement.style.height = cellSize + "px";
+			tableCellElement.style.backgroundColor = worldState.backgroundColor;
+			console.log(worldState.backgroundColor);
+			tableCellElement.style.border = "1px solid " + worldState.borderBackgroundColor;
+			console.log(worldState.borderBackgroundColor);
 
 			rowElement.appendChild(tableCellElement);
 			tableCellElements.push(tableCellElement);
