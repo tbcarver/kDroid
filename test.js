@@ -24,11 +24,13 @@ function test() {
 
 	setRandomWorldSize(1, -1);
 	setWorldSpeed(80);
-	setRobotDirection("south");
+	// setRobotDirection("south");
 	loadWorld();
 
+	// tileCheckerBoard();
+
 	// putDownTile();
-	turnLeft();
+	// turnLeft();
 
 	tileToWall();
 	turnAround();

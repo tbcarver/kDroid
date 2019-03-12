@@ -3,6 +3,7 @@ var appState = {
     robot: {
         rowIndex: 0,
         columnIndex: 0,
+        iconName: "arrow-alt-circle-right",
         backgroundColor: "#fff",
         direction: "east"
     },

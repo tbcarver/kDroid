@@ -119,11 +119,11 @@ function initializeColors() {
 		complimentaryHue = 256 - 128 - randomHue;
 	}
 
-	robotState.backgroundColor = "hsl(" + complimentaryHue + ", 40%, 65%)";
+	robotState.backgroundColor = "hsl(" + complimentaryHue + ", 40%, 35%)";
 	// worldState.backgroundColor = "hsl(" + randomHue + ", 100%, 100%)";
 	worldState.borderBackgroundColor = "hsl(" + randomHue + ", 40%, 90%)";
-	worldState.wallBackgroundColor = "hsl(" + randomHue + ", 50%, 25%)";
-	worldState.tileBackgroundColor = "hsl(" + randomHue + ", 45%, 45%)";
+	worldState.wallBackgroundColor = "hsl(" + complimentaryHue + ", 50%, 25%)";
+	worldState.tileBackgroundColor = "hsl(" + randomHue + ", 45%, 65%)";
 }
 
 function initializeOuterWalls(worldState) {

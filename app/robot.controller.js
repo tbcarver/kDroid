@@ -99,7 +99,6 @@ robotController.turnLeft = function() {
 
     robotState.direction = turnLeftDirections[robotState.direction];
     robotView.turnLeft(robotState.direction, worldState.duration);
-    // console.log("robot turned " + robotState.direction);
 };
 
 robotController.putDownTile = function() {
