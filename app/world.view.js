@@ -77,8 +77,6 @@ function calculateCellSize(rowsCount, columnsCount) {
 worldView.putDownTile = function(tileCount, robotState, worldState) {
 
 	var tileId = "tile-" + robotState.rowIndex + "-" + robotState.columnIndex + "-" + tileCount;
-	console.log(tileId);
-
 	var tileElement = dom.createElement("div", { id: tileId, className: "tile" });
 	var tileWidth = coreMath.pathagorinC(worldState.cellSize, worldState.cellSize);
 

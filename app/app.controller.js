@@ -112,9 +112,14 @@ appController.setRandomRobotStateDirection = function(direction) {
 function initializeColors() {
 
 	var randomHue = Math.round(Math.random() * 255);
+	var complimentaryHue = randomHue + 128;
+	
+	if (randomHue > 128) {
 
-	robotState.backgroundColor = "hsl(" + randomHue + ", 40%, 65%)";
+		complimentaryHue = 256 - 128 - randomHue;
+	}
 
+	robotState.backgroundColor = "hsl(" + complimentaryHue + ", 40%, 65%)";
 	// worldState.backgroundColor = "hsl(" + randomHue + ", 100%, 100%)";
 	worldState.borderBackgroundColor = "hsl(" + randomHue + ", 40%, 90%)";
 	worldState.wallBackgroundColor = "hsl(" + randomHue + ", 50%, 25%)";
