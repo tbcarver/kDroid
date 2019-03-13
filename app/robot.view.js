@@ -7,11 +7,17 @@ import { coreString } from "../lib/core/extensions/core-string.js";
 var robotView = {};
 
 robotView.renderRobot = function(robotState, cellSize) {
+    
+    this.robotElement = dom.createElement("div", { id: "kDroid" });
+    this.robotElement.style.padding = (cellSize * .1) + "px";
+    this.robotElement.style.fill = robotState.backgroundColor;
 
-    if (!this.robotElement) {
+    this.robotElement.innerHTML = robotIcons[robotState.iconName];
 
-        this.initializeRobotElement(robotState.backgroundColor, robotState.iconName, cellSize);
-    }
+    var worldPlaceholderElement = dom("#worldPlaceholder");
+    worldPlaceholderElement.appendChild(this.robotElement);
+
+    this.robotSvgElement = this.robotElement.querySelector("svg");
 
     var top = cellSize * robotState.rowIndex;
     var left = cellSize * robotState.columnIndex;
@@ -22,20 +28,6 @@ robotView.renderRobot = function(robotState, cellSize) {
     this.robotElement.style.height = cellSize + "px";
 
     this.robotSvgElement.style.transform = directionRotations[robotState.direction];
-}
-
-robotView.initializeRobotElement = function(backgroundColor, robotIconName, cellSize) {
-
-    this.robotElement = dom.createElement("div", { id: "kDroid" });
-    this.robotElement.style.padding = (cellSize * .1) + "px";
-    this.robotElement.style.fill = backgroundColor;
-
-    this.robotElement.innerHTML = robotIcons[robotIconName];
-
-    var worldPlaceholderElement = dom("#worldPlaceholder");
-    worldPlaceholderElement.appendChild(this.robotElement);
-
-    this.robotSvgElement = this.robotElement.querySelector("svg");
 }
 
 robotView.moveNorth = function(duration, cellSize) {

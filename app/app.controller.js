@@ -148,7 +148,7 @@ function initializeColors() {
 	worldState.borderBackgroundColor = "hsl(" + randomHue + ", 40%, 90%)";
 	worldState.wallBackgroundColor = "hsl(" + complimentaryHue + ", 50%, 25%)";
 	worldState.tileBackgroundColor = "hsl(" + randomHue + ", 45%, 65%)";	
-	worldState.messageBoxBackgroundColor = "hsl(" + complimentaryHue + ", 45%, 65%)";
+	worldState.messageBoxBackgroundColor = "hsl(" + complimentaryHue + ", 40%, 40%)";
 }
 
 function initializeOuterWalls(worldState) {
