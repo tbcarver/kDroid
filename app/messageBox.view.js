@@ -57,8 +57,8 @@ messageBoxView.render = function(message, isError, worldState) {
         ]
 
         var options = {
-            duration: worldState.duration / 4,
-            easing: "ease-out",
+            duration: worldState.duration / 2,
+            easing: "cubic-bezier(.5305, -1.3203, .5, .6085)",
             fill: "forwards"
         }
 

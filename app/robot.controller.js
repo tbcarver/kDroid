@@ -49,13 +49,14 @@ robotController.move = function() {
     robotState.columnIndex = robotState.columnIndex + robotMoveDirectionOffsets[robotState.direction].columnOffset;
 
     robotViewMove(worldState.duration, worldState.cellSize);
-    // console.log("robot moved " + robotState.direction);
 };
 
 function assertCanMove() {
 
+    if (isFrontBlocked()) {
 
-
+        throw { message: "The front is blocked." };
+    }
 }
 
 robotController.isFrontClear = function() {

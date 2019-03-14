@@ -10,7 +10,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
 	
 	test();
 
-	messageBoxController.setMessage("You did it!");
+	messageBoxController.setMessage("Your program has completed!");
 });
 
 window.addEventListener("error", function(event) {
