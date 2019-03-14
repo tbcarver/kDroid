@@ -4,27 +4,33 @@ import { animationView } from "./animation.view.js";
 
 var messageBoxView = {};
 
-messageBoxView.render = function(message, worldState) {
+messageBoxView.render = function(message, isError, worldState) {
 
     var messageBoxElement = dom.createElement("div", { id: "messageBox" });
-    var messageBoxWidth = worldState.cellSize * worldState.rowsCount * .75;
-    var messageBoxHeight = worldState.cellSize * worldState.columnsCount * .3;
+    var messageBoxWidth = worldState.cellSize * worldState.columnsCount * .75;
+    var messageBoxHeight = worldState.cellSize * worldState.rowsCount * .3;
 
-    if (messageBoxWidth > 400) {
+    if (messageBoxWidth > 450) {
 
-        messageBoxWidth = 400;
+        messageBoxWidth = 450;
 
-    } else if (messageBoxWidth < 100) {
+    } else if (messageBoxWidth < 350) {
 
-        messageBoxWidth = worldState.cellSize * worldState.rowsCount * .1;
+        messageBoxWidth = 350;
     }
 
     messageBoxElement.style.width = messageBoxWidth + "px";
-    messageBoxElement.style.padding = (messageBoxWidth * .1) + "px";
-    messageBoxElement.style.fontSize = (messageBoxHeight * .2) + "px";
+    messageBoxElement.style.padding = "30px 20px";
     messageBoxElement.style.color = worldState.backgroundColor;
-    messageBoxElement.style.background = worldState.messageBoxBackgroundColor;
+    messageBoxElement.style.backgroundColor = worldState.messageBoxBackgroundColor;
     messageBoxElement.style.visibility = "hidden";
+
+    messageBoxElement.style.fontSize = "28px";
+
+    if (messageBoxWidth < 400 || message.length > 40) {
+
+        messageBoxElement.style.fontSize = "16px";
+    }
 
     messageBoxElement.innerHTML = message;
 
@@ -59,19 +65,25 @@ messageBoxView.render = function(message, worldState) {
         messageBoxContainerElement.animate(keyframes, options);
     });
 
-    messageBoxContainerElement.style.width = worldPlaceholderElement.offsetWidth + "px";
-    messageBoxContainerElement.style.height = worldPlaceholderElement.offsetHeight + "px";
+    messageBoxContainerElement.style.minWidth = worldPlaceholderElement.offsetWidth + "px";
+    messageBoxContainerElement.style.minHeight = worldPlaceholderElement.offsetHeight + "px";
 
     var keyframes = [
         { transform: "scale(0)", visibility: "visible" },
         { transform: "scale(1)", visibility: "visible" }
-    ]
+    ];
+
+    if (isError) {
+
+         keyframes[0].backgroundColor = messageBoxElement.style.backgroundColor;
+         keyframes[1].backgroundColor = "#bb1414";
+    }
 
     var options = {
         duration: worldState.duration / 2,
         easing: "cubic-bezier(.38, 1.23, .71, 1.82)",
         fill: "forwards"
-    }
+    };
 
     animationView.stackAnimation(messageBoxElement, keyframes, options);
 };

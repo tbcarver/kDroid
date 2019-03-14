@@ -22,14 +22,16 @@ function test() {
 	// setRobotDirection(directionNumber) - sets the start direction of the robot
 	// setRobotTiles(number) - sets the start amount of tiles the robots has, -1 if infinite tiles
 
-	setRandomWorldSize(6);
-	setWorldSpeed(90);
+	setRandomWorldSize();
+	setWorldSpeed(70);
 	// setRobotDirection("south");
 	setRandomRobotIcon();
 	// setRobotIcon("android");
 	loadWorld();
 
-	tileCheckerBoard();
+	// turnleft();
+
+	// tileCheckerBoard();
 	// // turnRight();
 	// tileAll();
 	// turnAround();

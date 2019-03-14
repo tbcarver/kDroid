@@ -4,9 +4,9 @@ import { appState } from "./appState.js";
 
 var messageBoxController = {};
 
-messageBoxController.setMessage = function(message) {
+messageBoxController.setMessage = function(message, isError) {
 
-	messageBoxView.render(message, appState.world);
+	messageBoxView.render(message, isError, appState.world);
 };
 
 

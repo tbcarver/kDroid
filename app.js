@@ -1,6 +1,7 @@
 
 import { appCommands } from "./appCommands.js";
 import { messageBoxController } from "./app/messageBox.controller.js"
+import { html } from "./lib/core/web/html.js"
 import { test } from "./test.js";
 
 window.addEventListener("DOMContentLoaded", function(event) {
@@ -19,7 +20,9 @@ window.addEventListener("error", function(event) {
 
 	if (error.stack) {
 
-		message = message + "<hr><div class='text-left'>" + error.stack + "</div>";
+		var stack = html.toHtml(error.stack);
+
+		message = message + "<hr><div style='text-align:left;'>" + stack + "</div>";
 
 	}
 
