@@ -133,6 +133,11 @@ appController.setRandomRobotStateDirection = function(direction) {
 	robotState.direction = direction;
 }
 
+appController.setTileBackgroundColor= function(backgroundColor) {
+
+	worldState.tileBackgroundColor = backgroundColor;
+}
+
 function initializeColors() {
 
 	var randomHue = Math.round(Math.random() * 255);

@@ -113,10 +113,10 @@ robotController.putDownTile = function() {
 
 robotController.pickUpTile = function() {
 
-    assertCanPickUpTile();
-
     var tileCount = worldState.tileCounts[robotState.rowIndex][robotState.columnIndex];
     var previousTileCount = tileCount;
+
+    assertCanPickUpTile(tileCount);
 
     tileCount--;
     worldState.tileCounts[robotState.rowIndex][robotState.columnIndex] = tileCount;
@@ -124,10 +124,12 @@ robotController.pickUpTile = function() {
     worldView.pickUpTile(previousTileCount, robotState, worldState);
 }
 
-function assertCanPickUpTile() {
+function assertCanPickUpTile(tileCount) {
 
+    if (tileCount <= 0) {
 
-
+        throw { message: "There is no tile to pick up." };
+    }
 }
 
 robotController.isOnTile = function() {

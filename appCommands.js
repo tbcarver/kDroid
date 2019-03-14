@@ -13,6 +13,7 @@ appCommands.initialize = function() {
 	window.setRandomRobotIcon = appController.setRandomRobotStateIconName;
 	window.setRobotDirection = appController.setRobotStateDirection;
 	window.setRandomRobotDirection = appController.setRandomRobotStateDirection;
+	window.setTileColor = appController.setTileBackgroundColor;
 	window.loadWorld = appController.load;
 
 	window.move = robotController.move;
