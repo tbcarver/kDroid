@@ -22,12 +22,19 @@ function test() {
 	// setRobotDirection(directionNumber) - sets the start direction of the robot
 	// setRobotTiles(number) - sets the start amount of tiles the robots has, -1 if infinite tiles
 
-	setRandomWorldSize(5, 5);
-	setWorldSpeed(90);
+	setRandomWorldSize(3);
+	setWorldSpeed(70);
 	// setRobotDirection("south");
 	setRandomRobotIcon();
 	// setRobotIcon("android");
 	loadWorld();
+
+	// setTileColor("black");
+	tileCheckeredToWall();
+	turnRight();
+	move();
+	// setTileColor("lightblue");
+	// tileCheckeredToWall();
 
 	
 	// putDownTile();
@@ -38,11 +45,11 @@ function test() {
 	// pickUpTile();
 	// move();
 	// move();
-	setTileColor("black");
-	tileCheckerBoard();
-	setTileColor("lightblue");
-	turnAround();
-	tileCheckerBoard();
+	// setTileColor("black");
+	// tileCheckerBoard();
+	// setTileColor("lightblue");
+	// turnAround();
+	// tileCheckerBoard();
 	// // turnRight();
 	// tileAll();
 	// turnAround();

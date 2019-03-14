@@ -79,7 +79,6 @@ worldView.putDownTile = function(tileCount, robotState, worldState) {
 	var tileId = "tile-" + robotState.rowIndex + "-" + robotState.columnIndex + "-" + tileCount;
 	var tileElement = dom.createElement("div", { id: tileId, className: "tile" });
 	var tileWidth = coreMath.pathagorinC(worldState.cellSize, worldState.cellSize);
-	console.log(tileId);
 
 	tileElement.style.top = (worldState.cellSize / 2) - (tileWidth / 2) + "px";
 	tileElement.style.left = (worldState.cellSize / 2) - (tileWidth / 2) + "px";
@@ -121,11 +120,9 @@ worldView.pickUpTile = function(previousTileCount, robotState, worldState) {
 
 	var tileId = "tile-" + robotState.rowIndex + "-" + robotState.columnIndex + "-" + previousTileCount;
 	var tileElement = dom("#" + tileId);
-	console.log(tileId);
 
 	var targetCellId = "cell-" + robotState.rowIndex + "-" + robotState.columnIndex;
 	var targetCellElement = dom("#" + targetCellId);
-	console.log(targetCellElement);
 	
 	var keyframes = [
 		{transform: "scale(1)", visibility: "visible"},
