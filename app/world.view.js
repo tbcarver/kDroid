@@ -30,7 +30,6 @@ worldView.renderGrid = function(worldState) {
 			var tableCellElement = dom.createElement("td", { id: cellId });
 
 			tableCellElement.style.width = cellSize + "px";
-			tableCellElement.style.height = cellSize + "px";
 			tableCellElement.style.backgroundColor = worldState.backgroundColor;
 			tableCellElement.style.border = "1px solid " + worldState.borderBackgroundColor;
 
@@ -41,7 +40,8 @@ worldView.renderGrid = function(worldState) {
 		tableElement.appendChild(rowElement);
 	}
 
-	var worldPlaceholderElement = document.querySelector("#worldPlaceholder");
+	var worldPlaceholderElement = dom.createElement("div", { id: "worldPlaceholder" });
+	document.body.appendChild(worldPlaceholderElement);
 
 	worldPlaceholderElement.style.width = gridWidth + "px";
 	worldPlaceholderElement.innerHTML = "";

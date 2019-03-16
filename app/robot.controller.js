@@ -1,24 +1,31 @@
 
 import { appState } from "./appState.js";
-import { robotView } from "./robot.view.js";
-import { worldView } from "./world.view.js";
+import { viewFactory } from "./viewFactory.js";
+
+var robotView;
+var worldView;
 
 var robotState = appState.robot;
 var worldState = appState.world;
+
+var robotViewMoveHandlers;
 
 var robotController = {};
 
 robotController.load = function() {
 
+    robotView = viewFactory.getView("robotView");
+    worldView = viewFactory.getView("worldView");
+
+    robotViewMoveHandlers = {
+        north: robotView.moveNorth,
+        east: robotView.moveEast,
+        south: robotView.moveSouth,
+        west: robotView.moveWest
+    }
+
     robotView.renderRobot(robotState, worldState.cellSize);
 };
-
-var robotViewMoveHandlers = {
-    north: robotView.moveNorth,
-    east: robotView.moveEast,
-    south: robotView.moveSouth,
-    west: robotView.moveWest
-}
 
 var robotMoveDirectionOffsets = {
     north: {

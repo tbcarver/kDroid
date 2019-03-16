@@ -1,5 +1,5 @@
 
-import { worldView } from "./world.view.js";
+import { viewFactory } from "./viewFactory.js";
 import { appState } from "./appState.js";
 
 var worldState = appState.world;
@@ -8,7 +8,9 @@ var worldController = {};
 
 worldController.load = function() {
 
-    appState.world.cellSize = worldView.renderGrid(worldState);
+    var worldView = viewFactory.getView("worldView");
+
+    worldState.cellSize = worldView.renderGrid(worldState);
 };
 
 

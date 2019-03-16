@@ -1,7 +1,7 @@
 
-import { appView } from "./app.view.js";
 import { worldController } from "./world.controller.js";
 import { robotController } from "./robot.controller.js";
+import { viewFactory } from "./viewFactory.js";
 import { robotIcons } from "./robotIcons.js";
 import { appState } from "./appState.js";
 import { coreMath } from "../lib/core/extensions/core-math.js"
@@ -18,10 +18,15 @@ appController.load = function() {
 	initializeOuterWalls(worldState);
 	initializeTilesCounts(worldState);
 
-	appView.render();
-
 	worldController.load();
 	robotController.load();
+}
+
+appController.loadThreaded = function() {
+	
+	viewFactory.loadThreaded();
+
+	load();
 }
 
 appController.setWorldStateSize = function(rowsCount, columnsCount) {
