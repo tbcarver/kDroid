@@ -60,7 +60,7 @@ robotController.move = function() {
 
 function assertCanMove() {
 
-    if (isFrontBlocked()) {
+    if (robotController.isFrontBlocked()) {
 
         throw { message: "The front is blocked." };
     }
@@ -68,7 +68,7 @@ function assertCanMove() {
 
 robotController.isFrontClear = function() {
 
-    return !isFrontBlocked();
+    return !this.isFrontBlocked();
 }
 
 robotController.isFrontBlocked = function() {
@@ -148,7 +148,7 @@ robotController.isOnTile = function() {
 
 robotController.isNotOnTile = function() {
 
-    return !isOnTile();
+    return !this.isOnTile();
 }
 
 
