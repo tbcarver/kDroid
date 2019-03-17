@@ -24,7 +24,7 @@ robotController.load = function() {
         west: robotView.moveWest
     }
 
-    robotView.renderRobot(robotState, worldState.cellSize);
+    robotView.renderRobot(robotState);
 };
 
 var robotMoveDirectionOffsets = {
@@ -55,7 +55,7 @@ robotController.move = function() {
     robotState.rowIndex = robotState.rowIndex + robotMoveDirectionOffsets[robotState.direction].rowOffset;
     robotState.columnIndex = robotState.columnIndex + robotMoveDirectionOffsets[robotState.direction].columnOffset;
 
-    robotViewMove(worldState.duration, worldState.cellSize);
+    robotViewMove(worldState.duration);
 };
 
 function assertCanMove() {

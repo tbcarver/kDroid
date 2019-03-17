@@ -2,6 +2,7 @@
 import { dom } from "../lib/core/web/dom.js";
 import { coreMath } from "../lib/core/extensions/core-math.js";
 import { animationView } from "./animation.view.js";
+import { viewState } from "./viewState.js";
 
 var worldView = {};
 
@@ -52,7 +53,7 @@ worldView.renderGrid = function(worldState) {
 		tableCellElement.style.height = tableCellElement.offsetWidth + "px";
 	});
 
-	return cellSize;
+	viewState.cellSize = cellSize;
 };
 
 function calculateCellSize(rowsCount, columnsCount) {
@@ -78,10 +79,10 @@ worldView.putDownTile = function(tileCount, robotState, worldState) {
 
 	var tileId = "tile-" + robotState.rowIndex + "-" + robotState.columnIndex + "-" + tileCount;
 	var tileElement = dom.createElement("div", { id: tileId, className: "tile" });
-	var tileWidth = coreMath.pathagorinC(worldState.cellSize, worldState.cellSize);
+	var tileWidth = coreMath.pathagorinC(viewState.cellSize, viewState.cellSize);
 
-	tileElement.style.top = (worldState.cellSize / 2) - (tileWidth / 2) + "px";
-	tileElement.style.left = (worldState.cellSize / 2) - (tileWidth / 2) + "px";
+	tileElement.style.top = (viewState.cellSize / 2) - (tileWidth / 2) + "px";
+	tileElement.style.left = (viewState.cellSize / 2) - (tileWidth / 2) + "px";
 	tileElement.style.width = tileWidth + "px";
 	tileElement.style.height = tileWidth + "px";
 	tileElement.style.lineHeight = tileWidth + "px";

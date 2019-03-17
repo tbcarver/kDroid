@@ -2,70 +2,65 @@
 
 var robotThreadedView = {};
 
-robotThreadedView.renderRobot = function(robotState, cellSize) {
+robotThreadedView.renderRobot = function(robotState) {
 
 	var message = {
 		handler: "robotView",
 		method: "renderRobot",
 		parameters: [
-			robotState,
-			cellSize
+			robotState
 		]
 	}
 
 	self.postMessage(message);
 }
 
-robotThreadedView.moveNorth = function(duration, cellSize) {
+robotThreadedView.moveNorth = function(duration) {
 
 	var message = {
 		handler: "robotView",
 		method: "moveNorth",
 		parameters: [
-			duration,
-			cellSize
+			duration
 		]
 	}
 
 	self.postMessage(message);
 }
 
-robotThreadedView.moveEast = function(duration, cellSize) {
+robotThreadedView.moveEast = function(duration) {
 
 	var message = {
 		handler: "robotView",
 		method: "moveEast",
 		parameters: [
-			duration,
-			cellSize
+			duration
 		]
 	}
 
 	self.postMessage(message);
 }
 
-robotThreadedView.moveSouth = function(duration, cellSize) {
+robotThreadedView.moveSouth = function(duration) {
 
 	var message = {
 		handler: "robotView",
 		method: "moveSouth",
 		parameters: [
-			duration,
-			cellSize
+			duration
 		]
 	}
 
 	self.postMessage(message);
 }
 
-robotThreadedView.moveWest = function(duration, cellSize) {
+robotThreadedView.moveWest = function(duration) {
 
 	var message = {
 		handler: "robotView",
 		method: "moveWest",
 		parameters: [
-			duration,
-			cellSize
+			duration
 		]
 	}
 

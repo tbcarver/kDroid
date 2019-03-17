@@ -1,13 +1,14 @@
 
 import { dom } from "../lib/core/web/dom.js";
 import { animationView } from "./animation.view.js";
+import { viewState } from "./viewState.js";
 
 var messageBoxView = {};
 
 messageBoxView.render = function(message, isError, worldState) {
 
     var messageBoxElement = dom.createElement("div", { id: "messageBox" });
-    var messageBoxWidth = worldState.cellSize * worldState.columnsCount * .75;
+    var messageBoxWidth = viewState.cellSize * worldState.columnsCount * .75;
 
     if (messageBoxWidth > 450) {
 

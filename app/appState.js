@@ -10,7 +10,6 @@ var appState = {
     world: {
         rowsCount: 0,
         columnsCount: 0,
-        cellSize: 0,
         backgroundColor: "#fff",
         borderBackgroundColor: "#fff",
         duration: 1000,

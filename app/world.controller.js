@@ -10,7 +10,7 @@ worldController.load = function() {
 
     var worldView = viewFactory.getView("worldView");
 
-    worldState.cellSize = worldView.renderGrid(worldState);
+    worldView.renderGrid(worldState);
 };
 
 
