@@ -1,4 +1,5 @@
 
+import { animationView } from "./app/animation.view.js";
 import { messageBoxView } from "./app/messageBox.view.js";
 import { robotView } from "./app/robot.view.js";
 import { worldView } from "./app/world.view.js";
@@ -7,6 +8,7 @@ import { html } from "./lib/core/web/html.js"
 
 var workerMessageHandlers = {};
 
+workerMessageHandlers["animationView"] = animationView;
 workerMessageHandlers["messageBoxView"] = messageBoxView;
 workerMessageHandlers["robotView"] = robotView;
 workerMessageHandlers["worldView"] = worldView;

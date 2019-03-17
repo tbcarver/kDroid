@@ -19,7 +19,9 @@ var appState = {
         tileCounts: [],
         tileColor: "#fff",
         tileBackgroundColor: "#fff",
-        messageBoxBackgroundColor: "#fff"
+        messageBoxBackgroundColor: "#fff",
+        maxCommandCount: 2500,
+        currentCommandCount: 0
     }
 };
 

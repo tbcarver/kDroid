@@ -32,7 +32,17 @@ self.onerror = function(error) {
 
 	console.log(error);
 
-	error = error.replace(/Uncaught[^:]+:\s+/gi, "");
+	if (error && error.length > 1) {
+
+		error = error.replace(/Uncaught[^:]+:\s+/gi, "");
+
+		error = error[0].toUpperCase() + error.substring(1);
+
+		if (error[error.length - 1] !== ".") {
+
+			error = error + ".";
+		}
+	}
 
 	messageBoxController.setMessage(error, true);
 }

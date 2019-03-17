@@ -1,16 +1,25 @@
 
 importScripts("./dist/kDroid.js");
 
-
-setRandomWorldSize(3);
-setWorldSpeed(70);
+setRandomWorldSize(12);
+setWorldSpeed(100);
 setRandomRobotIcon();
 loadWorld();
 
+// while (isFrontClear()) {
+// 	move();
+// 	if (isFrontBlocked()){
+// 		turnRight();
+// 	}
+// }
+
+
+for (var count=0; count<2;count++){
+
 tileCheckerBoard();
+turnAround();
 
-
-
+}
 
 
 function turnRight() {
@@ -75,7 +84,7 @@ function alternateTileCheckeredToWall() {
 }
 
 function tileCheckerBoard() {
-	
+
 	tileCheckeredToWall();
 	turnAround();
 	goToWall();
@@ -88,7 +97,7 @@ function tileCheckerBoard() {
 			turnLeft();
 			alternateTileCheckeredToWall();
 		} else {
-			
+
 			move();
 			turnLeft();
 			tileCheckeredToWall();
@@ -101,7 +110,7 @@ function tileCheckerBoard() {
 	turnLeft();
 }
 
-function tileAll() {	
+function tileAll() {
 
 	tileToWall();
 	turnAround();
@@ -118,7 +127,7 @@ function tileAll() {
 	}
 }
 
-function cleanAll() {	
+function cleanAll() {
 
 	cleanToWall();
 	turnAround();

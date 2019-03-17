@@ -5,7 +5,7 @@ import { viewState } from "./viewState.js";
 
 var messageBoxView = {};
 
-messageBoxView.render = function(message, isError, worldState) {
+messageBoxView.render = function(message, isError, isForced, worldState) {
 
     var messageBoxElement = dom.createElement("div", { id: "messageBox" });
     var messageBoxWidth = viewState.cellSize * worldState.columnsCount * .75;
@@ -85,7 +85,14 @@ messageBoxView.render = function(message, isError, worldState) {
         fill: "forwards"
     };
 
-    animationView.stackAnimation(messageBoxElement, keyframes, options);
+    if (isForced) {
+
+        messageBoxElement.animate(keyframes, options);
+
+    } else {
+
+        animationView.stackAnimation(messageBoxElement, keyframes, options);
+    }
 };
 
 

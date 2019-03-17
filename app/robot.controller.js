@@ -1,8 +1,9 @@
 
 import { appState } from "./appState.js";
 import { viewFactory } from "./viewFactory.js";
-import { AST_DefClass } from "terser";
+import { messageBoxController } from "./messageBox.controller.js";
 
+var animationView;
 var robotView;
 var worldView;
 
@@ -15,6 +16,7 @@ var robotController = {};
 
 robotController.load = function() {
 
+    animationView = viewFactory.getView("animationView");
     robotView = viewFactory.getView("robotView");
     worldView = viewFactory.getView("worldView");
 
@@ -47,8 +49,22 @@ var robotMoveDirectionOffsets = {
     }
 };
 
+function assertMaxCommands() {
+
+    worldState.currentCommandCount++;
+
+    if (worldState.currentCommandCount > worldState.maxCommandCount) {
+
+        animationView.cancelAnimating();
+        messageBoxController.forceErrorMessage("The program is in an endless loop.");
+
+        throw new Error("The program is in an endless loop.");
+    }
+}
+
 robotController.move = function() {
 
+    assertMaxCommands();
     assertCanMove();
 
     var robotViewMove = robotViewMoveHandlers[robotState.direction].bind(robotView);
@@ -63,7 +79,7 @@ function assertCanMove() {
 
     if (robotController.isFrontBlocked()) {
 
-        throw new Error("the front is blocked");
+        throw new Error("The front is blocked.");
     }
 }
 
@@ -73,6 +89,8 @@ robotController.isFrontClear = function() {
 }
 
 robotController.isFrontBlocked = function() {
+
+    assertMaxCommands();
 
     var walls = worldState.topWalls;
 
@@ -106,11 +124,15 @@ var turnLeftDirections = {
 
 robotController.turnLeft = function() {
 
+    assertMaxCommands();
+
     robotState.direction = turnLeftDirections[robotState.direction];
     robotView.turnLeft(robotState.direction, worldState.duration);
 };
 
 robotController.putDownTile = function() {
+
+    assertMaxCommands();
 
     var tileCount = worldState.tileCounts[robotState.rowIndex][robotState.columnIndex];
     tileCount++;
@@ -120,6 +142,8 @@ robotController.putDownTile = function() {
 }
 
 robotController.pickUpTile = function() {
+    
+    assertMaxCommands();
 
     var tileCount = worldState.tileCounts[robotState.rowIndex][robotState.columnIndex];
     var previousTileCount = tileCount;
@@ -136,11 +160,13 @@ function assertCanPickUpTile(tileCount) {
 
     if (tileCount <= 0) {
         
-        throw new Error("there is no tile to pick up");
+        throw new Error("There is no tile to pick up.");
     }
 }
 
 robotController.isOnTile = function() {
+    
+    assertMaxCommands();
 
     var tileCount = worldState.tileCounts[robotState.rowIndex][robotState.columnIndex];
 

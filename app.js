@@ -1,6 +1,5 @@
 
 import { appCommands } from "./appCommands.js";
-import { appState } from "./app/appState.js";
 import { messageBoxController } from "./app/messageBox.controller.js"
 import { html } from "./lib/core/web/html.js"
 import { test } from "./test.js";

@@ -14,7 +14,12 @@ messageBoxController.load = function() {
 
 messageBoxController.setMessage = function(message, isError) {
 
-	messageBoxView.render(message, isError, appState.world);
+	messageBoxView.render(message, isError, false, appState.world);
+};
+
+messageBoxController.forceErrorMessage = function(message) {
+
+	messageBoxView.render(message, true, true, appState.world);
 };
 
 

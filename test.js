@@ -22,17 +22,26 @@ function test() {
 	// setRobotDirection(directionNumber) - sets the start direction of the robot
 	// setRobotTiles(number) - sets the start amount of tiles the robots has, -1 if infinite tiles
 
-	setRandomWorldSize(3);
-	setWorldSpeed(70);
+	setRandomWorldSize(6);
+	setWorldSpeed(100);
 	// setRobotDirection("south");
 	setRandomRobotIcon();
 	// setRobotIcon("android");
 	loadWorld();
 
+
+	for (var count=0; count<100;count++){
+
+		tileCheckerBoard();
+		turnAround();
+		
+		}
+		
+
 	// setTileColor("black");
-	tileCheckeredToWall();
-	turnRight();
-	move();
+	// tileCheckeredToWall();
+	// turnRight();
+	// move();
 	// setTileColor("lightblue");
 	// tileCheckeredToWall();
 
