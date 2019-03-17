@@ -11,7 +11,13 @@
 
 <body>
 	<script src="./assets/vendor/web-animation-js/2.3.1/web-animations-next.min.js"></script>
-	<script src="./app.js" type="module"></script>
+	<script src="./dist/kDroidAppThreaded.js"></script>
+	<script>
+		window.addEventListener("DOMContentLoaded", function(event) {
+
+			runKDroidScript('./test/testThreaded.js');
+		});
+	</script>
 </body>
 
 </html>

@@ -15,6 +15,8 @@ workerMessageHandlers["worldView"] = worldView;
 
 window.runKDroidScript = function(scriptPath) {
 
+	console.log("Running kDroidScript: " + runKDroidScript);
+
 	var kDroidWorker = new Worker(scriptPath);
 
 	kDroidWorker.onmessage = handleWorkerMessage;

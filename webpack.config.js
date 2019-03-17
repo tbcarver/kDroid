@@ -10,9 +10,9 @@
 
 module.exports = {
 	mode: 'development',
-	entry: './appCommandsThreaded.js',
+	entry: './appThreadedCommands.js',
 	output: {
-		filename: 'kDroid.js',
+		filename: 'kDroidFunctions.js',
 		path: __dirname + '/dist'
 	},
     devtool: "source-map"

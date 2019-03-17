@@ -29,13 +29,8 @@ function test() {
 	// setRobotIcon("android");
 	loadWorld();
 
-
-	for (var count=0; count<100;count++){
-
-		tileCheckerBoard();
-		turnAround();
-		
-		}
+	tileCheckerBoard();
+	turnAround();
 		
 
 	// setTileColor("black");

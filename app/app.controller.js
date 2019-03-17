@@ -25,7 +25,7 @@ appController.load = function() {
 }
 
 appController.loadThreaded = function() {
-	
+
 	viewFactory.loadThreaded();
 
 	this.load();
@@ -140,16 +140,36 @@ appController.setRandomRobotStateDirection = function(direction) {
 	robotState.direction = direction;
 }
 
-appController.setTileBackgroundColor= function(backgroundColor) {
+appController.setTileBackgroundColor = function(backgroundColor) {
 
 	worldState.tileBackgroundColor = backgroundColor;
+}
+
+appController.setRandomTiles = function(numberOfTiles) {
+
+	initializeTilesCounts(worldState);
+
+	var tileCounts = worldState.tileCounts;
+	
+	var currentRow;
+	
+	for (var rowIndex = 0; rowIndex < worldState.rowsCount; rowIndex++) {
+
+		currentRow = [];
+		tileCounts.push(currentRow);
+
+		for (var columnIndex = 0; columnIndex < worldState.columnsCount; columnIndex++) {
+
+			currentRow.push(0);
+		}
+	}
 }
 
 function initializeColors() {
 
 	var randomHue = Math.round(Math.random() * 255);
 	var complimentaryHue = randomHue + 128;
-	
+
 	if (randomHue > 128) {
 
 		complimentaryHue = 256 - 128 - randomHue;
@@ -159,7 +179,7 @@ function initializeColors() {
 	// worldState.backgroundColor = "hsl(" + randomHue + ", 100%, 100%)";
 	worldState.borderBackgroundColor = "hsl(" + randomHue + ", 40%, 90%)";
 	worldState.wallBackgroundColor = "hsl(" + complimentaryHue + ", 50%, 25%)";
-	worldState.tileBackgroundColor = "hsl(" + randomHue + ", 45%, 65%)";	
+	worldState.tileBackgroundColor = "hsl(" + randomHue + ", 45%, 65%)";
 	worldState.messageBoxBackgroundColor = "hsl(" + complimentaryHue + ", 40%, 40%)";
 }
 
@@ -200,21 +220,24 @@ function initializeOuterWalls(worldState) {
 
 function initializeTilesCounts(worldState) {
 
-	var tileCounts = [];
-	var currentRow;
+	if (worldState.tileCounts.length < 1) {
 
-	for (var rowIndex = 0; rowIndex < worldState.rowsCount; rowIndex++) {
-
-		currentRow = [];
-		tileCounts.push(currentRow);
-
-		for (var columnIndex = 0; columnIndex < worldState.columnsCount; columnIndex++) {
-
-			currentRow.push(0);
+		var tileCounts = [];
+		var currentRow;
+	
+		for (var rowIndex = 0; rowIndex < worldState.rowsCount; rowIndex++) {
+	
+			currentRow = [];
+			tileCounts.push(currentRow);
+	
+			for (var columnIndex = 0; columnIndex < worldState.columnsCount; columnIndex++) {
+	
+				currentRow.push(0);
+			}
 		}
+	
+		worldState.tileCounts = tileCounts;
 	}
-
-	worldState.tileCounts = tileCounts;
 }
 
 

@@ -4,7 +4,7 @@ import { robotController } from "./app/robot.controller.js";
 import { messageBoxController } from "./app/messageBox.controller.js";
 
 /***
- * For use with a web worker as in imported script.
+ * For use with a web worker as a worker imported script.
  * Must be webpacked to remove all ES6 imports.
  */
 
