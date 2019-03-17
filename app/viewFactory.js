@@ -1,12 +1,12 @@
 
-import { animationView } from "./animation.view.js";
-import { animationThreadedView } from "./animation.threadedView.js";
-import { messageBoxView } from "./messageBox.view.js";
-import { messageBoxThreadedView } from "./messageBox.threadedView.js";
-import { robotView } from "./robot.view.js";
-import { robotThreadedView } from "./robot.threadedView.js";
-import { worldView } from "./world.view.js";
-import { worldThreadedView } from "./world.threadedView.js";
+import { animationView } from "./mvc/animation.view.js";
+import { animationThreadedView } from "./mvc/animation.threadedView.js";
+import { messageBoxView } from "./mvc/messageBox.view.js";
+import { messageBoxThreadedView } from "./mvc/messageBox.threadedView.js";
+import { robotView } from "./mvc/robot.view.js";
+import { robotThreadedView } from "./mvc/robot.threadedView.js";
+import { worldView } from "./mvc/world.view.js";
+import { worldThreadedView } from "./mvc/world.threadedView.js";
 
 var viewFactory = {};
 

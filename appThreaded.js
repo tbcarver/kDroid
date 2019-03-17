@@ -1,9 +1,9 @@
 
-import { animationView } from "./app/animation.view.js";
-import { messageBoxView } from "./app/messageBox.view.js";
-import { robotView } from "./app/robot.view.js";
-import { worldView } from "./app/world.view.js";
-import { messageBoxController } from "./app/messageBox.controller.js"
+import { animationView } from "./app/mvc/animation.view.js";
+import { messageBoxView } from "./app/mvc/messageBox.view.js";
+import { robotView } from "./app/mvc/robot.view.js";
+import { worldView } from "./app/mvc/world.view.js";
+import { messageBoxController } from "./app/mvc/messageBox.controller.js"
 import { html } from "./lib/core/web/html.js"
 
 var workerMessageHandlers = {};

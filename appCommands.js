@@ -1,6 +1,6 @@
 
 import { appController } from "./app/app.controller.js";
-import { robotController } from "./app/robot.controller.js";
+import { robotController } from "./app/mvc/robot.controller.js";
 
 var appCommands = {};
 

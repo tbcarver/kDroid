@@ -1,7 +1,7 @@
 
-import { worldController } from "./world.controller.js";
-import { robotController } from "./robot.controller.js";
-import { messageBoxController } from "./messageBox.controller.js";
+import { worldController } from "./mvc/world.controller.js";
+import { robotController } from "./mvc/robot.controller.js";
+import { messageBoxController } from "./mvc/messageBox.controller.js";
 import { viewFactory } from "./viewFactory.js";
 import { robotIcons } from "./robotIcons.js";
 import { appState } from "./appState.js";

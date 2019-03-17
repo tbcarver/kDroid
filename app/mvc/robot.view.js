@@ -1,9 +1,9 @@
 
-import { dom } from "../lib/core/web/dom.js";
+import { dom } from "../../lib/core/web/dom.js";
 import { animationView } from "./animation.view.js";
-import { viewState } from "./viewState.js";
-import { robotIcons } from "./robotIcons.js";
-import { coreString } from "../lib/core/extensions/core-string.js";
+import { viewState } from "../viewState.js";
+import { robotIcons } from "../robotIcons.js";
+import { coreString } from "../../lib/core/extensions/core-string.js";
 
 var robotView = {};
 

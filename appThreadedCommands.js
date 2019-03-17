@@ -1,7 +1,7 @@
 
 import { appController } from "./app/app.controller.js";
-import { robotController } from "./app/robot.controller.js";
-import { messageBoxController } from "./app/messageBox.controller.js";
+import { robotController } from "./app/mvc/robot.controller.js";
+import { messageBoxController } from "./app/mvc/messageBox.controller.js";
 
 /***
  * For use with a web worker as a worker imported script.

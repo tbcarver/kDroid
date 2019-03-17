@@ -1,6 +1,6 @@
 
-import { appState } from "./appState.js";
-import { viewFactory } from "./viewFactory.js";
+import { appState } from "../appState.js";
+import { viewFactory } from "../viewFactory.js";
 import { messageBoxController } from "./messageBox.controller.js";
 
 var animationView;

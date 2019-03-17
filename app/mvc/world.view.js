@@ -1,8 +1,8 @@
 
-import { dom } from "../lib/core/web/dom.js";
-import { coreMath } from "../lib/core/extensions/core-math.js";
+import { dom } from "../../lib/core/web/dom.js";
+import { coreMath } from "../../lib/core/extensions/core-math.js";
 import { animationView } from "./animation.view.js";
-import { viewState } from "./viewState.js";
+import { viewState } from "../viewState.js";
 
 var worldView = {};
 

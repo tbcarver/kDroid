@@ -1,6 +1,6 @@
 
 import { appCommands } from "./appCommands.js";
-import { messageBoxController } from "./app/messageBox.controller.js"
+import { messageBoxController } from "./app/mvc/messageBox.controller.js"
 import { html } from "./lib/core/web/html.js"
 import { test } from "./test/test.js";
 
