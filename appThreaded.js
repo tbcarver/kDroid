@@ -13,13 +13,12 @@ workerMessageHandlers["messageBoxView"] = messageBoxView;
 workerMessageHandlers["robotView"] = robotView;
 workerMessageHandlers["worldView"] = worldView;
 
-window.addEventListener("DOMContentLoaded", function(event) {
+window.runKDroidScript = function(scriptPath) {
 
-	var kDroidWorker = new Worker('testThreaded.js');
+	var kDroidWorker = new Worker(scriptPath);
 
 	kDroidWorker.onmessage = handleWorkerMessage;
-
-});
+}
 
 window.addEventListener("error", function(event) {
 

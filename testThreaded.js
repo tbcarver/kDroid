@@ -1,8 +1,8 @@
 
 importScripts("./dist/kDroid.js");
 
-setRandomWorldSize(12);
-setWorldSpeed(100);
+setRandomWorldSize(3);
+setWorldSpeed(70);
 setRandomRobotIcon();
 loadWorld();
 
@@ -14,7 +14,7 @@ loadWorld();
 // }
 
 
-for (var count=0; count<2;count++){
+for (var count=0; count<1;count++){
 
 tileCheckerBoard();
 turnAround();
