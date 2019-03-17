@@ -8,7 +8,6 @@ messageBoxView.render = function(message, isError, worldState) {
 
     var messageBoxElement = dom.createElement("div", { id: "messageBox" });
     var messageBoxWidth = worldState.cellSize * worldState.columnsCount * .75;
-    var messageBoxHeight = worldState.cellSize * worldState.rowsCount * .3;
 
     if (messageBoxWidth > 450) {
 

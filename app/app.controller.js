@@ -1,6 +1,7 @@
 
 import { worldController } from "./world.controller.js";
 import { robotController } from "./robot.controller.js";
+import { messageBoxController } from "./messageBox.controller.js";
 import { viewFactory } from "./viewFactory.js";
 import { robotIcons } from "./robotIcons.js";
 import { appState } from "./appState.js";
@@ -20,13 +21,14 @@ appController.load = function() {
 
 	worldController.load();
 	robotController.load();
+	messageBoxController.load();
 }
 
 appController.loadThreaded = function() {
 	
 	viewFactory.loadThreaded();
 
-	load();
+	this.load();
 }
 
 appController.setWorldStateSize = function(rowsCount, columnsCount) {

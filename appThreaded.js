@@ -1,21 +1,22 @@
 
-import { appCommands } from "./appCommands.js";
-import { appState } from "./app/appState.js";
+import { messageBoxView } from "./app/messageBox.view.js";
+import { robotView } from "./app/robot.view.js";
+import { worldView } from "./app/world.view.js";
 import { messageBoxController } from "./app/messageBox.controller.js"
 import { html } from "./lib/core/web/html.js"
-import { test } from "./test.js";
+
+var workerMessageHandlers = {};
+
+workerMessageHandlers["messageBoxView"] = messageBoxView;
+workerMessageHandlers["robotView"] = robotView;
+workerMessageHandlers["worldView"] = worldView;
 
 window.addEventListener("DOMContentLoaded", function(event) {
 
 	var kDroidWorker = new Worker('testThreaded.js');
 
-	appCommandsThreaded.initialize(kDroidWorker);
-	
-	test();
+	kDroidWorker.onmessage = handleWorkerMessage;
 
-	console.log(appState);
-
-	messageBoxController.setMessage("Your program has completed!");
 });
 
 window.addEventListener("error", function(event) {
@@ -33,3 +34,21 @@ window.addEventListener("error", function(event) {
 
 	messageBoxController.setMessage(message, true);
 });
+
+function handleWorkerMessage(event) {
+
+	var message = event.data;
+	var handler = workerMessageHandlers[message.handler];
+
+	if (!handler) {
+
+		throw new Error("Unknown worker message handler received. message: " + message);
+	}
+
+	if (!handler[message.method]) {
+
+		throw new Error("Unknown worker message method received. message: " + message);
+	}
+
+	handler[message.method].apply(handler, message.parameters);
+}

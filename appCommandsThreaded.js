@@ -2,29 +2,27 @@
 import { appController } from "./app/app.controller.js";
 import { robotController } from "./app/robot.controller.js";
 
-var appCommands = {};
+/***
+ * For use with a web worker as in imported script.
+ * Must be webpacked to remove all ES6 imports.
+ */
 
-appCommands.initialize = function() {
+self.setWorldSize = appController.setWorldStateSize.bind(appController);
+self.setRandomWorldSize = appController.setRandomWorldStateSize.bind(appController);
+self.setWorldSpeed = appController.setWorldStateSpeed.bind(appController);
+self.setRobotIcon = appController.setRobotStateIconName.bind(appController);
+self.setRandomRobotIcon = appController.setRandomRobotStateIconName.bind(appController);
+self.setRobotDirection = appController.setRobotStateDirection.bind(appController);
+self.setRandomRobotDirection = appController.setRandomRobotStateDirection.bind(appController);
+self.setTileColor = appController.setTileBackgroundColor.bind(appController);
+self.loadWorld = appController.loadThreaded.bind(appController);
 
-	window.setWorldSize = appController.setWorldStateSize;
-	window.setRandomWorldSize = appController.setRandomWorldStateSize;
-	window.setWorldSpeed = appController.setWorldStateSpeed;
-	window.setRobotIcon = appController.setRobotStateIconName;
-	window.setRandomRobotIcon = appController.setRandomRobotStateIconName;
-	window.setRobotDirection = appController.setRobotStateDirection;
-	window.setRandomRobotDirection = appController.setRandomRobotStateDirection;
-	window.setTileColor = appController.setTileBackgroundColor;
-	window.loadWorld = appController.load;
+self.move = robotController.move.bind(robotController);
+self.isFrontClear = robotController.isFrontClear.bind(robotController);
+self.isFrontBlocked = robotController.isFrontBlocked.bind(robotController);
+self.turnLeft = robotController.turnLeft.bind(robotController);
 
-	window.move = robotController.move;
-	window.isFrontClear = robotController.isFrontClear;
-	window.isFrontBlocked = robotController.isFrontBlocked;
-	window.turnLeft = robotController.turnLeft;
-
-	window.putDownTile = robotController.putDownTile;
-	window.pickUpTile = robotController.pickUpTile;
-	window.isOnTile = robotController.isOnTile;
-	window.isNotOnTile = robotController.isNotOnTile;
-}
-
-export { appCommands }
+self.putDownTile = robotController.putDownTile.bind(robotController);
+self.pickUpTile = robotController.pickUpTile.bind(robotController);
+self.isOnTile = robotController.isOnTile.bind(robotController);
+self.isNotOnTile = robotController.isNotOnTile.bind(robotController);

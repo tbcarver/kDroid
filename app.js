@@ -11,8 +11,6 @@ window.addEventListener("DOMContentLoaded", function(event) {
 	
 	test();
 
-	console.log(appState);
-
 	messageBoxController.setMessage("Your program has completed!");
 });
 

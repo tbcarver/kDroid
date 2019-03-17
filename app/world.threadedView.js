@@ -5,46 +5,46 @@ var worldThreadedView = {};
 worldThreadedView.renderGrid = function(worldState) {
 
 	var message = {
-		view: "worldView",
-		action: "rederGrid",
-		parameters: {
-			worldState: worldState
-		}
+		handler: "worldView",
+		method: "renderGrid",
+		parameters: [
+			worldState
+		]
 	}
 
-	postMessage(message);
+	self.postMessage(message);
 }
 
 
 worldThreadedView.putDownTile = function(tileCount, robotState, worldState) {
 
 	var message = {
-		view: "worldView",
-		action: "rederGrid",
-		parameters: {
-			tileCount: tileCount,
-			robotState: robotState,
-			worldState: worldState
-		}
+		handler: "worldView",
+		method: "putDownTile",
+		parameters: [
+			tileCount,
+			robotState,
+			worldState
+		]
 	}
 
-	postMessage(message);
+	self.postMessage(message);
 }
 
 
 worldThreadedView.pickUpTile = function(previousTileCount, robotState, worldState) {
 
 	var message = {
-		view: "worldView",
-		action: "rederGrid",
-		parameters: {
-			previousTileCount: previousTileCount,
-			robotState: robotState,
-			worldState: worldState
-		}
+		handler: "worldView",
+		method: "pickUpTile",
+		parameters: [
+			previousTileCount,
+			robotState,
+			worldState
+		]
 	}
 
-	postMessage(message);
+	self.postMessage(message);
 }
 
 

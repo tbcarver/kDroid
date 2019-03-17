@@ -1,8 +1,16 @@
 
-import { messageBoxView } from "./messageBox.view.js";
+import { viewFactory } from "./viewFactory.js";
 import { appState } from "./appState.js";
 
+var messageBoxView;
+
 var messageBoxController = {};
+
+messageBoxController.load = function() {
+
+    messageBoxView = viewFactory.getView("messageBoxView");
+
+};
 
 messageBoxController.setMessage = function(message, isError) {
 
