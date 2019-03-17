@@ -1,5 +1,7 @@
 
 import { appController } from "./app/app.controller.js";
+import { appControllerWorld } from "./app/app.controller.world.js";
+import { appControllerRobot } from "./app/app.controller.robot.js";
 import { robotController } from "./app/mvc/robot.controller.js";
 import { messageBoxController } from "./app/mvc/messageBox.controller.js";
 
@@ -8,14 +10,16 @@ import { messageBoxController } from "./app/mvc/messageBox.controller.js";
  * Must be webpacked to remove all ES6 imports.
  */
 
-self.setWorldSize = appController.setWorldStateSize.bind(appController);
-self.setRandomWorldSize = appController.setRandomWorldStateSize.bind(appController);
-self.setWorldSpeed = appController.setWorldStateSpeed.bind(appController);
-self.setRobotIcon = appController.setRobotStateIconName.bind(appController);
-self.setRandomRobotIcon = appController.setRandomRobotStateIconName.bind(appController);
-self.setRobotDirection = appController.setRobotStateDirection.bind(appController);
-self.setRandomRobotDirection = appController.setRandomRobotStateDirection.bind(appController);
-self.setTileColor = appController.setTileBackgroundColor.bind(appController);
+self.setWorldSize = appControllerWorld.setWorldStateSize.bind(appControllerWorld);
+self.setRandomWorldSize = appControllerWorld.setRandomWorldStateSize.bind(appControllerWorld);
+self.setWorldSpeed = appControllerWorld.setWorldStateSpeed.bind(appControllerWorld);
+self.setTileColor = appControllerWorld.setTileBackgroundColor.bind(appControllerWorld);
+
+self.setRobotIcon = appControllerRobot.setRobotStateIconName.bind(appControllerRobot);
+self.setRandomRobotIcon = appControllerRobot.setRandomRobotStateIconName.bind(appControllerRobot);
+self.setRobotDirection = appControllerRobot.setRobotStateDirection.bind(appControllerRobot);
+self.setRandomRobotDirection = appControllerRobot.setRandomRobotStateDirection.bind(appControllerRobot);
+
 self.loadWorld = appController.loadThreaded.bind(appController);
 
 self.move = robotController.move.bind(robotController);

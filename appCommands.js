@@ -1,19 +1,23 @@
 
 import { appController } from "./app/app.controller.js";
+import { appControllerWorld } from "./app/app.controller.world.js";
+import { appControllerRobot } from "./app/app.controller.robot.js";
 import { robotController } from "./app/mvc/robot.controller.js";
 
 var appCommands = {};
 
 appCommands.initialize = function() {
 
-	window.setWorldSize = appController.setWorldStateSize.bind(appController);
-	window.setRandomWorldSize = appController.setRandomWorldStateSize.bind(appController);
-	window.setWorldSpeed = appController.setWorldStateSpeed.bind(appController);
-	window.setRobotIcon = appController.setRobotStateIconName.bind(appController);
-	window.setRandomRobotIcon = appController.setRandomRobotStateIconName.bind(appController);
-	window.setRobotDirection = appController.setRobotStateDirection.bind(appController);
-	window.setRandomRobotDirection = appController.setRandomRobotStateDirection.bind(appController);
-	window.setTileColor = appController.setTileBackgroundColor.bind(appController);
+	window.setWorldSize = appControllerWorld.setWorldStateSize.bind(appControllerWorld);
+	window.setRandomWorldSize = appControllerWorld.setRandomWorldStateSize.bind(appControllerWorld);
+	window.setWorldSpeed = appControllerWorld.setWorldStateSpeed.bind(appControllerWorld);
+	window.setTileColor = appControllerWorld.setTileBackgroundColor.bind(appControllerWorld);
+	
+	window.setRobotIcon = appControllerRobot.setRobotStateIconName.bind(appControllerRobot);
+	window.setRandomRobotIcon = appControllerRobot.setRandomRobotStateIconName.bind(appControllerRobot);
+	window.setRobotDirection = appControllerRobot.setRobotStateDirection.bind(appControllerRobot);
+	window.setRandomRobotDirection = appControllerRobot.setRandomRobotStateDirection.bind(appControllerRobot);
+	
 	window.loadWorld = appController.load.bind(appController);
 
 	window.move = robotController.move.bind(robotController);
