@@ -7,9 +7,7 @@ setWorldSpeed(70);
 setRandomRobotIcon();
 loadWorld();
 
-tileCheckeredToWall();
-turnRight();
-move();
+tileCheckerBoard();
 
 
 

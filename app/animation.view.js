@@ -11,11 +11,7 @@ animationView.stackAnimation = function(element, keyFrames, options, onFinishHan
 
 		var delay = 0;
 
-		if (this.currentEndTime === 0) {
-
-			var delay = currentTime;
-
-		} else if (currentTime < this.currentEndTime) {
+		if (currentTime < this.currentEndTime) {
 
 			delay = this.currentEndTime - currentTime;
 		}

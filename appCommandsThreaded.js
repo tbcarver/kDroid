@@ -1,6 +1,7 @@
 
 import { appController } from "./app/app.controller.js";
 import { robotController } from "./app/robot.controller.js";
+import { messageBoxController } from "./app/messageBox.controller.js";
 
 /***
  * For use with a web worker as in imported script.
@@ -26,3 +27,12 @@ self.putDownTile = robotController.putDownTile.bind(robotController);
 self.pickUpTile = robotController.pickUpTile.bind(robotController);
 self.isOnTile = robotController.isOnTile.bind(robotController);
 self.isNotOnTile = robotController.isNotOnTile.bind(robotController);
+
+self.onerror = function(error) {
+
+	console.log(error);
+
+	error = error.replace(/Uncaught[^:]+:\s+/gi, "");
+
+	messageBoxController.setMessage(error, true);
+}

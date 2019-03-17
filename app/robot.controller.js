@@ -1,6 +1,7 @@
 
 import { appState } from "./appState.js";
 import { viewFactory } from "./viewFactory.js";
+import { AST_DefClass } from "terser";
 
 var robotView;
 var worldView;
@@ -62,7 +63,7 @@ function assertCanMove() {
 
     if (robotController.isFrontBlocked()) {
 
-        throw { message: "The front is blocked." };
+        throw new Error("the front is blocked");
     }
 }
 
@@ -134,8 +135,8 @@ robotController.pickUpTile = function() {
 function assertCanPickUpTile(tileCount) {
 
     if (tileCount <= 0) {
-
-        throw { message: "There is no tile to pick up." };
+        
+        throw new Error("there is no tile to pick up");
     }
 }
 
