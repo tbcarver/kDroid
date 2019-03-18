@@ -13,9 +13,9 @@ var appController = {};
 
 appController.load = function() {
 
-	initializeColors(worldState);
-	initializeOuterWalls(worldState);
-	initializeTilesCounts(worldState);
+	this.initializeColors(worldState);
+	this.initializeOuterWalls(worldState);
+	this.initializeTilesCounts(worldState);
 
 	worldController.load();
 	robotController.load();
@@ -29,7 +29,7 @@ appController.loadThreaded = function() {
 	this.load();
 }
 
-function initializeColors() {
+appController.initializeColors = function() {
 
 	var randomHue = Math.round(Math.random() * 255);
 	var complimentaryHue = randomHue + 128;
@@ -47,7 +47,7 @@ function initializeColors() {
 	worldState.messageBoxBackgroundColor = "hsl(" + complimentaryHue + ", 40%, 40%)";
 }
 
-function initializeOuterWalls(worldState) {
+appController.initializeOuterWalls = function(worldState) {
 
 	var topWalls = new DoubleKeyHashSet();
 	var leftWalls = new DoubleKeyHashSet();
@@ -82,24 +82,24 @@ function initializeOuterWalls(worldState) {
 	worldState.leftWalls = leftWalls;
 }
 
-function initializeTilesCounts(worldState) {
+appController.initializeTilesCounts = function(worldState) {
 
 	if (worldState.tileCounts.length < 1) {
 
 		var tileCounts = [];
 		var currentRow;
-	
+
 		for (var rowIndex = 0; rowIndex < worldState.rowsCount; rowIndex++) {
-	
+
 			currentRow = [];
 			tileCounts.push(currentRow);
-	
+
 			for (var columnIndex = 0; columnIndex < worldState.columnsCount; columnIndex++) {
-	
+
 				currentRow.push(0);
 			}
 		}
-	
+
 		worldState.tileCounts = tileCounts;
 	}
 }

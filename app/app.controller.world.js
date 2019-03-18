@@ -1,6 +1,7 @@
 
 import { appState } from "./appState.js";
 import { coreMath } from "../lib/core/extensions/core-math.js"
+import { appController } from "./app.controller.js";
 
 var worldState = appState.world;
 
@@ -74,22 +75,30 @@ appControllerWorld.setTileBackgroundColor = function(backgroundColor) {
 	worldState.tileBackgroundColor = backgroundColor;
 }
 
-appControllerWorld.setRandomTiles = function(numberOfTiles) {
+appControllerWorld.setRandomTiles = function(tileCount, tileChance) {
 
-	initializeTilesCounts(worldState);
+	appController.initializeTilesCounts(worldState);
 
-	var tileCounts = worldState.tileCounts;
-	
-	var currentRow;
-	
+	if (!tileChance) {
+
+		tileChance = 40;
+	}
+
 	for (var rowIndex = 0; rowIndex < worldState.rowsCount; rowIndex++) {
-
-		currentRow = [];
-		tileCounts.push(currentRow);
 
 		for (var columnIndex = 0; columnIndex < worldState.columnsCount; columnIndex++) {
 
-			currentRow.push(0);
+			if (coreMath.randomBooleanForPercent(tileChance)) {
+
+				if (!tileCount || tileCount === -1) {
+
+					worldState.tileCounts[rowIndex][columnIndex] = coreMath.randomInteger(1, 6);
+
+				} else {
+
+					worldState.tileCounts[rowIndex][columnIndex] = tileCount;
+				}
+			}
 		}
 	}
 }

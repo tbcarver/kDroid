@@ -138,7 +138,7 @@ robotController.putDownTile = function() {
     tileCount++;
     worldState.tileCounts[robotState.rowIndex][robotState.columnIndex] = tileCount;
 
-    worldView.putDownTile(tileCount, robotState, worldState);
+    worldView.putDownTile(tileCount, robotState.rowIndex, robotState.columnIndex, worldState);
 }
 
 robotController.pickUpTile = function() {
@@ -153,7 +153,7 @@ robotController.pickUpTile = function() {
     tileCount--;
     worldState.tileCounts[robotState.rowIndex][robotState.columnIndex] = tileCount;
 
-    worldView.pickUpTile(previousTileCount, robotState, worldState);
+    worldView.pickUpTile(previousTileCount, robotState.rowIndex, robotState.columnIndex, worldState);
 }
 
 function assertCanPickUpTile(tileCount) {

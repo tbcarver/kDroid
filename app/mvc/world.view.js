@@ -75,11 +75,11 @@ function calculateCellSize(rowsCount, columnsCount) {
 	return cellSize;
 }
 
-worldView.putDownTile = function(tileCount, robotState, worldState) {
+worldView.putDownTile = function(tileCount, rowIndex, columnIndex, worldState, suppressAnimation) {
 
-	var tileId = "tile-" + robotState.rowIndex + "-" + robotState.columnIndex + "-" + tileCount;
+	var tileId = "tile-" + rowIndex + "-" + columnIndex + "-" + tileCount;
 	var tileElement = dom.createElement("div", { id: tileId, className: "tile" });
-	var tileWidth = coreMath.pathagorinC(viewState.cellSize, viewState.cellSize);
+	var tileWidth = coreMath.pythagoreanC(viewState.cellSize, viewState.cellSize);
 
 	tileElement.style.top = (viewState.cellSize / 2) - (tileWidth / 2) + "px";
 	tileElement.style.left = (viewState.cellSize / 2) - (tileWidth / 2) + "px";
@@ -89,40 +89,44 @@ worldView.putDownTile = function(tileCount, robotState, worldState) {
 	tileElement.style.fontSize = (tileWidth * .4) + "px";
 	tileElement.style.color = worldState.tileColor;	
 	tileElement.style.background = worldState.tileBackgroundColor;
-	tileElement.style.visibility = "hidden";
 
 	if (tileCount > 1) {
 
 		tileElement.innerHTML = tileCount;
 	}
 
-	var targetCellId = "cell-" + robotState.rowIndex + "-" + robotState.columnIndex;
+	var targetCellId = "cell-" + rowIndex + "-" + columnIndex;
 	var targetCellElement = dom("#" +targetCellId);
 
 	targetCellElement.appendChild(tileElement);
+
+	if (!suppressAnimation) {
+
+		tileElement.style.visibility = "hidden";
 	
-	var keyframes = [
-		{transform: "scale(0)", visibility: "visible"},
-		{transform: "scale(1)", visibility: "visible"}
-	]
-
-    var options = {
-        duration: worldState.duration / 2,
-		easing: "linear"
+		var keyframes = [
+			{transform: "scale(0)", visibility: "visible"},
+			{transform: "scale(1)", visibility: "visible"}
+		]
+	
+		var options = {
+			duration: worldState.duration / 2,
+			easing: "linear"
+		}
+	
+		animationView.stackAnimation(tileElement, keyframes, options, function() {
+	
+			tileElement.style.visibility = "visible";
+		});
 	}
-
-    animationView.stackAnimation(tileElement, keyframes, options, function() {
-
-		tileElement.style.visibility = "visible";
-    });
 }
 
-worldView.pickUpTile = function(previousTileCount, robotState, worldState) {
+worldView.pickUpTile = function(previousTileCount, rowIndex, columnIndex, worldState) {
 
-	var tileId = "tile-" + robotState.rowIndex + "-" + robotState.columnIndex + "-" + previousTileCount;
+	var tileId = "tile-" + rowIndex + "-" + columnIndex + "-" + previousTileCount;
 	var tileElement = dom("#" + tileId);
 
-	var targetCellId = "cell-" + robotState.rowIndex + "-" + robotState.columnIndex;
+	var targetCellId = "cell-" + rowIndex + "-" + columnIndex;
 	var targetCellElement = dom("#" + targetCellId);
 	
 	var keyframes = [

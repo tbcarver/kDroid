@@ -14,6 +14,7 @@ self.setWorldSize = appControllerWorld.setWorldStateSize.bind(appControllerWorld
 self.setRandomWorldSize = appControllerWorld.setRandomWorldStateSize.bind(appControllerWorld);
 self.setWorldSpeed = appControllerWorld.setWorldStateSpeed.bind(appControllerWorld);
 self.setTileColor = appControllerWorld.setTileBackgroundColor.bind(appControllerWorld);
+self.setRandomTiles = appControllerWorld.setRandomTiles.bind(appControllerWorld);
 
 self.setRobotIcon = appControllerRobot.setRobotStateIconName.bind(appControllerRobot);
 self.setRandomRobotIcon = appControllerRobot.setRandomRobotStateIconName.bind(appControllerRobot);

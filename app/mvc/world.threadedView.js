@@ -16,15 +16,17 @@ worldThreadedView.renderGrid = function(worldState) {
 }
 
 
-worldThreadedView.putDownTile = function(tileCount, robotState, worldState) {
+worldThreadedView.putDownTile = function(tileCount, rowIndex, columnIndex, worldState, suppressAnimation) {
 
 	var message = {
 		handler: "worldView",
 		method: "putDownTile",
 		parameters: [
 			tileCount,
-			robotState,
-			worldState
+			rowIndex,
+			columnIndex,
+			worldState,
+			suppressAnimation,
 		]
 	}
 
@@ -32,14 +34,15 @@ worldThreadedView.putDownTile = function(tileCount, robotState, worldState) {
 }
 
 
-worldThreadedView.pickUpTile = function(previousTileCount, robotState, worldState) {
+worldThreadedView.pickUpTile = function(previousTileCount, rowIndex, columnIndex, worldState) {
 
 	var message = {
 		handler: "worldView",
 		method: "pickUpTile",
 		parameters: [
 			previousTileCount,
-			robotState,
+			rowIndex,
+			columnIndex,
 			worldState
 		]
 	}

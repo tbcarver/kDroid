@@ -12,6 +12,7 @@ appCommands.initialize = function() {
 	window.setRandomWorldSize = appControllerWorld.setRandomWorldStateSize.bind(appControllerWorld);
 	window.setWorldSpeed = appControllerWorld.setWorldStateSpeed.bind(appControllerWorld);
 	window.setTileColor = appControllerWorld.setTileBackgroundColor.bind(appControllerWorld);
+	window.setRandomTiles = appControllerWorld.setRandomTiles.bind(appControllerWorld);
 	
 	window.setRobotIcon = appControllerRobot.setRobotStateIconName.bind(appControllerRobot);
 	window.setRandomRobotIcon = appControllerRobot.setRandomRobotStateIconName.bind(appControllerRobot);
