@@ -1,19 +1,12 @@
+
 module.exports = {
 	mode: 'development',
-	entry: './appThreaded.js',
+	entry: {
+		'kDroidAppThreaded.js': './appThreaded.js',
+		'kDroidFunctions.js': './appThreadedCommands.js'
+	  },
 	output: {
-		filename: 'kDroidAppThreaded.js',
-		path: __dirname + '/dist'
+		filename: '[name]'
 	},
     devtool: "source-map"
 };
-
-// module.exports = {
-// 	mode: 'development',
-// 	entry: './appThreadedCommands.js',
-// 	output: {
-// 		filename: 'kDroidFunctions.js',
-// 		path: __dirname + '/dist'
-// 	},
-//     devtool: "source-map"
-// };
