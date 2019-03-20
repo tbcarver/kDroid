@@ -48,6 +48,7 @@ appController.initializeColors = function() {
 	worldState.messageBoxBackgroundColor = "hsl(" + complimentaryHue + ", 40%, 40%)";
 }
 
+// SEE: worldController.loadWalls for an explanation of the walls coordinate system.
 appController.initializeOuterWalls = function(worldState) {
 
 	if (!DoubleKeyHashSet.prototype.isPrototypeOf(worldState.topWalls)) {

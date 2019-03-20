@@ -64,29 +64,39 @@ appControllerWorld.setWorldStateSpeed = function(speed) {
 	worldState.duration = ((slowestDuration - fastestDuration) * (invertedSpeed / 100)) + fastestDuration;
 }
 
+// SEE: worldController.loadWalls for an explanation of the walls coordinate system.
 appControllerWorld.setWalls = function(topWalls, leftWalls) {
 
 	appController.initializeOuterWalls(worldState);
 
 	if (topWalls) {
+		
+		for (var index = 0; index < topWalls.length; index++) {
 
-		SetWorldStateWalls(topWalls, worldState.topWalls);
+			var rowIndex = topWalls[index][0];
+			var columnIndex = topWalls[index][1];
+
+			// NOTE: Top walls allow for the row index to be equal to the row count
+			if (rowIndex <= worldState.rowsCount && columnIndex < worldState.columnsCount) {
+
+				worldState.topWalls.add(rowIndex, columnIndex);
+			}
+		}
 	}
 
 	if (leftWalls) {
+		
+		for (var index = 0; index < topWalls.length; index++) {
 
-		SetWorldStateWalls(leftWalls, worldState.leftWalls);
-	}
-}
+			var rowIndex = leftWalls[index][0];
+			var columnIndex = leftWalls[index][1];
 
-function SetWorldStateWalls(walls, worldStateWalls) {
+			// NOTE: Left walls allow for the column index to be equal to the column count
+			if (rowIndex < worldState.rowsCount && columnIndex <= worldState.columnsCount) {
 
-	for (var index = 0; index < walls.length; index++) {
-
-		var rowIndex = walls[index][0];
-		var columnIndex = walls[index][1];
-
-		worldStateWalls.add(rowIndex, columnIndex);
+				worldState.leftWalls.add(rowIndex, columnIndex);
+			}
+		}
 	}
 }
 

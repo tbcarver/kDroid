@@ -18,6 +18,11 @@ worldController.load = function() {
     loadTiles();
 };
 
+// Top and left walls use the same coordinate system as the robot. However, this does
+//  not provide a coordinate for the far bottom or far right walls.  This wall would
+//  have an index that is one greater than the robot's possible index.
+//  i.e. on a 1x1 world there could only be a robot coordinate of 0,0
+//  but there could be 4 walls, top: 0,0 and 1,0 left: 0,0 and 0,1
 function loadWalls() {
 
     worldState.topWalls.forEach(function(rowIndex, columnIndex) {
