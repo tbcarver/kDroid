@@ -10,7 +10,7 @@ var appControllerWorld = {};
 appControllerWorld.setWorldStateSize = function(rowsCount, columnsCount) {
 
 	worldState.rowsCount = rowsCount;
-	worldState.columnsCount = rowsCount;
+	worldState.columnsCount = worldState.rowsCount;
 
 	if (columnsCount) {
 
@@ -23,25 +23,19 @@ appControllerWorld.setRandomWorldStateSize = function(rowsCount, columnsCount) {
 	var randomRowsCount = coreMath.randomInteger(1, 12);
 	var randomColumnsCount = coreMath.randomInteger(1, 12);
 
-	if (rowsCount) {
+	if (rowsCount && rowsCount >= 1) {
 
-		if (rowsCount !== -1) {
+		randomRowsCount = rowsCount;
 
-			randomRowsCount = rowsCount;
+		if (!columnsCount) {
 
-			if (!columnsCount) {
-
-				randomColumnsCount = rowsCount;
-			}
+			randomColumnsCount = randomRowsCount;
 		}
 	}
 
-	if (columnsCount) {
+	if (columnsCount && columnsCount >= 1) {
 
-		if (columnsCount !== -1) {
-
-			randomColumnsCount = columnsCount;
-		}
+		randomColumnsCount = columnsCount;
 	}
 
 	worldState.rowsCount = randomRowsCount;
@@ -101,6 +95,19 @@ appControllerWorld.setTileBackgroundColor = function(backgroundColor) {
 	worldState.tileBackgroundColor = backgroundColor;
 }
 
+appControllerWorld.setTiles = function(tileCount) {
+
+	appController.initializeTilesCounts(worldState);
+
+	for (var rowIndex = 0; rowIndex < worldState.rowsCount; rowIndex++) {
+
+		for (var columnIndex = 0; columnIndex < worldState.columnsCount; columnIndex++) {
+
+			worldState.tileCounts[rowIndex][columnIndex] = tileCount;
+		}
+	}
+}
+
 appControllerWorld.setRandomTiles = function(tileCount, tileChance) {
 
 	appController.initializeTilesCounts(worldState);
@@ -116,11 +123,9 @@ appControllerWorld.setRandomTiles = function(tileCount, tileChance) {
 
 			if (coreMath.randomBooleanForPercent(tileChance)) {
 
-				if (!tileCount || tileCount === -1) {
+				worldState.tileCounts[rowIndex][columnIndex] = coreMath.randomInteger(1, 6);
 
-					worldState.tileCounts[rowIndex][columnIndex] = coreMath.randomInteger(1, 6);
-
-				} else {
+				if (tileCount && tileCount >= 1) {
 
 					worldState.tileCounts[rowIndex][columnIndex] = tileCount;
 				}

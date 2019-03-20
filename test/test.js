@@ -1,24 +1,12 @@
 
 function test() {
 
-	// move();
-	// move();
-	// turnLeft();
-	// turnLeft();
-	// turnLeft();
-	// turnLeft();
-	// turnLeft();
-	// turnLeft();
-	// turnLeft();
-	// // turnLeft();
-	// turnLeft();
-
 	// 	setWorldSize(sizeNumber) - sets the size of the world
 	// 	setRandomWorldSize() - sets a random world size from 1 to 16
 	// 	setWorldSpeed(speedNumber) - sets the speed of the world, 0 (slowest) to 100 (fastest)
 	// 	setWorldRandomTiles(countOfTilesNumber) - sets tiles in random locations throughout the world, 0 sets a random amount of tiles
 
-	// setRobotPosition(streetNumber, avenueNumber) - sets the start position of the robot
+	// setRobotLocation(rowNumber, columnNumber) - sets the start position of the robot
 	// setRobotDirection(directionNumber) - sets the start direction of the robot
 	// setRobotTiles(number) - sets the start amount of tiles the robots has, -1 if infinite tiles
 
@@ -27,14 +15,26 @@ function test() {
 	// setRobotDirection("south");
 	setRandomRobotIcon();
 	// setRobotIcon("android");
-	setRandomTiles(-1);
+
+
+
+	setRandomRobotDirection();
+	setRandomRobotLocation();
+	setTiles(1);
 
 	var topWalls = [];
 	var leftWalls = [];
 
-	topWalls.push([1, 0]);
-	topWalls.push([2, 0]);
-	topWalls.push([3, 0]);
+	// topWalls.push([1, 0]);
+	// topWalls.push([2, 0]);
+	// topWalls.push([3, 0]);
+	topWalls.push([1, 1]);
+	topWalls.push([2, 2]);
+	topWalls.push([3, 3]);
+
+	leftWalls.push([1, 1]);
+	leftWalls.push([2, 2]);
+	leftWalls.push([3, 3]);
 
 	setWalls(topWalls, leftWalls);
 

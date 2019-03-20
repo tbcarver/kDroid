@@ -3,11 +3,14 @@ import { appController } from "./app/app.controller.js";
 import { appControllerWorld } from "./app/app.controller.world.js";
 import { appControllerRobot } from "./app/app.controller.robot.js";
 import { robotController } from "./app/mvc/robot.controller.js";
-import { messageBoxController } from "./app/mvc/messageBox.controller.js"
-import { html } from "./lib/core/web/html.js"
-import { RobotError } from "./app/robotError.js";
+import { messageBoxController } from "./app/mvc/messageBox.controller.js";
 
-var globalScope = window;
+/***
+ * For use within a web worker using self.importScripts().
+ * ES6 imports are not supported in web workers, this file must be bundled. (i.e. webpack)
+ */
+
+var globalScope = self;
 
 globalScope.setWorldSize = appControllerWorld.setWorldStateSize.bind(appControllerWorld);
 globalScope.setRandomWorldSize = appControllerWorld.setRandomWorldStateSize.bind(appControllerWorld);
@@ -36,18 +39,24 @@ globalScope.pickUpTile = robotController.pickUpTile.bind(robotController);
 globalScope.isOnTile = robotController.isOnTile.bind(robotController);
 globalScope.isNotOnTile = robotController.isNotOnTile.bind(robotController);
 
-globalScope.addEventListener("error", function(event) {
+globalScope.onerror = function(error) {
 
-	var error = event.error;
-	var message = error.message;
+	// NOTE: Thrown errors from worker threads do not have a stack
+	//  and have a formatted message starting with Uncaught:
 
-	if (!(error instanceof RobotError) && error.stack) {
+	console.log(error);
 
-		var stack = html.toHtml(error.stack);
+	if (error && error.length > 1) {
 
-		message = message + "<hr><div style='text-align:left;'>" + stack + "</div>";
+		error = error.replace(/Uncaught[^:]+:\s+/gi, "");
 
+		error = error[0].toUpperCase() + error.substring(1);
+
+		if (error[error.length - 1] !== ".") {
+
+			error = error + ".";
+		}
 	}
 
-	messageBoxController.setMessage(message, true);
-});
+	messageBoxController.setMessage(error, true);
+}

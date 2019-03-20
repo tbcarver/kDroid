@@ -4,7 +4,7 @@ module.exports = {
 	entry: {
 		'kDroidApp.js': './app.js',
 		'kDroidAppThreaded.js': './appThreaded.js',
-		'kDroidFunctions.js': './appThreadedCommands.js'
+		'kDroidFunctions.js': './appThreadedWorker.js'
 	  },
 	output: {
 		filename: '[name]'
