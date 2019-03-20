@@ -35,6 +35,9 @@ self.isNotOnTile = robotController.isNotOnTile.bind(robotController);
 
 self.onerror = function(error) {
 
+	// NOTE: Thrown errors from worker threads do not have a stack
+	//  and have a formatted message starting with Uncaught:
+
 	console.log(error);
 
 	if (error && error.length > 1) {

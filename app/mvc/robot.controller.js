@@ -2,6 +2,7 @@
 import { appState } from "../appState.js";
 import { viewFactory } from "../viewFactory.js";
 import { messageBoxController } from "./messageBox.controller.js";
+import { RobotError } from "../robotError.js"
 
 var animationView;
 var robotView;
@@ -58,7 +59,7 @@ function assertMaxCommands() {
         animationView.cancelAnimating();
         messageBoxController.forceErrorMessage("The program is in an endless loop.");
 
-        throw new Error("The program is in an endless loop.");
+        throw new RobotError("The program is in an endless loop.");
     }
 }
 
@@ -79,7 +80,7 @@ function assertCanMove() {
 
     if (robotController.isFrontBlocked()) {
 
-        throw new Error("The front is blocked.");
+        throw new RobotError("The front is blocked.");
     }
 }
 
@@ -160,7 +161,7 @@ function assertCanPickUpTile(tileCount) {
 
     if (tileCount <= 0) {
         
-        throw new Error("There is no tile to pick up.");
+        throw new RobotError("There is no tile to pick up.");
     }
 }
 
