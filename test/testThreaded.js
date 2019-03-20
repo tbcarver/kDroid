@@ -1,5 +1,5 @@
 
-importScripts("./dist/kDroid.js");
+importScripts("../dist/kDroidFunctions.js");
 
 setRandomWorldSize(3);
 setWorldSpeed(70);

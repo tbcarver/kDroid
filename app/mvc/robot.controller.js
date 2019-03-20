@@ -131,6 +131,46 @@ robotController.turnLeft = function() {
     robotView.turnLeft(robotState.direction, worldState.duration);
 };
 
+robotController.isFacingNorth = function() {
+
+    return robotState.direction === "north";
+}
+
+robotController.isNotFacingNorth = function() {
+
+    return !this.isFacingNorth();
+}
+
+robotController.isFacingEast = function() {
+
+    return robotState.direction === "east";
+}
+
+robotController.isNotFacingEast = function() {
+
+    return !this.isFacingEast();
+}
+
+robotController.isFacingSouth = function() {
+
+    return robotState.direction === "south";
+}
+
+robotController.isNotFacingSouth = function() {
+
+    return !this.isFacingSouth();
+}
+
+robotController.isFacingWest = function() {
+
+    return robotState.direction === "west";
+}
+
+robotController.isNotFacingWest = function() {
+
+    return !this.isFacingWest();
+}
+
 robotController.putDownTile = function() {
 
     assertMaxCommands();
