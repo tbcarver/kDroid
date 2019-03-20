@@ -17,7 +17,6 @@ worldView.renderGrid = function(worldState) {
 
 	var tableElement = dom.createElement("table", { id: "kDroidGrid" });
 	tableElement.style.width = gridWidth + "px";
-	tableElement.style.border = "2px solid " + worldState.wallBackgroundColor;
 
 	var tableCellElements = [];
 
@@ -73,6 +72,34 @@ function calculateCellSize(rowsCount, columnsCount) {
 	cellSize = Math.floor(cellSize / cellCount);
 
 	return cellSize;
+}
+
+worldView.putTopWall = function(rowIndex, columnIndex, worldState) {
+
+	putWall("borderTop", rowIndex, columnIndex, worldState);
+}
+
+worldView.putRightWall = function(rowIndex, columnIndex, worldState) {
+
+	putWall("borderRight", rowIndex, columnIndex, worldState);
+}
+
+worldView.putBottomWall = function(rowIndex, columnIndex, worldState) {
+
+	putWall("borderBottom", rowIndex, columnIndex, worldState);
+}
+
+worldView.putLeftWall = function(rowIndex, columnIndex, worldState) {
+
+	putWall("borderLeft", rowIndex, columnIndex, worldState);
+}
+
+function putWall(borderName, rowIndex, columnIndex, worldState) {
+
+	var targetCellId = "cell-" + rowIndex + "-" + columnIndex;
+	var targetCellElement = dom("#" +targetCellId);
+
+	targetCellElement.style[borderName] = "2px solid " + worldState.wallBackgroundColor;
 }
 
 worldView.putDownTile = function(tileCount, rowIndex, columnIndex, worldState, suppressAnimation) {

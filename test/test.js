@@ -22,17 +22,34 @@ function test() {
 	// setRobotDirection(directionNumber) - sets the start direction of the robot
 	// setRobotTiles(number) - sets the start amount of tiles the robots has, -1 if infinite tiles
 
-	setRandomWorldSize(1, -1);
-	setWorldSpeed(90);
+	setRandomWorldSize(4);
+	setWorldSpeed(70);
 	// setRobotDirection("south");
 	setRandomRobotIcon();
 	// setRobotIcon("android");
 	setRandomTiles(-1);
+
+	var topWalls = [];
+	var leftWalls = [];
+
+	topWalls.push([1, 0]);
+	topWalls.push([2, 0]);
+	topWalls.push([3, 0]);
+
+	setWalls(topWalls, leftWalls);
+
+
+
 	loadWorld();
 
+	turnRight();
+	move();
+
+
+
 	// tileCheckerBoard();
-	cleanToWall();
-		
+	// cleanToWall();
+
 
 	// setTileColor("black");
 	// tileCheckeredToWall();
@@ -41,7 +58,7 @@ function test() {
 	// setTileColor("lightblue");
 	// tileCheckeredToWall();
 
-	
+
 	// putDownTile();
 	// putDownTile();
 	// putDownTile();
@@ -240,7 +257,7 @@ function alternateTileCheckeredToWall() {
 }
 
 function tileCheckerBoard() {
-	
+
 	tileCheckeredToWall();
 	turnAround();
 	goToWall();
@@ -253,7 +270,7 @@ function tileCheckerBoard() {
 			turnLeft();
 			alternateTileCheckeredToWall();
 		} else {
-			
+
 			move();
 			turnLeft();
 			tileCheckeredToWall();
@@ -266,7 +283,7 @@ function tileCheckerBoard() {
 	turnLeft();
 }
 
-function tileAll() {	
+function tileAll() {
 
 	tileToWall();
 	turnAround();
@@ -283,7 +300,7 @@ function tileAll() {
 	}
 }
 
-function cleanAll() {	
+function cleanAll() {
 
 	cleanToWall();
 	turnAround();

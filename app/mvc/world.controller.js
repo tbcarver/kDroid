@@ -14,14 +14,42 @@ worldController.load = function() {
 
     worldView.renderGrid(worldState);
 
+    loadWalls();
     loadTiles();
 };
 
+function loadWalls() {
+
+    worldState.topWalls.forEach(function(rowIndex, columnIndex) {
+
+        if (rowIndex < worldState.rowsCount) {
+
+            worldView.putTopWall(rowIndex, columnIndex, worldState);
+
+        } else {
+
+            worldView.putBottomWall(rowIndex - 1, columnIndex, worldState);
+        }
+    });
+
+    worldState.leftWalls.forEach(function(rowIndex, columnIndex) {
+
+        if (columnIndex < worldState.columnsCount) {
+
+            worldView.putLeftWall(rowIndex, columnIndex, worldState);
+
+        } else {
+
+            worldView.putRightWall(rowIndex, columnIndex - 1, worldState);
+        }
+    });
+}
+
 function loadTiles() {
 
-	for (var rowIndex = 0; rowIndex < worldState.rowsCount; rowIndex++) {
+    for (var rowIndex = 0; rowIndex < worldState.rowsCount; rowIndex++) {
 
-		for (var columnIndex = 0; columnIndex < worldState.columnsCount; columnIndex++) {
+        for (var columnIndex = 0; columnIndex < worldState.columnsCount; columnIndex++) {
 
             var tileCount = worldState.tileCounts[rowIndex][columnIndex];
 
@@ -29,8 +57,8 @@ function loadTiles() {
 
                 worldView.putDownTile(currentTileCount, rowIndex, columnIndex, worldState, true);
             }
-		}
-	}
+        }
+    }
 }
 
 

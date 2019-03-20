@@ -15,6 +15,7 @@ appController.load = function() {
 
 	this.initializeColors(worldState);
 	this.initializeOuterWalls(worldState);
+	this.initializeOuterWalls(worldState);
 	this.initializeTilesCounts(worldState);
 
 	worldController.load();
@@ -49,37 +50,40 @@ appController.initializeColors = function() {
 
 appController.initializeOuterWalls = function(worldState) {
 
-	var topWalls = new DoubleKeyHashSet();
-	var leftWalls = new DoubleKeyHashSet();
+	if (!DoubleKeyHashSet.prototype.isPrototypeOf(worldState.topWalls)) {
 
-	for (var rowIndex = 0; rowIndex < worldState.rowsCount; rowIndex++) {
+		var topWalls = new DoubleKeyHashSet();
+		var leftWalls = new DoubleKeyHashSet();
 
-		for (var columnIndex = 0; columnIndex < worldState.columnsCount; columnIndex++) {
+		for (var rowIndex = 0; rowIndex < worldState.rowsCount; rowIndex++) {
 
-			if (rowIndex === 0) {
+			for (var columnIndex = 0; columnIndex < worldState.columnsCount; columnIndex++) {
 
-				topWalls.add(rowIndex, columnIndex);
-			}
+				if (rowIndex === 0) {
 
-			if (rowIndex === worldState.rowsCount - 1) {
+					topWalls.add(rowIndex, columnIndex);
+				}
 
-				topWalls.add(rowIndex + 1, columnIndex);
-			}
+				if (rowIndex === worldState.rowsCount - 1) {
 
-			if (columnIndex === 0) {
+					topWalls.add(rowIndex + 1, columnIndex);
+				}
 
-				leftWalls.add(rowIndex, columnIndex);
-			}
+				if (columnIndex === 0) {
 
-			if (columnIndex === worldState.columnsCount - 1) {
+					leftWalls.add(rowIndex, columnIndex);
+				}
 
-				leftWalls.add(rowIndex, columnIndex + 1);
+				if (columnIndex === worldState.columnsCount - 1) {
+
+					leftWalls.add(rowIndex, columnIndex + 1);
+				}
 			}
 		}
-	}
 
-	worldState.topWalls = topWalls;
-	worldState.leftWalls = leftWalls;
+		worldState.topWalls = topWalls;
+		worldState.leftWalls = leftWalls;
+	}
 }
 
 appController.initializeTilesCounts = function(worldState) {

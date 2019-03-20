@@ -70,6 +70,32 @@ appControllerWorld.setWorldStateSpeed = function(speed) {
 	worldState.duration = ((slowestDuration - fastestDuration) * (invertedSpeed / 100)) + fastestDuration;
 }
 
+appControllerWorld.setWalls = function(topWalls, leftWalls) {
+
+	appController.initializeOuterWalls(worldState);
+
+	if (topWalls) {
+
+		SetWorldStateWalls(topWalls, worldState.topWalls);
+	}
+
+	if (leftWalls) {
+
+		SetWorldStateWalls(leftWalls, worldState.leftWalls);
+	}
+}
+
+function SetWorldStateWalls(walls, worldStateWalls) {
+
+	for (var index = 0; index < walls.length; index++) {
+
+		var rowIndex = walls[index][0];
+		var columnIndex = walls[index][1];
+
+		worldStateWalls.add(rowIndex, columnIndex);
+	}
+}
+
 appControllerWorld.setTileBackgroundColor = function(backgroundColor) {
 
 	worldState.tileBackgroundColor = backgroundColor;
