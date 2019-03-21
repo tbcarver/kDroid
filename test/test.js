@@ -15,12 +15,12 @@ function test() {
 	// setRobotDirection("south");
 	setRandomRobotIcon();
 	// setRobotIcon("android");
+	setRandomTiles(-1, 90);
 
 
-
-	setRandomRobotDirection();
-	setRandomRobotLocation();
-	setTiles(1);
+	// setRandomRobotDirection();
+	// setRandomRobotLocation();
+	// setTiles(1);
 
 	var topWalls = [];
 	var leftWalls = [];
@@ -36,15 +36,13 @@ function test() {
 	leftWalls.push([2, 2]);
 	leftWalls.push([3, 3]);
 
-	setWalls(topWalls, leftWalls);
+	// setWalls(topWalls, leftWalls);
 
 
 
 	loadWorld();
 
-	turnRight();
-	move();
-
+	cleanAll();
 
 
 	// tileCheckerBoard();
@@ -311,6 +309,23 @@ function cleanAll() {
 		move();
 		turnLeft();
 		cleanToWall();
+		turnAround();
+		goToWall();
+		turnLeft();
+	}
+}
+
+function walkAll() {	
+
+	goToWall();
+	turnAround();
+	goToWall();
+	turnLeft();
+	while (isFrontClear()) {
+
+		move();
+		turnLeft();
+		goToWall();
 		turnAround();
 		goToWall();
 		turnLeft();

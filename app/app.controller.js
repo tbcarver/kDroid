@@ -40,8 +40,7 @@ appController.initializeColors = function() {
 		complimentaryHue = 256 - 128 - randomHue;
 	}
 
-	robotState.backgroundColor = "hsl(" + complimentaryHue + ", 40%, 35%)";
-	// worldState.backgroundColor = "hsl(" + randomHue + ", 100%, 100%)";
+	robotState.backgroundColor = "hsl(" + complimentaryHue + ", 40%, 35%, .90)";
 	worldState.borderBackgroundColor = "hsl(" + randomHue + ", 40%, 90%)";
 	worldState.wallBackgroundColor = "hsl(" + complimentaryHue + ", 50%, 25%)";
 	worldState.tileBackgroundColor = "hsl(" + randomHue + ", 45%, 65%)";
