@@ -27,7 +27,7 @@ globalScope.setRandomRobotLocation = appControllerRobot.setRandomRobotLocation.b
 globalScope.setRobotDirection = appControllerRobot.setRobotStateDirection.bind(appControllerRobot);
 globalScope.setRandomRobotDirection = appControllerRobot.setRandomRobotStateDirection.bind(appControllerRobot);
 
-globalScope.loadWorld = appController.load.bind(appController);
+globalScope.loadWorld = appController.loadThreaded.bind(appController);
 
 globalScope.move = robotController.move.bind(robotController);
 globalScope.isFrontClear = robotController.isFrontClear.bind(robotController);

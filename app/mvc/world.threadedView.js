@@ -15,6 +15,65 @@ worldThreadedView.renderGrid = function(worldState) {
 	self.postMessage(message);
 }
 
+worldThreadedView.putTopWall = function(rowIndex, columnIndex, worldState) {
+
+	var message = {
+		handler: "worldView",
+		method: "putTopWall",
+		parameters: [
+			rowIndex,
+			columnIndex,
+			worldState
+		]
+	}
+
+	self.postMessage(message);
+}
+
+worldThreadedView.putRightWall = function(rowIndex, columnIndex, worldState) {
+
+	var message = {
+		handler: "worldView",
+		method: "putRightWall",
+		parameters: [
+			rowIndex,
+			columnIndex,
+			worldState
+		]
+	}
+
+	self.postMessage(message);
+}
+
+worldThreadedView.putBottomWall = function(rowIndex, columnIndex, worldState) {
+
+	var message = {
+		handler: "worldView",
+		method: "putBottomWall",
+		parameters: [
+			rowIndex,
+			columnIndex,
+			worldState
+		]
+	}
+
+	self.postMessage(message);
+}
+
+worldThreadedView.putLeftWall = function(rowIndex, columnIndex, worldState) {
+
+	var message = {
+		handler: "worldView",
+		method: "putLeftWall",
+		parameters: [
+			rowIndex,
+			columnIndex,
+			worldState
+		]
+	}
+
+	self.postMessage(message);
+}
 
 worldThreadedView.putDownTile = function(tileCount, rowIndex, columnIndex, worldState, suppressAnimation) {
 

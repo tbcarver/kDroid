@@ -58,8 +58,8 @@ appControllerWorld.setWorldStateSpeed = function(speed) {
 	}
 
 	var invertedSpeed = 100 - speed;
-	var fastestDuration = 10;
-	var slowestDuration = 2000;
+	var fastestDuration = 1;
+	var slowestDuration = 1000;
 
 	worldState.duration = ((slowestDuration - fastestDuration) * (invertedSpeed / 100)) + fastestDuration;
 }
