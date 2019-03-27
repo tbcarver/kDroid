@@ -38,6 +38,13 @@ appControllerWorld.setRandomWorldStateSize = function(rowsCount, columnsCount) {
 		randomColumnsCount = columnsCount;
 	}
 
+	// Make a square when both values are set to random
+	if (rowsCount && columnsCount &&
+		rowsCount < 1 && columnsCount < 1) {
+
+		randomColumnsCount = randomRowsCount;
+	}
+
 	worldState.rowsCount = randomRowsCount;
 	worldState.columnsCount = randomColumnsCount;
 }
@@ -70,7 +77,7 @@ appControllerWorld.setWalls = function(topWalls, leftWalls) {
 	appController.initializeOuterWalls(worldState);
 
 	if (topWalls) {
-		
+
 		for (var index = 0; index < topWalls.length; index++) {
 
 			var rowIndex = topWalls[index][0];
@@ -85,8 +92,8 @@ appControllerWorld.setWalls = function(topWalls, leftWalls) {
 	}
 
 	if (leftWalls) {
-		
-		for (var index = 0; index < topWalls.length; index++) {
+
+		for (var index = 0; index < leftWalls.length; index++) {
 
 			var rowIndex = leftWalls[index][0];
 			var columnIndex = leftWalls[index][1];
@@ -140,6 +147,32 @@ appControllerWorld.setRandomTiles = function(tileCount, tileChance) {
 					worldState.tileCounts[rowIndex][columnIndex] = tileCount;
 				}
 			}
+		}
+	}
+}
+
+appControllerWorld.setTile = function(rowIndex, columnIndex, tileCount) {
+
+	appController.initializeTilesCounts(worldState);
+
+	if (rowIndex >= 0 && columnIndex >= 0) {
+
+		if (rowIndex < worldState.rowsCount && columnIndex < worldState.columnsCount) {
+
+			worldState.tileCounts[rowIndex][columnIndex] = tileCount;
+		}
+	} else if (rowIndex >= 0 && rowIndex < worldState.rowsCount) {
+
+		for (var columnIndex = 0; columnIndex < worldState.columnsCount; columnIndex++) {
+
+			worldState.tileCounts[rowIndex][columnIndex] = tileCount;
+		}
+
+	} else if (columnIndex >= 0 && columnIndex < worldState.columnsCount) {
+
+		for (var rowIndex = 0; rowIndex < worldState.rowsCount; rowIndex++) {
+
+			worldState.tileCounts[rowIndex][columnIndex] = tileCount;
 		}
 	}
 }

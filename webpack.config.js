@@ -3,8 +3,8 @@ module.exports = {
 	mode: 'development',
 	entry: {
 		'kDroidApp.js': './app.js',
-		'kDroidAppThreaded.js': './appThreaded.js',
-		'kDroidFunctions.js': './appThreadedInclude.js'
+		'threaded/kDroidAppThreaded.js': './appThreaded.js',
+		'threaded/kDroidFunctions.js': './appThreadedInclude.js'
 	  },
 	output: {
 		filename: '[name]'

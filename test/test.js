@@ -36,7 +36,7 @@ function test() {
 	leftWalls.push([2, 2]);
 	leftWalls.push([3, 3]);
 
-	// setWalls(topWalls, leftWalls);
+	setWalls(topWalls, leftWalls);
 
 
 

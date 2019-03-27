@@ -19,6 +19,7 @@ globalScope.setWalls = appControllerWorld.setWalls.bind(appControllerWorld);
 globalScope.setTileColor = appControllerWorld.setTileBackgroundColor.bind(appControllerWorld);
 globalScope.setTiles = appControllerWorld.setTiles.bind(appControllerWorld);
 globalScope.setRandomTiles = appControllerWorld.setRandomTiles.bind(appControllerWorld);
+globalScope.setTile = appControllerWorld.setTile.bind(appControllerWorld);
 
 globalScope.setRobotIcon = appControllerRobot.setRobotStateIconName.bind(appControllerRobot);
 globalScope.setRandomRobotIcon = appControllerRobot.setRandomRobotStateIconName.bind(appControllerRobot);
