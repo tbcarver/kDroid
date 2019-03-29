@@ -10,23 +10,23 @@ var robotView = {};
 robotView.renderRobot = function(robotState) {
     
     this.robotElement = dom.createElement("div", { id: "kDroid" });
-    this.robotElement.style.padding = (viewState.cellSize * .1) + "px";
-    this.robotElement.style.fill = robotState.backgroundColor;
+    this.robotElement.style.padding = (viewState.world.cellSize * .1) + "px";
+    this.robotElement.style.fill = viewState.robot.backgroundColor;
 
-    this.robotElement.innerHTML = robotIcons[robotState.iconName];
+    this.robotElement.innerHTML = robotIcons[viewState.robot.iconName];
 
     var worldPlaceholderElement = dom("#worldPlaceholder");
     worldPlaceholderElement.appendChild(this.robotElement);
 
     this.robotSvgElement = this.robotElement.querySelector("svg");
 
-    var top = viewState.cellSize * robotState.rowIndex;
-    var left = viewState.cellSize * robotState.columnIndex;
+    var top = viewState.world.cellSize * robotState.rowIndex;
+    var left = viewState.world.cellSize * robotState.columnIndex;
 
     this.robotElement.style.top = top + "px";
     this.robotElement.style.left = left + "px";
-    this.robotElement.style.width = viewState.cellSize + "px";
-    this.robotElement.style.height = viewState.cellSize + "px";
+    this.robotElement.style.width = viewState.world.cellSize + "px";
+    this.robotElement.style.height = viewState.world.cellSize + "px";
 
     this.robotSvgElement.style.transform = directionRotations[robotState.direction];
 }
@@ -36,11 +36,11 @@ robotView.moveNorth = function(duration) {
     var keyframes = {
         transform: [
             "translateY(0px)",
-            "translateY(" + -viewState.cellSize + "px)",
+            "translateY(" + -viewState.world.cellSize + "px)",
         ]
     };
 
-    move(this.robotElement, keyframes, duration, -viewState.cellSize, 0);
+    move(this.robotElement, keyframes, duration, -viewState.world.cellSize, 0);
 }
 
 robotView.moveEast = function(duration) {
@@ -48,11 +48,11 @@ robotView.moveEast = function(duration) {
     var keyframes = {
         transform: [
             "translateX(0px)",
-            "translateX(" + viewState.cellSize + "px)",
+            "translateX(" + viewState.world.cellSize + "px)",
         ]
     };
 
-    move(this.robotElement, keyframes, duration, 0, viewState.cellSize);
+    move(this.robotElement, keyframes, duration, 0, viewState.world.cellSize);
 }
 
 robotView.moveSouth = function(duration) {
@@ -60,11 +60,11 @@ robotView.moveSouth = function(duration) {
     var keyframes = {
         transform: [
             "translateY(0px)",
-            "translateY(" + viewState.cellSize + "px)",
+            "translateY(" + viewState.world.cellSize + "px)",
         ]
     };
 
-    move(this.robotElement, keyframes, duration, viewState.cellSize, 0);
+    move(this.robotElement, keyframes, duration, viewState.world.cellSize, 0);
 }
 
 robotView.moveWest = function(duration) {
@@ -72,11 +72,11 @@ robotView.moveWest = function(duration) {
     var keyframes = {
         transform: [
             "translateX(0px)",
-            "translateX(" + -viewState.cellSize+ "px)",
+            "translateX(" + -viewState.world.cellSize+ "px)",
         ]
     };
 
-    move(this.robotElement, keyframes, duration, 0, -viewState.cellSize);
+    move(this.robotElement, keyframes, duration, 0, -viewState.world.cellSize);
 }
 
 function move(element, keyframes, duration, forwardsTopOffset, forwardsLeftOffset) {

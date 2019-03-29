@@ -12,7 +12,7 @@ worldController.load = function() {
 
     worldView = viewFactory.getView("worldView");
 
-    worldView.renderGrid(worldState);
+    worldView.renderGrid(worldState.rowsCount, worldState.columnsCount);
 
     loadWalls();
     loadTiles();
@@ -29,11 +29,11 @@ function loadWalls() {
 
         if (rowIndex < worldState.rowsCount) {
 
-            worldView.putTopWall(rowIndex, columnIndex, worldState);
+            worldView.putTopWall(rowIndex, columnIndex);
 
         } else {
 
-            worldView.putBottomWall(rowIndex - 1, columnIndex, worldState);
+            worldView.putBottomWall(rowIndex - 1, columnIndex);
         }
     });
 
@@ -41,11 +41,11 @@ function loadWalls() {
 
         if (columnIndex < worldState.columnsCount) {
 
-            worldView.putLeftWall(rowIndex, columnIndex, worldState);
+            worldView.putLeftWall(rowIndex, columnIndex);
 
         } else {
 
-            worldView.putRightWall(rowIndex, columnIndex - 1, worldState);
+            worldView.putRightWall(rowIndex, columnIndex - 1);
         }
     });
 }

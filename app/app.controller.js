@@ -2,25 +2,33 @@
 import { worldController } from "./mvc/world.controller.js";
 import { robotController } from "./mvc/robot.controller.js";
 import { messageBoxController } from "./mvc/messageBox.controller.js";
+import { consoleController } from "./mvc/console.controller.js";
 import { viewFactory } from "./viewFactory.js";
+import { appView } from "./app.view.js";
 import { appState } from "./appState.js";
+import { viewState } from "./viewState.js";
 import { DoubleKeyHashSet } from "../lib/core/collections/double-key-hash-set.js";
 
 var worldState = appState.world;
-var robotState = appState.robot;
 
 var appController = {};
 
 appController.load = function() {
 
-	this.initializeColors(worldState);
-	this.initializeOuterWalls(worldState);
+	this.initializeColors();
 	this.initializeOuterWalls(worldState);
 	this.initializeTilesCounts(worldState);
+	
+	appView.initializePlaceholders(worldState, appState.console.enabled);
 
 	worldController.load();
 	robotController.load();
 	messageBoxController.load();
+
+	if (appState.console.enabled) {
+		
+		consoleController.load();
+	}
 }
 
 appController.loadThreaded = function() {
@@ -40,11 +48,11 @@ appController.initializeColors = function() {
 		complimentaryHue = 256 - 128 - randomHue;
 	}
 
-	robotState.backgroundColor = "hsl(" + complimentaryHue + ", 40%, 35%, .90)";
-	worldState.borderBackgroundColor = "hsl(" + randomHue + ", 40%, 90%)";
-	worldState.wallBackgroundColor = "hsl(" + complimentaryHue + ", 50%, 25%)";
-	worldState.tileBackgroundColor = "hsl(" + randomHue + ", 45%, 65%)";
-	worldState.messageBoxBackgroundColor = "hsl(" + complimentaryHue + ", 40%, 40%)";
+	viewState.robot.backgroundColor = "hsl(" + complimentaryHue + ", 40%, 35%, .90)";
+	viewState.world.borderBackgroundColor = "hsl(" + randomHue + ", 40%, 90%)";
+	viewState.world.wallBackgroundColor = "hsl(" + complimentaryHue + ", 50%, 25%)";
+	viewState.world.tileBackgroundColor = "hsl(" + randomHue + ", 45%, 65%)";
+	viewState.world.messageBoxBackgroundColor = "hsl(" + complimentaryHue + ", 40%, 40%)";
 }
 
 // SEE: worldController.loadWalls for an explanation of the walls coordinate system.

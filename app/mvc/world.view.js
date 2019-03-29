@@ -6,32 +6,26 @@ import { viewState } from "../viewState.js";
 
 var worldView = {};
 
-// Add 1 to account for the table border of 3px
-var worldPlaceholderMargin = 20;
-var worldTableMarginsTotal = (worldPlaceholderMargin + 1) * 2;
-
-worldView.renderGrid = function(worldState) {
-
-	var cellSize = calculateCellSize(worldState.rowsCount, worldState.columnsCount);
-	var gridWidth = cellSize * worldState.columnsCount;
+worldView.renderGrid = function(rowsCount, columnsCount) {
 
 	var tableElement = dom.createElement("table", { id: "kDroidGrid" });
-	tableElement.style.width = gridWidth + "px";
+	tableElement.style.width = viewState.world.width + "px";
+	tableElement.style.height = viewState.world.height + "px";
 
 	var tableCellElements = [];
 
-	for (var rowIndex = 0; rowIndex < worldState.rowsCount; rowIndex++) {
+	for (var rowIndex = 0; rowIndex < rowsCount; rowIndex++) {
 
 		var rowElement = document.createElement("tr");
 
-		for (var columnIndex = 0; columnIndex < worldState.columnsCount; columnIndex++) {
+		for (var columnIndex = 0; columnIndex < columnsCount; columnIndex++) {
 
 			var cellId = "cell-" + rowIndex + "-" + columnIndex;
 			var tableCellElement = dom.createElement("td", { id: cellId });
 
-			tableCellElement.style.width = cellSize + "px";
-			tableCellElement.style.backgroundColor = worldState.backgroundColor;
-			tableCellElement.style.border = "1px solid " + worldState.borderBackgroundColor;
+			tableCellElement.style.width = viewState.world.cellSize + "px";
+			tableCellElement.style.backgroundColor = viewState.world.backgroundColor;
+			tableCellElement.style.border = "1px solid " + viewState.world.borderBackgroundColor;
 
 			rowElement.appendChild(tableCellElement);
 			tableCellElements.push(tableCellElement);
@@ -40,82 +34,57 @@ worldView.renderGrid = function(worldState) {
 		tableElement.appendChild(rowElement);
 	}
 
-	var worldPlaceholderElement = dom.createElement("div", { id: "worldPlaceholder" });
-	document.body.appendChild(worldPlaceholderElement);
-
-	worldPlaceholderElement.style.width = gridWidth + "px";
-	worldPlaceholderElement.innerHTML = "";
+	var worldPlaceholderElement = dom("#worldPlaceholder");
 	worldPlaceholderElement.appendChild(tableElement);
 
 	tableCellElements.forEach(function(tableCellElement) {
 
 		tableCellElement.style.height = tableCellElement.offsetWidth + "px";
 	});
-
-	viewState.cellSize = cellSize;
 };
 
-function calculateCellSize(rowsCount, columnsCount) {
+worldView.putTopWall = function(rowIndex, columnIndex) {
 
-	var totalWidth = window.innerWidth / columnsCount;
-	var totalHeight = window.innerHeight / rowsCount;
-
-	var cellSize = window.innerHeight - worldTableMarginsTotal;
-	var cellCount = rowsCount;
-
-	if (totalWidth < totalHeight) {
-
-		cellSize = window.innerWidth - worldTableMarginsTotal;
-		cellCount = columnsCount;
-	}
-
-	cellSize = Math.floor(cellSize / cellCount);
-
-	return cellSize;
+	putWall("borderTop", rowIndex, columnIndex);
 }
 
-worldView.putTopWall = function(rowIndex, columnIndex, worldState) {
+worldView.putRightWall = function(rowIndex, columnIndex) {
 
-	putWall("borderTop", rowIndex, columnIndex, worldState);
+	putWall("borderRight", rowIndex, columnIndex);
 }
 
-worldView.putRightWall = function(rowIndex, columnIndex, worldState) {
+worldView.putBottomWall = function(rowIndex, columnIndex) {
 
-	putWall("borderRight", rowIndex, columnIndex, worldState);
+	putWall("borderBottom", rowIndex, columnIndex);
 }
 
-worldView.putBottomWall = function(rowIndex, columnIndex, worldState) {
+worldView.putLeftWall = function(rowIndex, columnIndex) {
 
-	putWall("borderBottom", rowIndex, columnIndex, worldState);
+	putWall("borderLeft", rowIndex, columnIndex);
 }
 
-worldView.putLeftWall = function(rowIndex, columnIndex, worldState) {
-
-	putWall("borderLeft", rowIndex, columnIndex, worldState);
-}
-
-function putWall(borderName, rowIndex, columnIndex, worldState) {
+function putWall(borderName, rowIndex, columnIndex) {
 
 	var targetCellId = "cell-" + rowIndex + "-" + columnIndex;
 	var targetCellElement = dom("#" +targetCellId);
 
-	targetCellElement.style[borderName] = "2px solid " + worldState.wallBackgroundColor;
+	targetCellElement.style[borderName] = viewState.world.wallWidth + "px solid " + viewState.world.wallBackgroundColor;
 }
 
 worldView.putDownTile = function(tileCount, rowIndex, columnIndex, worldState, suppressAnimation) {
 
 	var tileId = "tile-" + rowIndex + "-" + columnIndex + "-" + tileCount;
 	var tileElement = dom.createElement("div", { id: tileId, className: "tile" });
-	var tileWidth = coreMath.pythagoreanC(viewState.cellSize, viewState.cellSize);
+	var tileWidth = coreMath.pythagoreanC(viewState.world.cellSize, viewState.world.cellSize);
 
-	tileElement.style.top = (viewState.cellSize / 2) - (tileWidth / 2) + "px";
-	tileElement.style.left = (viewState.cellSize / 2) - (tileWidth / 2) + "px";
+	tileElement.style.top = (viewState.world.cellSize / 2) - (tileWidth / 2) + "px";
+	tileElement.style.left = (viewState.world.cellSize / 2) - (tileWidth / 2) + "px";
 	tileElement.style.width = tileWidth + "px";
 	tileElement.style.height = tileWidth + "px";
 	tileElement.style.lineHeight = tileWidth + "px";
 	tileElement.style.fontSize = (tileWidth * .4) + "px";
-	tileElement.style.color = worldState.tileColor;	
-	tileElement.style.background = worldState.tileBackgroundColor;
+	tileElement.style.color = viewState.world.tileColor;	
+	tileElement.style.background = viewState.world.tileBackgroundColor;
 
 	if (tileCount > 1) {
 

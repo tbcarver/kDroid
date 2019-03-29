@@ -1,5 +1,6 @@
 
 import { appState } from "./appState.js";
+import { viewState } from "./viewState.js";
 import { coreMath } from "../lib/core/extensions/core-math.js"
 import { appController } from "./app.controller.js";
 
@@ -109,7 +110,7 @@ appControllerWorld.setWalls = function(topWalls, leftWalls) {
 
 appControllerWorld.setTileBackgroundColor = function(backgroundColor) {
 
-	worldState.tileBackgroundColor = backgroundColor;
+	viewState.world.tileBackgroundColor = backgroundColor;
 }
 
 appControllerWorld.setTiles = function(tileCount) {
