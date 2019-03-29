@@ -2,73 +2,70 @@
 
 var worldThreadedView = {};
 
-worldThreadedView.renderGrid = function(worldState) {
+worldThreadedView.renderGrid = function(rowsCount, columnsCount) {
 
 	var message = {
 		handler: "worldView",
 		method: "renderGrid",
 		parameters: [
-			worldState
+			rowsCount,
+			columnsCount
 		]
 	}
 
 	self.postMessage(message);
 }
 
-worldThreadedView.putTopWall = function(rowIndex, columnIndex, worldState) {
+worldThreadedView.putTopWall = function(rowIndex, columnIndex) {
 
 	var message = {
 		handler: "worldView",
 		method: "putTopWall",
 		parameters: [
 			rowIndex,
-			columnIndex,
-			worldState
+			columnIndex
 		]
 	}
 
 	self.postMessage(message);
 }
 
-worldThreadedView.putRightWall = function(rowIndex, columnIndex, worldState) {
+worldThreadedView.putRightWall = function(rowIndex, columnIndex) {
 
 	var message = {
 		handler: "worldView",
 		method: "putRightWall",
 		parameters: [
 			rowIndex,
-			columnIndex,
-			worldState
+			columnIndex
 		]
 	}
 
 	self.postMessage(message);
 }
 
-worldThreadedView.putBottomWall = function(rowIndex, columnIndex, worldState) {
+worldThreadedView.putBottomWall = function(rowIndex, columnIndex) {
 
 	var message = {
 		handler: "worldView",
 		method: "putBottomWall",
 		parameters: [
 			rowIndex,
-			columnIndex,
-			worldState
+			columnIndex
 		]
 	}
 
 	self.postMessage(message);
 }
 
-worldThreadedView.putLeftWall = function(rowIndex, columnIndex, worldState) {
+worldThreadedView.putLeftWall = function(rowIndex, columnIndex) {
 
 	var message = {
 		handler: "worldView",
 		method: "putLeftWall",
 		parameters: [
 			rowIndex,
-			columnIndex,
-			worldState
+			columnIndex
 		]
 	}
 

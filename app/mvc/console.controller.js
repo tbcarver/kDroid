@@ -15,7 +15,6 @@ consoleController.load = function() {
 consoleController.log = function(message) {
 
     consoleView.log(message);
-    console.log(message);
 };
 
 

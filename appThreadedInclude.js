@@ -4,6 +4,7 @@ import { appControllerWorld } from "./app/app.controller.world.js";
 import { appControllerRobot } from "./app/app.controller.robot.js";
 import { robotController } from "./app/mvc/robot.controller.js";
 import { messageBoxController } from "./app/mvc/messageBox.controller.js";
+import { consoleController } from "./app/mvc/console.controller.js"
 
 /***
  * For use within a web worker using self.importScripts().
@@ -51,6 +52,8 @@ globalScope.putDownTile = robotController.putDownTile.bind(robotController);
 globalScope.pickUpTile = robotController.pickUpTile.bind(robotController);
 globalScope.isOnTile = robotController.isOnTile.bind(robotController);
 globalScope.isNotOnTile = robotController.isNotOnTile.bind(robotController);
+
+globalScope.log = consoleController.log.bind(consoleController);
 
 globalScope.onerror = function(error) {
 

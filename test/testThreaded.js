@@ -1,5 +1,5 @@
 
-importScripts("../dist/kDroidFunctions.js");
+importScripts("../dist/threaded/kDroidFunctions.js");
 
 setRandomWorldSize(3);
 setWorldSpeed(70);
@@ -14,11 +14,12 @@ loadWorld();
 // }
 
 
-for (var count=0; count<1;count++){
+for (var count = 0; count < 8; count++) {
 
-tileCheckerBoard();
-turnAround();
+	tileToWall();
+	turnAround();
 
+	log("tiled to wall: " + (count + 1));
 }
 
 

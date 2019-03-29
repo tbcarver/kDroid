@@ -1,5 +1,6 @@
 
 import { dom } from "../../lib/core/web/dom.js";
+import { animationView } from "./animation.view.js";
 import { viewState } from "../viewState.js";
 
 var consoleView = {};
@@ -21,15 +22,20 @@ consoleView.log = function(message) {
 	var lineElement = dom.createElement("div", { className: "consoleLine" });
 	lineElement.style.color = viewState.robot.backgroundColor;
 	lineElement.textContent = message;
-
-	var shouldScroll = isScrolledToBottom();
-
-	consoleElement.appendChild(lineElement);
-
-	if (shouldScroll) {
 		
-		scrollToBottom();
-	}
+	animationView.stackNullAnimation(lineElement, function() {
+
+		var shouldScroll = isScrolledToBottom();
+
+		consoleElement.appendChild(lineElement);
+	
+		if (shouldScroll) {
+			
+			scrollToBottom();
+		}
+
+		console.log(lineElement.textContent);
+	});
 }
 
 function scrollToBottom() {

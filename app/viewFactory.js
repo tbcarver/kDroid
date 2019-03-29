@@ -1,4 +1,6 @@
 
+import { appView } from "./app.view.js";
+import { appThreadedView } from "./app.threadedView.js";
 import { animationView } from "./mvc/animation.view.js";
 import { animationThreadedView } from "./mvc/animation.threadedView.js";
 import { consoleView } from "./mvc/console.view.js";
@@ -13,6 +15,7 @@ import { worldThreadedView } from "./mvc/world.threadedView.js";
 var viewFactory = {};
 
 var views = {};
+views.appView = appView;
 views.animationView = animationView;
 views.consoleView = consoleView;
 views.messageBoxView = messageBoxView;
@@ -21,6 +24,7 @@ views.worldView = worldView;
 
 viewFactory.loadThreaded = function() {
 
+	views.appView = appThreadedView;
 	views.animationView = animationThreadedView;
 	views.consoleView = consoleThreadedView;
 	views.messageBoxView = messageBoxThreadedView;

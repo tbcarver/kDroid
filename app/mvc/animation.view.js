@@ -37,6 +37,18 @@ animationView.stackAnimation = function(element, keyframes, options, onFinishHan
 	}
 }
 
+var nullTransformKeyframes = {
+	transform: ["none", "none"]
+};
+var nullDurationOptions = {
+	duration: 1
+};
+
+animationView.stackNullAnimation = function(element, onFinishHandler) {
+
+	this.stackAnimation(element, nullTransformKeyframes, nullDurationOptions, onFinishHandler)
+}
+
 animationView.cancelAnimating = function() {
 
 	this.canAnimate = false;

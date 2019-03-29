@@ -4,21 +4,22 @@ import { robotController } from "./mvc/robot.controller.js";
 import { messageBoxController } from "./mvc/messageBox.controller.js";
 import { consoleController } from "./mvc/console.controller.js";
 import { viewFactory } from "./viewFactory.js";
-import { appView } from "./app.view.js";
 import { appState } from "./appState.js";
-import { viewState } from "./viewState.js";
 import { DoubleKeyHashSet } from "../lib/core/collections/double-key-hash-set.js";
 
+var appView;
 var worldState = appState.world;
 
 var appController = {};
 
 appController.load = function() {
 
-	this.initializeColors();
+    appView = viewFactory.getView("appView");
+
 	this.initializeOuterWalls(worldState);
 	this.initializeTilesCounts(worldState);
 	
+	appView.initializeColors();
 	appView.initializePlaceholders(worldState, appState.console.enabled);
 
 	worldController.load();
@@ -28,6 +29,7 @@ appController.load = function() {
 	if (appState.console.enabled) {
 		
 		consoleController.load();
+		consoleController.log("*program started*");
 	}
 }
 
@@ -36,23 +38,6 @@ appController.loadThreaded = function() {
 	viewFactory.loadThreaded();
 
 	this.load();
-}
-
-appController.initializeColors = function() {
-
-	var randomHue = Math.round(Math.random() * 255);
-	var complimentaryHue = randomHue + 128;
-
-	if (randomHue > 128) {
-
-		complimentaryHue = 256 - 128 - randomHue;
-	}
-
-	viewState.robot.backgroundColor = "hsl(" + complimentaryHue + ", 40%, 35%, .90)";
-	viewState.world.borderBackgroundColor = "hsl(" + randomHue + ", 40%, 90%)";
-	viewState.world.wallBackgroundColor = "hsl(" + complimentaryHue + ", 50%, 25%)";
-	viewState.world.tileBackgroundColor = "hsl(" + randomHue + ", 45%, 65%)";
-	viewState.world.messageBoxBackgroundColor = "hsl(" + complimentaryHue + ", 40%, 40%)";
 }
 
 // SEE: worldController.loadWalls for an explanation of the walls coordinate system.

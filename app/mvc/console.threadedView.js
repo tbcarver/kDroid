@@ -12,5 +12,18 @@ consoleThreadedView.render = function() {
 	self.postMessage(message);
 };
 
+consoleThreadedView.log = function(message) {
+
+	var message = {
+		handler: "consoleView",
+		method: "log",
+		parameters: [
+			message
+		]
+	}
+
+	self.postMessage(message);
+};
+
 
 export { consoleThreadedView }

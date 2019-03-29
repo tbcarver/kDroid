@@ -1,5 +1,7 @@
 
+import { appView } from "./app/app.view.js";
 import { animationView } from "./app/mvc/animation.view.js";
+import { consoleView } from "./app/mvc/console.view.js";
 import { messageBoxView } from "./app/mvc/messageBox.view.js";
 import { robotView } from "./app/mvc/robot.view.js";
 import { worldView } from "./app/mvc/world.view.js";
@@ -8,7 +10,9 @@ import { html } from "./lib/core/web/html.js"
 
 var workerMessageHandlers = {};
 
+workerMessageHandlers["appView"] = appView;
 workerMessageHandlers["animationView"] = animationView;
+workerMessageHandlers["consoleView"] = consoleView;
 workerMessageHandlers["messageBoxView"] = messageBoxView;
 workerMessageHandlers["robotView"] = robotView;
 workerMessageHandlers["worldView"] = worldView;
