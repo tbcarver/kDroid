@@ -47,19 +47,15 @@ appView.initializePlaceholders = function(worldState, consoleEnabled) {
 
 function calculateConsoleHeightWithBorder(windowHeight) {
 
-	// Console height is:
-	//  height of each line
-	//  + a 1px border for each line
-	//  + top and bottom console border
 	function getConsoleHeight(linesCount) {
 
-		return (viewState.console.lineHeight * linesCount) + linesCount + (viewState.console.borderWidth * 2);
+		return (viewState.console.lineHeight * linesCount) + (viewState.console.borderWidth * 2);
 	}
 
 	var consoleHeight = getConsoleHeight(4);
 	var percentOfWindowHeight = consoleHeight / windowHeight;
 
-	if (percentOfWindowHeight > .30) {
+	if (percentOfWindowHeight > .20) {
 
 		var consoleHeight = getConsoleHeight(2);
 	}

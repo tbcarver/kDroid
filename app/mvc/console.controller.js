@@ -12,5 +12,11 @@ consoleController.load = function() {
     consoleView.render();
 };
 
+consoleController.log = function(message) {
+
+    consoleView.log(message);
+    console.log(message);
+};
+
 
 export { consoleController }

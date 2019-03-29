@@ -10,7 +10,7 @@ function test() {
 	// setRobotDirection(directionNumber) - sets the start direction of the robot
 	// setRobotTiles(number) - sets the start amount of tiles the robots has, -1 if infinite tiles
 
-	setRandomWorldSize(4);
+	setRandomWorldSize();
 	setWorldSpeed(70);
 	// setRobotDirection("south");
 	setRandomRobotIcon();
@@ -36,11 +36,26 @@ function test() {
 	leftWalls.push([2, 2]);
 	leftWalls.push([3, 3]);
 
-	setWalls(topWalls, leftWalls);
+	// setWalls(topWalls, leftWalls);
 
 
 
 	loadWorld();
+
+	var count = 0;
+
+	// log("hello " + count++);
+	// log("hello " + count++);
+	// log("hello " + count++);
+	// log("hello " + count++);
+	// log("hello " + count++);
+	// log("hello " + count++);
+
+	// setInterval(function() {
+	// 	log("hello " + count++);
+	// }, 1000);
+
+	log(3454);
 
 	cleanAll();
 
@@ -315,7 +330,7 @@ function cleanAll() {
 	}
 }
 
-function walkAll() {	
+function walkAll() {
 
 	goToWall();
 	turnAround();
