@@ -15,66 +15,57 @@ robotThreadedView.renderRobot = function(robotState) {
 	self.postMessage(message);
 }
 
-robotThreadedView.moveNorth = function(duration) {
+robotThreadedView.moveNorth = function() {
 
 	var message = {
 		handler: "robotView",
 		method: "moveNorth",
-		parameters: [
-			duration
-		]
+		parameters: []
 	}
 
 	self.postMessage(message);
 }
 
-robotThreadedView.moveEast = function(duration) {
+robotThreadedView.moveEast = function() {
 
 	var message = {
 		handler: "robotView",
 		method: "moveEast",
-		parameters: [
-			duration
-		]
+		parameters: []
 	}
 
 	self.postMessage(message);
 }
 
-robotThreadedView.moveSouth = function(duration) {
+robotThreadedView.moveSouth = function() {
 
 	var message = {
 		handler: "robotView",
 		method: "moveSouth",
-		parameters: [
-			duration
-		]
+		parameters: []
 	}
 
 	self.postMessage(message);
 }
 
-robotThreadedView.moveWest = function(duration) {
+robotThreadedView.moveWest = function() {
 
 	var message = {
 		handler: "robotView",
 		method: "moveWest",
-		parameters: [
-			duration
-		]
+		parameters: []
 	}
 
 	self.postMessage(message);
 }
 
-robotThreadedView.turnLeft = function(nextDirection, duration) {
+robotThreadedView.turnLeft = function(nextDirection) {
 
 	var message = {
 		handler: "robotView",
 		method: "turnLeft",
 		parameters: [
-			nextDirection,
-			duration
+			nextDirection
 		]
 	}
 

@@ -31,7 +31,7 @@ robotView.renderRobot = function(robotState) {
     this.robotSvgElement.style.transform = directionRotations[robotState.direction];
 }
 
-robotView.moveNorth = function(duration) {
+robotView.moveNorth = function() {
 
     var keyframes = {
         transform: [
@@ -40,10 +40,10 @@ robotView.moveNorth = function(duration) {
         ]
     };
 
-    move(this.robotElement, keyframes, duration, -viewState.world.cellSize, 0);
+    move(this.robotElement, keyframes, -viewState.world.cellSize, 0);
 }
 
-robotView.moveEast = function(duration) {
+robotView.moveEast = function() {
 
     var keyframes = {
         transform: [
@@ -52,10 +52,10 @@ robotView.moveEast = function(duration) {
         ]
     };
 
-    move(this.robotElement, keyframes, duration, 0, viewState.world.cellSize);
+    move(this.robotElement, keyframes, 0, viewState.world.cellSize);
 }
 
-robotView.moveSouth = function(duration) {
+robotView.moveSouth = function() {
 
     var keyframes = {
         transform: [
@@ -64,10 +64,10 @@ robotView.moveSouth = function(duration) {
         ]
     };
 
-    move(this.robotElement, keyframes, duration, viewState.world.cellSize, 0);
+    move(this.robotElement, keyframes, viewState.world.cellSize, 0);
 }
 
-robotView.moveWest = function(duration) {
+robotView.moveWest = function() {
 
     var keyframes = {
         transform: [
@@ -76,13 +76,13 @@ robotView.moveWest = function(duration) {
         ]
     };
 
-    move(this.robotElement, keyframes, duration, 0, -viewState.world.cellSize);
+    move(this.robotElement, keyframes, 0, -viewState.world.cellSize);
 }
 
-function move(element, keyframes, duration, forwardsTopOffset, forwardsLeftOffset) {
+function move(element, keyframes, forwardsTopOffset, forwardsLeftOffset) {
 
     var options = {
-        duration: duration,
+        duration: viewState.animationDuration,
         easing: "ease-in-out",
     }
 
@@ -100,7 +100,7 @@ var directionRotations = {
     west: "rotate(-180deg)"
 };
 
-robotView.turnLeft = function(nextDirection, duration) {
+robotView.turnLeft = function(nextDirection) {
 
     var keyframes = {
         transform: [
@@ -110,7 +110,7 @@ robotView.turnLeft = function(nextDirection, duration) {
     };
 
     var options = {
-        duration: duration / 3,
+        duration: viewState.animationDuration / 3,
         easing: "linear"
     }
 

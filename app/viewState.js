@@ -1,6 +1,7 @@
 
 var viewState = {
 	margin: 20,
+	animationDuration: 200,
 	console: {
 		width: 0,
 		height: 0,

@@ -15,7 +15,7 @@ var globalScope = self;
 
 globalScope.setWorldSize = appControllerWorld.setWorldStateSize.bind(appControllerWorld);
 globalScope.setRandomWorldSize = appControllerWorld.setRandomWorldStateSize.bind(appControllerWorld);
-globalScope.setWorldSpeed = appControllerWorld.setWorldStateSpeed.bind(appControllerWorld);
+globalScope.setWorldSpeed = appControllerWorld.setWorldSpeed.bind(appControllerWorld);
 globalScope.setWalls = appControllerWorld.setWalls.bind(appControllerWorld);
 globalScope.setTileColor = appControllerWorld.setTileBackgroundColor.bind(appControllerWorld);
 globalScope.setTiles = appControllerWorld.setTiles.bind(appControllerWorld);

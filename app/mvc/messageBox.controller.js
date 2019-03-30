@@ -1,6 +1,5 @@
 
 import { viewFactory } from "../viewFactory.js";
-import { appState } from "../appState.js";
 
 var messageBoxView;
 
@@ -14,12 +13,12 @@ messageBoxController.load = function() {
 
 messageBoxController.setMessage = function(message, isError) {
 
-	messageBoxView.render(message, isError, false, appState.world);
+	messageBoxView.render(message, isError, false);
 };
 
 messageBoxController.forceErrorMessage = function(message) {
 
-	messageBoxView.render(message, true, true, appState.world);
+	messageBoxView.render(message, true, true);
 };
 
 

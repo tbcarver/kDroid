@@ -80,7 +80,6 @@ function calculateConsoleHeightWithBorder(windowHeight) {
 	return consoleHeight;
 }
 
-
 function calculateCellSize(width, height, worldState) {
 
 	var totalWidth = width / worldState.columnsCount;
@@ -98,6 +97,16 @@ function calculateCellSize(width, height, worldState) {
 	cellSize = Math.floor(cellSize / cellCount);
 
 	return cellSize;
+}
+
+appView.setAnimationDuration = function(animationDuration) {
+	
+	viewState.animationDuration = animationDuration;
+}
+
+appView.setTileBackgroundColor = function(backgroundColor) {
+	
+	viewState.world.tileBackgroundColor = backgroundColor;
 }
 
 

@@ -1,8 +1,8 @@
 
 import { appState } from "./appState.js";
-import { viewState } from "./viewState.js";
 import { coreMath } from "../lib/core/extensions/core-math.js"
 import { appController } from "./app.controller.js";
+import { viewFactory } from "./viewFactory.js";
 
 var worldState = appState.world;
 
@@ -10,12 +10,15 @@ var appControllerWorld = {};
 
 appControllerWorld.setWorldStateSize = function(rowsCount, columnsCount) {
 
-	worldState.rowsCount = rowsCount;
-	worldState.columnsCount = worldState.rowsCount;
+	if (rowsCount) {
 
-	if (columnsCount) {
-
-		worldState.columnsCount = columnsCount;
+		worldState.rowsCount = rowsCount;
+		worldState.columnsCount = worldState.rowsCount;
+	
+		if (columnsCount) {
+	
+			worldState.columnsCount = columnsCount;
+		}
 	}
 }
 
@@ -54,7 +57,7 @@ appControllerWorld.setRandomWorldStateSize = function(rowsCount, columnsCount) {
  * Speed of the world
  * @param speed 100 for the fastest and 1 for the slowest
  */
-appControllerWorld.setWorldStateSpeed = function(speed) {
+appControllerWorld.setWorldSpeed = function(speed) {
 
 	if (speed < 1) {
 
@@ -69,7 +72,10 @@ appControllerWorld.setWorldStateSpeed = function(speed) {
 	var fastestDuration = 1;
 	var slowestDuration = 1000;
 
-	worldState.duration = ((slowestDuration - fastestDuration) * (invertedSpeed / 100)) + fastestDuration;
+	var animationDuration = ((slowestDuration - fastestDuration) * (invertedSpeed / 100)) + fastestDuration;
+	var appView = viewFactory.getView("appView");
+
+	appView.setAnimationDuration(animationDuration);
 }
 
 // SEE: worldController.loadWalls for an explanation of the walls coordinate system.
@@ -110,7 +116,9 @@ appControllerWorld.setWalls = function(topWalls, leftWalls) {
 
 appControllerWorld.setTileBackgroundColor = function(backgroundColor) {
 
-	viewState.world.tileBackgroundColor = backgroundColor;
+	var appView = viewFactory.getView("appView");	
+
+	appView.setTileBackgroundColor(backgroundColor);
 }
 
 appControllerWorld.setTiles = function(tileCount) {
@@ -155,6 +163,11 @@ appControllerWorld.setRandomTiles = function(tileCount, tileChance) {
 appControllerWorld.setTile = function(rowIndex, columnIndex, tileCount) {
 
 	appController.initializeTilesCounts(worldState);
+
+	if (!tileCount) {
+
+		tileCount = 1;
+	}
 
 	if (rowIndex >= 0 && columnIndex >= 0) {
 

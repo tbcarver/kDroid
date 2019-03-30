@@ -5,10 +5,10 @@ import { viewState } from "../viewState.js";
 
 var messageBoxView = {};
 
-messageBoxView.render = function(message, isError, isForced, worldState) {
+messageBoxView.render = function(message, isError, isForced) {
 
     var messageBoxElement = dom.createElement("div", { id: "messageBox" });
-    var messageBoxWidth = viewState.cellSize * worldState.columnsCount * .75;
+    var messageBoxWidth = viewState.world.width * .75;
 
     if (messageBoxWidth > 450) {
 
@@ -57,7 +57,7 @@ messageBoxView.render = function(message, isError, isForced, worldState) {
         ]
 
         var options = {
-            duration: worldState.duration / 2,
+            duration: viewState.animationDuration / 2,
             easing: "cubic-bezier(.5305, -1.3203, .5, .6085)",
             fill: "forwards"
         }
@@ -80,7 +80,7 @@ messageBoxView.render = function(message, isError, isForced, worldState) {
     }
 
     var options = {
-        duration: worldState.duration / 2,
+        duration: viewState.animationDuration / 2,
         easing: "cubic-bezier(.38, 1.23, .71, 1.82)",
         fill: "forwards"
     };

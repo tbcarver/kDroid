@@ -68,12 +68,11 @@ robotController.move = function() {
     assertMaxCommands();
     assertCanMove();
 
-    var robotViewMove = robotViewMoveHandlers[robotState.direction].bind(robotView);
-
     robotState.rowIndex = robotState.rowIndex + robotMoveDirectionOffsets[robotState.direction].rowOffset;
     robotState.columnIndex = robotState.columnIndex + robotMoveDirectionOffsets[robotState.direction].columnOffset;
 
-    robotViewMove(worldState.duration);
+    var robotViewMove = robotViewMoveHandlers[robotState.direction].bind(robotView);
+    robotViewMove();
 };
 
 function assertCanMove() {
@@ -128,7 +127,7 @@ robotController.turnLeft = function() {
     assertMaxCommands();
 
     robotState.direction = turnLeftDirections[robotState.direction];
-    robotView.turnLeft(robotState.direction, worldState.duration);
+    robotView.turnLeft(robotState.direction);
 };
 
 robotController.isFacingNorth = function() {
@@ -179,7 +178,7 @@ robotController.putDownTile = function() {
     tileCount++;
     worldState.tileCounts[robotState.rowIndex][robotState.columnIndex] = tileCount;
 
-    worldView.putDownTile(tileCount, robotState.rowIndex, robotState.columnIndex, worldState);
+    worldView.putDownTile(tileCount, robotState.rowIndex, robotState.columnIndex);
 }
 
 robotController.pickUpTile = function() {
@@ -194,7 +193,7 @@ robotController.pickUpTile = function() {
     tileCount--;
     worldState.tileCounts[robotState.rowIndex][robotState.columnIndex] = tileCount;
 
-    worldView.pickUpTile(previousTileCount, robotState.rowIndex, robotState.columnIndex, worldState);
+    worldView.pickUpTile(previousTileCount, robotState.rowIndex, robotState.columnIndex);
 }
 
 function assertCanPickUpTile(tileCount) {

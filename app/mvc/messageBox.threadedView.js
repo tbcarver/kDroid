@@ -2,7 +2,7 @@
 
 var messageBoxThreadedView = {};
 
-messageBoxThreadedView.render = function(message, isError, isForced, worldState) {
+messageBoxThreadedView.render = function(message, isError, isForced) {
 
 	var message = {
 		handler: "messageBoxView",
@@ -10,8 +10,7 @@ messageBoxThreadedView.render = function(message, isError, isForced, worldState)
 		parameters: [
 			message,
 			isError,
-			isForced,
-			worldState
+			isForced
 		]
 	}
 

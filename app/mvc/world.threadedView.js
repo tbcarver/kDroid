@@ -72,7 +72,7 @@ worldThreadedView.putLeftWall = function(rowIndex, columnIndex) {
 	self.postMessage(message);
 }
 
-worldThreadedView.putDownTile = function(tileCount, rowIndex, columnIndex, worldState, suppressAnimation) {
+worldThreadedView.putDownTile = function(tileCount, rowIndex, columnIndex, suppressAnimation) {
 
 	var message = {
 		handler: "worldView",
@@ -81,8 +81,7 @@ worldThreadedView.putDownTile = function(tileCount, rowIndex, columnIndex, world
 			tileCount,
 			rowIndex,
 			columnIndex,
-			worldState,
-			suppressAnimation,
+			suppressAnimation
 		]
 	}
 
@@ -90,7 +89,7 @@ worldThreadedView.putDownTile = function(tileCount, rowIndex, columnIndex, world
 }
 
 
-worldThreadedView.pickUpTile = function(previousTileCount, rowIndex, columnIndex, worldState) {
+worldThreadedView.pickUpTile = function(previousTileCount, rowIndex, columnIndex) {
 
 	var message = {
 		handler: "worldView",
@@ -98,8 +97,7 @@ worldThreadedView.pickUpTile = function(previousTileCount, rowIndex, columnIndex
 		parameters: [
 			previousTileCount,
 			rowIndex,
-			columnIndex,
-			worldState
+			columnIndex
 		]
 	}
 

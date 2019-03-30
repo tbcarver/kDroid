@@ -71,7 +71,7 @@ function putWall(borderName, rowIndex, columnIndex) {
 	targetCellElement.style[borderName] = viewState.world.wallWidth + "px solid " + viewState.world.wallBackgroundColor;
 }
 
-worldView.putDownTile = function(tileCount, rowIndex, columnIndex, worldState, suppressAnimation) {
+worldView.putDownTile = function(tileCount, rowIndex, columnIndex, suppressAnimation) {
 
 	var tileId = "tile-" + rowIndex + "-" + columnIndex + "-" + tileCount;
 	var tileElement = dom.createElement("div", { id: tileId, className: "tile" });
@@ -106,7 +106,7 @@ worldView.putDownTile = function(tileCount, rowIndex, columnIndex, worldState, s
 		]
 	
 		var options = {
-			duration: worldState.duration / 2,
+			duration: viewState.animationDuration / 2,
 			easing: "linear"
 		}
 	
@@ -117,7 +117,7 @@ worldView.putDownTile = function(tileCount, rowIndex, columnIndex, worldState, s
 	}
 }
 
-worldView.pickUpTile = function(previousTileCount, rowIndex, columnIndex, worldState) {
+worldView.pickUpTile = function(previousTileCount, rowIndex, columnIndex) {
 
 	var tileId = "tile-" + rowIndex + "-" + columnIndex + "-" + previousTileCount;
 	var tileElement = dom("#" + tileId);
@@ -131,7 +131,7 @@ worldView.pickUpTile = function(previousTileCount, rowIndex, columnIndex, worldS
 	]
 
     var options = {
-        duration: worldState.duration / 2,
+        duration: viewState.animationDuration / 2,
 		easing: "linear"
 	}
 

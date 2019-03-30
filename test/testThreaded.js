@@ -13,6 +13,7 @@ loadWorld();
 // 	}
 // }
 
+setTileColor("red");
 
 for (var count = 0; count < 8; count++) {
 

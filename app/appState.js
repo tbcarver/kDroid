@@ -9,9 +9,8 @@ var appState = {
         direction: "east"
     },
     world: {
-        rowsCount: 0,
-        columnsCount: 0,
-        duration: 1000,
+        rowsCount: 3,
+        columnsCount: 3,
         topWalls: {},
         leftWalls: {},
         tileCounts: [],
