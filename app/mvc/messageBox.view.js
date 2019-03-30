@@ -76,7 +76,7 @@ messageBoxView.render = function(message, isError, isForced) {
     if (isError) {
 
          keyframes[0].backgroundColor = messageBoxElement.style.backgroundColor;
-         keyframes[1].backgroundColor = "#bb1414";
+         keyframes[1].backgroundColor = viewState.errorColor;
     }
 
     var options = {

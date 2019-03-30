@@ -13,15 +13,21 @@ loadWorld();
 // 	}
 // }
 
-setTileColor("red");
 
-for (var count = 0; count < 8; count++) {
-
-	tileToWall();
-	turnAround();
-
-	log("tiled to wall: " + (count + 1));
+while (isFrontClear()) {
+	move()
 }
+move()
+
+// setTileColor("red");
+
+// for (var count = 0; count < 8; count++) {
+
+// 	tileToWall();
+// 	turnAround();
+
+// 	log("tiled to wall: " + (count + 1));
+// }
 
 
 function turnRight() {

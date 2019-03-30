@@ -10,12 +10,12 @@ function test() {
 	// setRobotDirection(directionNumber) - sets the start direction of the robot
 	// setRobotTiles(number) - sets the start amount of tiles the robots has, -1 if infinite tiles
 
-	setRandomWorldSize();
-	setWorldSpeed(70);
+	// setRandomWorldSize();
+	// setWorldSpeed(70);
 	// setRobotDirection("south");
 	setRandomRobotIcon();
 	// setRobotIcon("android");
-	setRandomTiles(-1, 90);
+	setRandomTiles();
 
 
 	// setRandomRobotDirection();
@@ -55,9 +55,21 @@ function test() {
 	// 	log("hello " + count++);
 	// }, 1000);
 
-	log(3454);
+	while (isFrontClear()) {
+		log("move");
+		move()
+	}
+	move()
 
-	cleanAll();
+	// for (var count = 0; count < 2; count++) {
+
+	// 	tileToWall();
+	// 	turnAround();
+	
+	// 	log("tiled to wall: " + (count + 1));
+	// }
+
+	// cleanAll();
 
 
 	// tileCheckerBoard();

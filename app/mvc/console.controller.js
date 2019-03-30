@@ -17,5 +17,10 @@ consoleController.log = function(message) {
     consoleView.log(message);
 };
 
+consoleController.logInternal = function(message, isError) {
+
+    consoleView.logInternal(message, isError);
+};
+
 
 export { consoleController }

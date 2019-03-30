@@ -17,10 +17,17 @@ consoleView.render = function() {
 	consolePlaceholderElement.appendChild(consoleElement);
 };
 
-consoleView.log = function(message) {
+consoleView.log = function(message, color) {
+
+	var messageColor = viewState.robot.backgroundColor;
+
+	if (color) {
+
+		messageColor = color;
+	}
 
 	var lineElement = dom.createElement("div", { className: "consoleLine" });
-	lineElement.style.color = viewState.robot.backgroundColor;
+	lineElement.style.color = messageColor;
 	lineElement.textContent = message;
 		
 	animationView.stackNullAnimation(lineElement, function() {
@@ -37,6 +44,18 @@ consoleView.log = function(message) {
 		console.log(lineElement.textContent);
 	});
 }
+
+consoleView.logInternal = function(message, isError) {
+
+    if (isError) {
+
+        this.log("** " + message, viewState.errorColor);
+
+    } else {
+
+        this.log("* " + message, viewState.console.internalColor);
+    }
+};
 
 function scrollToBottom() {
 

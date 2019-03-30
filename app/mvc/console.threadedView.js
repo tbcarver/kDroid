@@ -12,13 +12,28 @@ consoleThreadedView.render = function() {
 	self.postMessage(message);
 };
 
-consoleThreadedView.log = function(message) {
+consoleThreadedView.log = function(message, color) {
 
 	var message = {
 		handler: "consoleView",
 		method: "log",
 		parameters: [
-			message
+			message,
+			color
+		]
+	}
+
+	self.postMessage(message);
+};
+
+consoleThreadedView.logInternal = function(message, isError) {
+
+	var message = {
+		handler: "consoleView",
+		method: "log",
+		parameters: [
+			message,
+			color
 		]
 	}
 

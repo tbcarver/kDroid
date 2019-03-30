@@ -29,7 +29,7 @@ appController.load = function() {
 	if (appState.console.enabled) {
 		
 		consoleController.load();
-		consoleController.log("*program started*");
+		consoleController.logInternal("The program started.");
 	}
 }
 
