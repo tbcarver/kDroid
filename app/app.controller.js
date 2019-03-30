@@ -20,7 +20,7 @@ appController.load = function() {
 	this.initializeTilesCounts(worldState);
 	
 	appView.initializeColors();
-	appView.initializePlaceholders(worldState, appState.console.enabled);
+	appView.initializePlaceholders(worldState.rowsCount, worldState.columnsCount, appState.console.enabled);
 
 	worldController.load();
 	robotController.load();

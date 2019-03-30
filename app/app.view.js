@@ -21,7 +21,7 @@ appView.initializeColors = function() {
 	viewState.world.messageBoxBackgroundColor = "hsl(" + complimentaryHue + ", 40%, 40%)";
 }
 
-appView.initializePlaceholders = function(worldState, consoleEnabled) {
+appView.initializePlaceholders = function(rowsCount, columnsCount, consoleEnabled) {
 
 	var availableWidth = window.innerWidth;
 	var availableHeight = window.innerHeight;
@@ -38,9 +38,9 @@ appView.initializePlaceholders = function(worldState, consoleEnabled) {
 	availableWidth -= (viewState.margin * 2);
 	availableHeight -= (viewState.margin * 2);
 
-	viewState.world.cellSize = calculateCellSize(availableWidth, availableHeight, worldState);
-	viewState.world.width = viewState.world.cellSize * worldState.columnsCount;
-	viewState.world.height = viewState.world.cellSize * worldState.rowsCount;
+	viewState.world.cellSize = calculateCellSize(availableWidth, availableHeight, rowsCount, columnsCount);
+	viewState.world.width = viewState.world.cellSize * columnsCount;
+	viewState.world.height = viewState.world.cellSize * rowsCount;
 	viewState.console.width = viewState.world.width;
 
 	var worldPlaceholderElement = dom.createElement("div", { id: "worldPlaceholder" });
@@ -80,18 +80,18 @@ function calculateConsoleHeightWithBorder(windowHeight) {
 	return consoleHeight;
 }
 
-function calculateCellSize(width, height, worldState) {
+function calculateCellSize(width, height, rowsCount, columnsCount) {
 
-	var totalWidth = width / worldState.columnsCount;
-	var totalHeight = height / worldState.rowsCount;
+	var totalWidth = width / columnsCount;
+	var totalHeight = height / rowsCount;
 
 	var cellSize = height;
-	var cellCount = worldState.rowsCount;
+	var cellCount = rowsCount;
 
 	if (totalWidth < totalHeight) {
 
 		cellSize = width;
-		cellCount = worldState.columnsCount;
+		cellCount = columnsCount;
 	}
 
 	cellSize = Math.floor(cellSize / cellCount);

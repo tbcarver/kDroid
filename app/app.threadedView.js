@@ -12,13 +12,14 @@ appThreadedView.initializeColors = function() {
 	self.postMessage(message);
 };
 
-appThreadedView.initializePlaceholders = function(worldState, consoleEnabled) {
+appThreadedView.initializePlaceholders = function(rowsCount, columnsCount, consoleEnabled) {
 
 	var message = {
 		handler: "appView",
 		method: "initializePlaceholders",
 		parameters: [
-			worldState,
+			rowsCount,
+			columnsCount,
 			consoleEnabled
 		]
 	}
