@@ -30,10 +30,10 @@ consoleThreadedView.logInternal = function(message, isError) {
 
 	var message = {
 		handler: "consoleView",
-		method: "log",
+		method: "logInternal",
 		parameters: [
 			message,
-			color
+			isError
 		]
 	}
 

@@ -42,7 +42,7 @@ appControllerWorld.setRandomWorldStateSize = function(rowsCount, columnsCount) {
 		randomColumnsCount = columnsCount;
 	}
 
-	// Make a square when both values are set to random
+	// Make a square when both values are set to random.
 	if (rowsCount && columnsCount &&
 		rowsCount < 1 && columnsCount < 1) {
 
@@ -54,7 +54,7 @@ appControllerWorld.setRandomWorldStateSize = function(rowsCount, columnsCount) {
 }
 
 /**
- * Speed of the world
+ * Set the speed of the world.
  * @param speed 100 for the fastest and 1 for the slowest
  */
 appControllerWorld.setWorldSpeed = function(speed) {
@@ -79,6 +79,7 @@ appControllerWorld.setWorldSpeed = function(speed) {
 }
 
 // SEE: worldController.loadWalls for an explanation of the walls coordinate system.
+// The coordinates are 1 based numbers, not 0 based indexes.
 appControllerWorld.setWalls = function(topWalls, leftWalls) {
 
 	appController.initializeOuterWalls(worldState);
@@ -87,10 +88,10 @@ appControllerWorld.setWalls = function(topWalls, leftWalls) {
 
 		for (var index = 0; index < topWalls.length; index++) {
 
-			var rowIndex = topWalls[index][0];
-			var columnIndex = topWalls[index][1];
+			var rowIndex = topWalls[index][0] - 1;
+			var columnIndex = topWalls[index][1] - 1;
 
-			// NOTE: Top walls allow for the row index to be equal to the row count
+			// NOTE: Top walls allow for the row index to be equal to the row count.
 			if (rowIndex <= worldState.rowsCount && columnIndex < worldState.columnsCount) {
 
 				worldState.topWalls.add(rowIndex, columnIndex);
@@ -102,10 +103,10 @@ appControllerWorld.setWalls = function(topWalls, leftWalls) {
 
 		for (var index = 0; index < leftWalls.length; index++) {
 
-			var rowIndex = leftWalls[index][0];
-			var columnIndex = leftWalls[index][1];
+			var rowIndex = leftWalls[index][0] - 1;
+			var columnIndex = leftWalls[index][1] - 1;
 
-			// NOTE: Left walls allow for the column index to be equal to the column count
+			// NOTE: Left walls allow for the column index to be equal to the column count.
 			if (rowIndex < worldState.rowsCount && columnIndex <= worldState.columnsCount) {
 
 				worldState.leftWalls.add(rowIndex, columnIndex);
@@ -160,9 +161,12 @@ appControllerWorld.setRandomTiles = function(tileCount, tileChance) {
 	}
 }
 
-appControllerWorld.setTile = function(rowIndex, columnIndex, tileCount) {
+appControllerWorld.setTile = function(rowNumber, columnNumber, tileCount) {
 
 	appController.initializeTilesCounts(worldState);
+
+	var rowIndex = rowNumber - 1;
+	var columnIndex = columnNumber - 1;
 
 	if (!tileCount) {
 

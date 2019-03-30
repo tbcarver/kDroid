@@ -10,7 +10,7 @@ function test() {
 	// setRobotDirection(directionNumber) - sets the start direction of the robot
 	// setRobotTiles(number) - sets the start amount of tiles the robots has, -1 if infinite tiles
 
-	// setRandomWorldSize();
+	setRandomWorldSize();
 	// setWorldSpeed(70);
 	// setRobotDirection("south");
 	setRandomRobotIcon();
@@ -55,11 +55,11 @@ function test() {
 	// 	log("hello " + count++);
 	// }, 1000);
 
-	while (isFrontClear()) {
-		log("move");
-		move()
-	}
-	move()
+	// while (isFrontClear()) {
+	// 	log("move");
+	// 	move()
+	// }
+	// move()
 
 	// for (var count = 0; count < 2; count++) {
 
