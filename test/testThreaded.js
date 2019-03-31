@@ -3,7 +3,16 @@ importScripts("../dist/threaded/kDroidFunctions.js");
 
 setRandomWorldSize(3);
 setWorldSpeed(70);
-setRandomRobotIcon();
+setRandomWorldSize(1);
+// setWorldSpeed(70);
+// setRobotDirection("south");
+setRandomRobotIcon("robot-square");
+// setRobotIcon("android");
+
+
+// setRandomRobotDirection();
+// setRandomRobotLocation();
+setTile(1, 1, -1);
 loadWorld();
 
 // while (isFrontClear()) {
@@ -14,10 +23,6 @@ loadWorld();
 // }
 
 
-while (isFrontClear()) {
-	// move()
-	log("asdf")
-}
 
 // setTileColor("red");
 

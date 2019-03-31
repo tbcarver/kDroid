@@ -109,5 +109,13 @@ appView.setTileBackgroundColor = function(backgroundColor) {
 	viewState.world.tileBackgroundColor = backgroundColor;
 }
 
+appView.setRobotIconName = function(iconName) {
+
+	if (iconName) {
+
+		viewState.robot.iconName = iconName;
+	}
+}
+
 
 export { appView }

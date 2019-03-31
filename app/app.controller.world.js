@@ -136,6 +136,16 @@ appControllerWorld.setTiles = function(tileCount) {
 
 	appController.initializeTilesCounts(worldState);
 
+	if (tileCount < 1) {		
+
+		tileCount = coreMath.randomInteger(1, 6);
+	}
+
+	if (!tileCount) {
+
+		tileCount = 1;
+	}
+
 	for (var rowIndex = 0; rowIndex < worldState.rowsCount; rowIndex++) {
 
 		for (var columnIndex = 0; columnIndex < worldState.columnsCount; columnIndex++) {
@@ -177,6 +187,11 @@ appControllerWorld.setTile = function(rowNumber, columnNumber, tileCount) {
 
 	var rowIndex = rowNumber - 1;
 	var columnIndex = columnNumber - 1;
+
+	if (tileCount < 1) {		
+
+		tileCount = coreMath.randomInteger(1, 6);
+	}
 
 	if (!tileCount) {
 

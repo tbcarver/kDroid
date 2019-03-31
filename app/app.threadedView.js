@@ -53,5 +53,19 @@ appThreadedView.setTileBackgroundColor = function(backgroundColor) {
 	self.postMessage(message);
 };
 
+appThreadedView.setRobotIconName = function(iconName) {
+
+	var message = {
+		handler: "appView",
+		method: "setRobotIconName",
+		parameters: [
+			iconName
+		]
+	}
+
+	self.postMessage(message);
+}
+
+
 
 export { appThreadedView }

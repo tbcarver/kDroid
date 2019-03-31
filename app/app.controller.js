@@ -36,13 +36,6 @@ appController.load = function() {
 	}
 }
 
-appController.loadThreaded = function() {
-
-	viewFactory.loadThreaded();
-
-	this.load();
-}
-
 // SEE: worldController.loadWalls for an explanation of the walls coordinate system.
 appController.initializeOuterWalls = function(worldState) {
 

@@ -1,31 +1,35 @@
 
-import { robotIcons } from "./robotIcons.js";
 import { appState } from "./appState.js";
 import { coreMath } from "../lib/core/extensions/core-math.js"
+import { robotIcons } from "./robotIcons.js";
+import { viewFactory } from "./viewFactory.js";
+import { AppError } from "./appError.js";
 
 var robotState = appState.robot;
 var worldState = appState.world;
 
 var appControllerRobot = {};
 
-appControllerRobot.setRobotStateIconName = function(iconName) {
+appControllerRobot.setRobotIconName = function(iconName) {
 
-	if (iconName) {
+	if (robotIcons.hasOwnProperty(iconName)) {
 
-		robotState.iconName = iconName;
+		var appView = viewFactory.getView("appView");
+		
+		appView.setRobotIconName(iconName);
 	}
 }
 
-appControllerRobot.setRandomRobotStateIconName = function(iconName) {
+appControllerRobot.setRandomRobotIconName = function(iconName) {
 
-	var keys = Object.keys(robotIcons);
-	var randomIndex = coreMath.randomInteger(0, keys.length - 1);
-	iconName = keys[randomIndex];
+	if (!iconName) {
 
-	if (iconName) {
-
-		robotState.iconName = iconName;
+		var keys = Object.keys(robotIcons);
+		var randomIndex = coreMath.randomInteger(0, keys.length - 1);
+		iconName = keys[randomIndex];
 	}
+		
+	this.setRobotIconName(iconName);
 }
 
 appControllerRobot.setRobotLocation = function(rowNumber, columnNumber) {

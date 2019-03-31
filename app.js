@@ -20,8 +20,8 @@ globalScope.setTiles = appControllerWorld.setTiles.bind(appControllerWorld);
 globalScope.setRandomTiles = appControllerWorld.setRandomTiles.bind(appControllerWorld);
 globalScope.setTile = appControllerWorld.setTile.bind(appControllerWorld);
 
-globalScope.setRobotIcon = appControllerRobot.setRobotStateIconName.bind(appControllerRobot);
-globalScope.setRandomRobotIcon = appControllerRobot.setRandomRobotStateIconName.bind(appControllerRobot);
+globalScope.setRobotIcon = appControllerRobot.setRobotIconName.bind(appControllerRobot);
+globalScope.setRandomRobotIcon = appControllerRobot.setRandomRobotIconName.bind(appControllerRobot);
 globalScope.setRobotLocation = appControllerRobot.setRobotLocation.bind(appControllerRobot);
 globalScope.setRandomRobotLocation = appControllerRobot.setRandomRobotLocation.bind(appControllerRobot);
 globalScope.setRobotDirection = appControllerRobot.setRobotStateDirection.bind(appControllerRobot);
