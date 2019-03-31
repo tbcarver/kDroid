@@ -13,6 +13,7 @@ import { consoleController } from "./app/mvc/console.controller.js"
 
 var globalScope = self;
 
+globalScope.getWorldSize = appControllerWorld.getWorldStateSize.bind(appControllerWorld);
 globalScope.setWorldSize = appControllerWorld.setWorldStateSize.bind(appControllerWorld);
 globalScope.setRandomWorldSize = appControllerWorld.setRandomWorldStateSize.bind(appControllerWorld);
 globalScope.setWorldSpeed = appControllerWorld.setWorldSpeed.bind(appControllerWorld);

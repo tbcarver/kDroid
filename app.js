@@ -10,6 +10,7 @@ import { RobotError } from "./app/robotError.js";
 
 var globalScope = window;
 
+globalScope.getWorldSize = appControllerWorld.getWorldStateSize.bind(appControllerWorld);
 globalScope.setWorldSize = appControllerWorld.setWorldStateSize.bind(appControllerWorld);
 globalScope.setRandomWorldSize = appControllerWorld.setRandomWorldStateSize.bind(appControllerWorld);
 globalScope.setWorldSpeed = appControllerWorld.setWorldSpeed.bind(appControllerWorld);

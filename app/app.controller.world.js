@@ -8,6 +8,16 @@ var worldState = appState.world;
 
 var appControllerWorld = {};
 
+appControllerWorld.getWorldStateSize = function() {
+
+	var size = {
+		rowsCount: worldState.rowsCount,
+		columnsCount: worldState.columnsCount
+	}
+
+	return size;
+}
+
 appControllerWorld.setWorldStateSize = function(rowsCount, columnsCount) {
 
 	if (rowsCount) {
