@@ -6,7 +6,7 @@ import { robotController } from "./app/mvc/robot.controller.js";
 import { messageBoxController } from "./app/mvc/messageBox.controller.js"
 import { consoleController } from "./app/mvc/console.controller.js"
 import { html } from "./lib/core/web/html.js"
-import { RobotError } from "./app/robotError.js";
+import { AppError } from "./app/appError.js";
 
 var globalScope = window;
 
@@ -58,7 +58,7 @@ globalScope.addEventListener("error", function(event) {
 	var error = event.error;
 	var message = error.message;
 
-	if (!(error instanceof RobotError) && error.stack) {
+	if (!(error instanceof AppError) && error.stack) {
 
 		var stack = html.toHtml(error.stack);
 

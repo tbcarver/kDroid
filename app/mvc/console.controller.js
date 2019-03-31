@@ -1,4 +1,5 @@
 
+import { appController } from "../app.controller.js";
 import { viewFactory } from "../viewFactory.js";
 
 var consoleView;
@@ -13,6 +14,8 @@ consoleController.load = function() {
 };
 
 consoleController.log = function(message) {
+
+    appController.assertMaxCommands();
 
     consoleView.log(message);
 };

@@ -1,10 +1,9 @@
 
+import { appController } from "../app.controller.js";
 import { appState } from "../appState.js";
 import { viewFactory } from "../viewFactory.js";
-import { messageBoxController } from "./messageBox.controller.js";
-import { RobotError } from "../robotError.js"
+import { AppError } from "../appError.js"
 
-var animationView;
 var robotView;
 var worldView;
 
@@ -17,7 +16,6 @@ var robotController = {};
 
 robotController.load = function() {
 
-    animationView = viewFactory.getView("animationView");
     robotView = viewFactory.getView("robotView");
     worldView = viewFactory.getView("worldView");
 
@@ -50,22 +48,9 @@ var robotMoveDirectionOffsets = {
     }
 };
 
-function assertMaxCommands() {
-
-    worldState.currentCommandCount++;
-
-    if (worldState.currentCommandCount > worldState.maxCommandCount) {
-
-        animationView.cancelAnimating();
-        messageBoxController.forceErrorMessage("The program is in an endless loop.");
-
-        throw new RobotError("The program is in an endless loop.");
-    }
-}
-
 robotController.move = function() {
 
-    assertMaxCommands();
+    appController.assertMaxCommands();
     assertCanMove();
 
     robotState.rowIndex = robotState.rowIndex + robotMoveDirectionOffsets[robotState.direction].rowOffset;
@@ -79,7 +64,7 @@ function assertCanMove() {
 
     if (robotController.isFrontBlocked()) {
 
-        throw new RobotError("The front is blocked.");
+        throw new AppError("The front is blocked.");
     }
 }
 
@@ -90,7 +75,7 @@ robotController.isFrontClear = function() {
 
 robotController.isFrontBlocked = function() {
 
-    assertMaxCommands();
+    appController.assertMaxCommands();
 
     var walls = worldState.topWalls;
 
@@ -124,13 +109,15 @@ var turnLeftDirections = {
 
 robotController.turnLeft = function() {
 
-    assertMaxCommands();
+    appController.assertMaxCommands();
 
     robotState.direction = turnLeftDirections[robotState.direction];
     robotView.turnLeft(robotState.direction);
 };
 
 robotController.isFacingNorth = function() {
+    
+    appController.assertMaxCommands();
 
     return robotState.direction === "north";
 }
@@ -141,6 +128,8 @@ robotController.isNotFacingNorth = function() {
 }
 
 robotController.isFacingEast = function() {
+    
+    appController.assertMaxCommands();
 
     return robotState.direction === "east";
 }
@@ -151,6 +140,8 @@ robotController.isNotFacingEast = function() {
 }
 
 robotController.isFacingSouth = function() {
+    
+    appController.assertMaxCommands();
 
     return robotState.direction === "south";
 }
@@ -161,6 +152,8 @@ robotController.isNotFacingSouth = function() {
 }
 
 robotController.isFacingWest = function() {
+    
+    appController.assertMaxCommands();
 
     return robotState.direction === "west";
 }
@@ -172,7 +165,7 @@ robotController.isNotFacingWest = function() {
 
 robotController.putDownTile = function() {
 
-    assertMaxCommands();
+    appController.assertMaxCommands();
 
     var tileCount = worldState.tileCounts[robotState.rowIndex][robotState.columnIndex];
     tileCount++;
@@ -183,7 +176,7 @@ robotController.putDownTile = function() {
 
 robotController.pickUpTile = function() {
     
-    assertMaxCommands();
+    appController.assertMaxCommands();
 
     var tileCount = worldState.tileCounts[robotState.rowIndex][robotState.columnIndex];
     var previousTileCount = tileCount;
@@ -200,13 +193,13 @@ function assertCanPickUpTile(tileCount) {
 
     if (tileCount <= 0) {
         
-        throw new RobotError("There is no tile to pick up.");
+        throw new AppError("There is no tile to pick up.");
     }
 }
 
 robotController.isOnTile = function() {
     
-    assertMaxCommands();
+    appController.assertMaxCommands();
 
     var tileCount = worldState.tileCounts[robotState.rowIndex][robotState.columnIndex];
 
@@ -214,6 +207,8 @@ robotController.isOnTile = function() {
 }
 
 robotController.isNotOnTile = function() {
+    
+    appController.assertMaxCommands();
 
     return !this.isOnTile();
 }

@@ -15,9 +15,9 @@ loadWorld();
 
 
 while (isFrontClear()) {
-	move()
+	// move()
+	log("asdf")
 }
-move()
 
 // setTileColor("red");
 

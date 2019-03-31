@@ -1,6 +1,6 @@
 
 
-function RobotError(message) {
+function AppError(message) {
 
 	// NOTE: The behavior of calling the Error constructor is different from normal
 	//  inheritance.  The properties are not being set on the this using:
@@ -11,7 +11,7 @@ function RobotError(message) {
 	this.stack = this.innerError.stack;
 }
 
-RobotError.prototype = Object.create(Error.prototype);
+AppError.prototype = Object.create(Error.prototype);
 
 
-export { RobotError }
+export { AppError }

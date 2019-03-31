@@ -5,9 +5,11 @@ import { messageBoxController } from "./mvc/messageBox.controller.js";
 import { consoleController } from "./mvc/console.controller.js";
 import { viewFactory } from "./viewFactory.js";
 import { appState } from "./appState.js";
+import { AppError } from "./appError.js";
 import { DoubleKeyHashSet } from "../lib/core/collections/double-key-hash-set.js";
 
 var appView;
+var animationView;
 var worldState = appState.world;
 
 var appController = {};
@@ -15,6 +17,7 @@ var appController = {};
 appController.load = function() {
 
     appView = viewFactory.getView("appView");
+	animationView = viewFactory.getView("animationView");
 
 	this.initializeOuterWalls(worldState);
 	this.initializeTilesCounts(worldState);
@@ -99,6 +102,19 @@ appController.initializeTilesCounts = function(worldState) {
 
 		worldState.tileCounts = tileCounts;
 	}
+}
+
+appController.assertMaxCommands = function() {
+
+    appState.currentCommandCount++;
+
+    if (appState.currentCommandCount > appState.maxCommandCount) {
+
+        animationView.cancelAnimating();
+		messageBoxController.forceErrorMessage("The program is in an endless loop.");
+
+        throw new AppError("The program is in an endless loop.");
+    }
 }
 
 

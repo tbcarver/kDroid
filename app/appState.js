@@ -1,5 +1,7 @@
 
 var appState = {
+    currentCommandCount: 0,
+    maxCommandCount: 3500,
     console: {
         enabled: true
     },
@@ -13,9 +15,7 @@ var appState = {
         columnsCount: 3,
         topWalls: {},
         leftWalls: {},
-        tileCounts: [],
-        maxCommandCount: 3500,
-        currentCommandCount: 0
+        tileCounts: []
     }
 };
 
