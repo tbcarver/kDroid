@@ -12,7 +12,7 @@ import { viewFactory } from "./app/viewFactory.js";
  * ES6 imports are not supported in web workers, this file must be bundled. (i.e. webpack)
  */
 
- viewFactory.loadThreaded();
+viewFactory.loadThreaded();
 
 var globalScope = self;
 
@@ -42,14 +42,14 @@ globalScope.turnLeft = robotController.turnLeft.bind(robotController);
 
 globalScope.enableCompass = function() {
 
-	globalScope.isFacingNorth = robotController.isFacingNorth.bind(robotController);	
-	globalScope.isNotFacingNorth = robotController.isNotFacingNorth.bind(robotController);	
+	globalScope.isFacingNorth = robotController.isFacingNorth.bind(robotController);
+	globalScope.isNotFacingNorth = robotController.isNotFacingNorth.bind(robotController);
 	globalScope.isFacingEast = robotController.isFacingEast.bind(robotController);
 	globalScope.isNotFacingEast = robotController.isNotFacingEast.bind(robotController);
 	globalScope.isFacingSouth = robotController.isFacingSouth.bind(robotController);
 	globalScope.isNotFacingSouth = robotController.isNotFacingSouth.bind(robotController);
-	globalScope.isFacingWest = robotController.isFacingWest.bind(robotController);	
-	globalScope.isNotFacingWest = robotController.isNotFacingWest.bind(robotController);	
+	globalScope.isFacingWest = robotController.isFacingWest.bind(robotController);
+	globalScope.isNotFacingWest = robotController.isNotFacingWest.bind(robotController);
 }
 
 globalScope.putDownTile = robotController.putDownTile.bind(robotController);
@@ -57,7 +57,10 @@ globalScope.pickUpTile = robotController.pickUpTile.bind(robotController);
 globalScope.isOnTile = robotController.isOnTile.bind(robotController);
 globalScope.isNotOnTile = robotController.isNotOnTile.bind(robotController);
 
+globalScope.setMessage = messageBoxController.setMessage.bind(messageBoxController);
+globalScope.setToast = messageBoxController.setToast.bind(messageBoxController);
 globalScope.log = consoleController.log.bind(consoleController);
+globalScope.logInternal = consoleController.logInternal.bind(consoleController);
 
 globalScope.onerror = function(error) {
 

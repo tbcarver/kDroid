@@ -20,8 +20,8 @@ robotView.renderRobot = function(robotState) {
 
     this.robotSvgElement = this.robotElement.querySelector("svg");
 
-    var top = viewState.world.cellSize * robotState.rowIndex;
-    var left = viewState.world.cellSize * robotState.columnIndex;
+    var top = (viewState.world.cellSize * robotState.rowIndex) + (viewState.world.wallWidth / 2);
+    var left = (viewState.world.cellSize * robotState.columnIndex) + (viewState.world.wallWidth / 2);
 
     this.robotElement.style.top = top + "px";
     this.robotElement.style.left = left + "px";

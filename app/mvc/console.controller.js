@@ -17,12 +17,18 @@ consoleController.log = function(message) {
 
     appController.assertMaxCommands();
 
-    consoleView.log(message);
+    if (consoleView) {
+
+        consoleView.log(message);
+    }
 };
 
 consoleController.logInternal = function(message, isError) {
 
-    consoleView.logInternal(message, isError);
+    if (consoleView) {
+
+        consoleView.logInternal(message, isError);
+    }
 };
 
 

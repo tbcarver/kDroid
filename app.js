@@ -51,7 +51,10 @@ globalScope.pickUpTile = robotController.pickUpTile.bind(robotController);
 globalScope.isOnTile = robotController.isOnTile.bind(robotController);
 globalScope.isNotOnTile = robotController.isNotOnTile.bind(robotController);
 
+globalScope.setMessage = messageBoxController.setMessage.bind(messageBoxController);
+globalScope.setToast = messageBoxController.setToast.bind(messageBoxController);
 globalScope.log = consoleController.log.bind(consoleController);
+globalScope.logInternal = consoleController.logInternal.bind(consoleController);
 
 globalScope.addEventListener("error", function(event) {
 

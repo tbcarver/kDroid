@@ -17,11 +17,11 @@ workerMessageHandlers["messageBoxView"] = messageBoxView;
 workerMessageHandlers["robotView"] = robotView;
 workerMessageHandlers["worldView"] = worldView;
 
-window.runKDroidScript = function(scriptPath) {
+window.startKDroidThread = function(scriptUrl) {
 
-	console.log("Running kDroidScript: " + scriptPath);
+	console.log("Starting kDroidScript: " + scriptUrl);
 
-	var kDroidWorker = new Worker(scriptPath);
+	var kDroidWorker = new Worker(scriptUrl);
 
 	kDroidWorker.onmessage = handleWorkerMessage;
 }

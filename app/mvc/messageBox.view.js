@@ -5,7 +5,7 @@ import { viewState } from "../viewState.js";
 
 var messageBoxView = {};
 
-messageBoxView.render = function(message, isError, isForced) {
+messageBoxView.render = function(message, isError, isForced, isToast) {
 
     var messageBoxElement = dom.createElement("div", { id: "messageBox" });
     var messageBoxWidth = viewState.world.width * .75;
@@ -57,7 +57,7 @@ messageBoxView.render = function(message, isError, isForced) {
         ]
 
         var options = {
-            duration: viewState.animationDuration / 2,
+            duration: viewState.animationDuration,
             easing: "cubic-bezier(.5305, -1.3203, .5, .6085)",
             fill: "forwards"
         }
@@ -75,23 +75,37 @@ messageBoxView.render = function(message, isError, isForced) {
 
     if (isError) {
 
-         keyframes[0].backgroundColor = messageBoxElement.style.backgroundColor;
-         keyframes[1].backgroundColor = viewState.errorColor;
+        keyframes[0].backgroundColor = messageBoxElement.style.backgroundColor;
+        keyframes[1].backgroundColor = viewState.errorColor;
     }
 
     var options = {
-        duration: viewState.animationDuration / 2,
+        duration: viewState.animationDuration,
         easing: "cubic-bezier(.38, 1.23, .71, 1.82)",
         fill: "forwards"
     };
 
+    var onFinishHandler;
+
+    if (isToast) {
+
+        onFinishHandler = function() {
+
+            setTimeout(function() {
+
+                messageBoxCloseElement.click();
+
+            }, viewState.toastDuration);
+        }
+    }
+
     if (isForced) {
 
-        messageBoxElement.animate(keyframes, options);
+        messageBoxElement.animate(keyframes, options, onFinishHandler);
 
     } else {
 
-        animationView.stackAnimation(messageBoxElement, keyframes, options);
+        animationView.stackAnimation(messageBoxElement, keyframes, options, onFinishHandler);
     }
 };
 

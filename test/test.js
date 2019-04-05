@@ -11,8 +11,8 @@ function test() {
 	// setRobotTiles(number) - sets the start amount of tiles the robots has, -1 if infinite tiles
 
 
-	setRandomWorldSize(1);
-	// setWorldSpeed(70);
+	setRandomWorldSize(12);
+	// setWorldSpeed(90);
 	// setRobotDirection("south");
 	setRandomRobotIcon("robot-square");
 	// setRobotIcon("android");
@@ -44,12 +44,12 @@ function test() {
 
 	var count = 0;
 
-	putDownTile();
-	putDownTile();
-	putDownTile();
-	putDownTile();
-	putDownTile();
-	putDownTile();
+	// putDownTile();
+	// putDownTile();
+	// putDownTile();
+	// putDownTile();
+	// putDownTile();
+	// putDownTile();
 
 	// log("hello " + count++);
 	// log("hello " + count++);
@@ -69,8 +69,19 @@ function test() {
 	// move()
 
 	// for (var count = 0; count < 2; count++) {
+move()
+move()
+move()
 
-	// 	tileToWall();
+move()
+move()
+	setToast("Frosty");
+		tileToWall();
+		// move()
+		// turnRight()
+		// move()
+		// turnLeft()
+
 	// 	turnAround();
 	
 	// 	log("tiled to wall: " + (count + 1));

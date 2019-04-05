@@ -23,6 +23,7 @@ loadWorld();
 // }
 
 
+setToast("Frosty");
 
 // setTileColor("red");
 

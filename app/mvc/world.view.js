@@ -24,6 +24,7 @@ worldView.renderGrid = function(rowsCount, columnsCount) {
 			var tableCellElement = dom.createElement("td", { id: cellId });
 
 			tableCellElement.style.width = viewState.world.cellSize + "px";
+			tableCellElement.style.height = viewState.world.cellSize + "px";
 			tableCellElement.style.backgroundColor = viewState.world.backgroundColor;
 			tableCellElement.style.border = "1px solid " + viewState.world.borderBackgroundColor;
 
@@ -36,11 +37,6 @@ worldView.renderGrid = function(rowsCount, columnsCount) {
 
 	var worldPlaceholderElement = dom("#worldPlaceholder");
 	worldPlaceholderElement.appendChild(tableElement);
-
-	tableCellElements.forEach(function(tableCellElement) {
-
-		tableCellElement.style.height = tableCellElement.offsetWidth + "px";
-	});
 };
 
 worldView.putTopWall = function(rowIndex, columnIndex) {
