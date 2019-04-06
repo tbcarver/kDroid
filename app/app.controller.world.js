@@ -125,6 +125,13 @@ appControllerWorld.setWalls = function(topWalls, leftWalls) {
 	}
 }
 
+appControllerWorld.getTileBackgroundColor = function() {
+
+	var appView = viewFactory.getView("appView");	
+
+	appView.getTileBackgroundColor(backgroundColor);
+}
+
 appControllerWorld.setTileBackgroundColor = function(backgroundColor) {
 
 	var appView = viewFactory.getView("appView");	

@@ -40,6 +40,17 @@ appThreadedView.setAnimationDuration = function(animationDuration) {
 	self.postMessage(message);
 }
 
+appThreadedView.getTileBackgroundColor = function() {
+
+	var message = {
+		handler: "appView",
+		method: "getTileBackgroundColor",
+		parameters: []
+	}
+
+	self.postMessage(message);
+};
+
 appThreadedView.setTileBackgroundColor = function(backgroundColor) {
 
 	var message = {

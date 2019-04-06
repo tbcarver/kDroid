@@ -59,11 +59,11 @@ robotThreadedView.moveWest = function() {
 	self.postMessage(message);
 }
 
-robotThreadedView.turnLeft = function(nextDirection) {
+robotThreadedView.turnRight = function(nextDirection) {
 
 	var message = {
 		handler: "robotView",
-		method: "turnLeft",
+		method: "turnRight",
 		parameters: [
 			nextDirection
 		]

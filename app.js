@@ -15,6 +15,7 @@ globalScope.setWorldSize = appControllerWorld.setWorldStateSize.bind(appControll
 globalScope.setRandomWorldSize = appControllerWorld.setRandomWorldStateSize.bind(appControllerWorld);
 globalScope.setWorldSpeed = appControllerWorld.setWorldSpeed.bind(appControllerWorld);
 globalScope.setWalls = appControllerWorld.setWalls.bind(appControllerWorld);
+globalScope.getTileColor = appControllerWorld.getTileBackgroundColor.bind(appControllerWorld);
 globalScope.setTileColor = appControllerWorld.setTileBackgroundColor.bind(appControllerWorld);
 globalScope.setTiles = appControllerWorld.setTiles.bind(appControllerWorld);
 globalScope.setRandomTiles = appControllerWorld.setRandomTiles.bind(appControllerWorld);
@@ -32,7 +33,7 @@ globalScope.loadWorld = appController.load.bind(appController);
 globalScope.move = robotController.move.bind(robotController);
 globalScope.isFrontClear = robotController.isFrontClear.bind(robotController);
 globalScope.isFrontBlocked = robotController.isFrontBlocked.bind(robotController);
-globalScope.turnLeft = robotController.turnLeft.bind(robotController);
+globalScope.turnRight = robotController.turnRight.bind(robotController);
 
 globalScope.enableCompass = function() {
 

@@ -3,7 +3,7 @@ var viewState = {
 	margin: 20,
 	animationDuration: 200,
 	errorColor: "#bb1414",
-	toastDuration: 1500,
+	toastDuration: 750,
 	console: {
 		width: 0,
 		height: 0,

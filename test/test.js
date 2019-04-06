@@ -11,17 +11,17 @@ function test() {
 	// setRobotTiles(number) - sets the start amount of tiles the robots has, -1 if infinite tiles
 
 
-	setRandomWorldSize(12);
+	setRandomWorldSize(2);
 	// setWorldSpeed(90);
 	// setRobotDirection("south");
-	setRandomRobotIcon("robot-square");
+	// setRandomRobotIcon("robot-square");
 	// setRobotIcon("android");
 
 	setTileColor("red")
 
 	// setRandomRobotDirection();
 	// setRandomRobotLocation();
-	setTile(1, 1, -1);
+	// setTile(1, 1, -1);
 
 	var topWalls = [];
 	var leftWalls = [];
@@ -44,6 +44,17 @@ function test() {
 	loadWorld();
 
 	var count = 0;
+
+	setWorldSpeed(70)
+	move()
+	turnRight()
+	move()
+	turnRight()
+	move()
+	turnRight()
+	move()
+	turnRight()
+	move()
 
 	// putDownTile();
 	// putDownTile();
@@ -73,15 +84,27 @@ function test() {
 	// putDownTile()
 
 	// for (var count = 0; count < 2; count++) {
-move()
-move()
-move()
-putDownTile("blue")
 
-move()
-move()
+// move()
+// turnLeft()
+// move()
+// turnLeft()
+// move()
+// turnLeft()
+// move()
+// turnLeft()
+// move()
+// turnLeft()
+// move()
+// putDownTile("blue")
+
+
+
+// turnLeft()
+// turnLeft()
+// turnLeft()
 	// setMessage("Frosty");
-		tileToWall();
+		// tileToWall();
 		// move()
 		// turnRight()
 		// move()
@@ -239,17 +262,17 @@ move()
 	console.log("DONE");
 }
 
-function turnRight() {
+function turnLeft() {
 
-	turnLeft();
-	turnLeft();
-	turnLeft();
+	turnRight();
+	turnRight();
+	turnRight();
 }
 
 function turnAround() {
 
-	turnLeft();
-	turnLeft();
+	turnRight();
+	turnRight();
 }
 
 function goToWall() {

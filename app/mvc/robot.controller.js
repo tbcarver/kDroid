@@ -100,19 +100,19 @@ robotController.isFrontBlocked = function() {
     return walls.includesKey(wallRowIndex, wallColumnIndex);
 }
 
-var turnLeftDirections = {
-    north: "west",
-    east: "north",
-    south: "east",
-    west: "south"
+var turnRightDirections = {
+    north: "east",
+    east: "south",
+    south: "west",
+    west: "north"
 };
 
-robotController.turnLeft = function() {
+robotController.turnRight = function() {
 
     appController.assertMaxCommands();
 
-    robotState.direction = turnLeftDirections[robotState.direction];
-    robotView.turnLeft(robotState.direction);
+    robotState.direction = turnRightDirections[robotState.direction];
+    robotView.turnRight(robotState.direction);
 };
 
 robotController.isFacingNorth = function() {

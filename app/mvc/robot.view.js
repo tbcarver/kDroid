@@ -28,7 +28,7 @@ robotView.renderRobot = function(robotState) {
     this.robotElement.style.width = viewState.world.cellSize + "px";
     this.robotElement.style.height = viewState.world.cellSize + "px";
 
-    this.robotSvgElement.style.transform = directionRotations[robotState.direction];
+    this.robotSvgElement.style.transform = rightDirectionRotations[robotState.direction];
 }
 
 robotView.moveNorth = function() {
@@ -93,29 +93,29 @@ function move(element, keyframes, forwardsTopOffset, forwardsLeftOffset) {
     });
 }
 
-var directionRotations = {
-    north: "rotate(-90deg)",
+var rightDirectionRotations = {
+    north: "rotate(270deg)",
     east: "rotate(0deg)",
-    south: "rotate(-270deg)",
-    west: "rotate(-180deg)"
+    south: "rotate(90deg)",
+    west: "rotate(180deg)"
 };
 
-robotView.turnLeft = function(nextDirection) {
+robotView.turnRight = function(nextDirection) {
 
     var keyframes = {
         transform: [
             "rotate(0deg)",
-            "rotate(-90deg)"
+            "rotate(90deg)"
         ]
     };
 
     var options = {
-        duration: viewState.animationDuration / 3,
+        duration: viewState.animationDuration / 2,
         easing: "linear"
     }
 
     var robotSvgElement = this.robotSvgElement;
-    var svgRotation = directionRotations[nextDirection];
+    var svgRotation = rightDirectionRotations[nextDirection];
 
     animationView.stackAnimation(this.robotElement, keyframes, options, function() {
 

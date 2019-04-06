@@ -72,7 +72,7 @@ worldThreadedView.putLeftWall = function(rowIndex, columnIndex) {
 	self.postMessage(message);
 }
 
-worldThreadedView.putDownTile = function(tileCount, rowIndex, columnIndex, suppressAnimation) {
+worldThreadedView.putDownTile = function(tileCount, rowIndex, columnIndex, tileBackgroundColor, suppressAnimation) {
 
 	var message = {
 		handler: "worldView",
@@ -81,6 +81,7 @@ worldThreadedView.putDownTile = function(tileCount, rowIndex, columnIndex, suppr
 			tileCount,
 			rowIndex,
 			columnIndex,
+			tileBackgroundColor,
 			suppressAnimation
 		]
 	}
