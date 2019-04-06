@@ -17,6 +17,7 @@ function test() {
 	setRandomRobotIcon("robot-square");
 	// setRobotIcon("android");
 
+	setTileColor("red")
 
 	// setRandomRobotDirection();
 	// setRandomRobotLocation();
@@ -38,7 +39,7 @@ function test() {
 
 	// setWalls(topWalls, leftWalls);
 
-
+	setTileColor("red")
 
 	loadWorld();
 
@@ -68,14 +69,18 @@ function test() {
 	// }
 	// move()
 
+	
+	// putDownTile()
+
 	// for (var count = 0; count < 2; count++) {
 move()
 move()
 move()
+putDownTile("blue")
 
 move()
 move()
-	setToast("Frosty");
+	// setMessage("Frosty");
 		tileToWall();
 		// move()
 		// turnRight()

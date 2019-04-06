@@ -14,19 +14,19 @@ var viewState = {
 	},
     robot: {
         iconName: "arrow-alt-circle-right",
-        backgroundColor: "#fff",
+        backgroundColor: "",
 	},
     world: {
 		width: 0,
 		height: 0,
 		cellSize: 0,
 		wallWidth: 2,
-        backgroundColor: "#fff",
-        borderBackgroundColor: "#fff",
-        wallBackgroundColor: "#fff",
-        tileColor: "#fff",
-        tileBackgroundColor: "#fff",
-        messageBoxBackgroundColor: "#fff",
+        backgroundColor: "",
+        borderBackgroundColor: "",
+        wallBackgroundColor: "",
+        tileColor: "",
+        tileBackgroundColor: "",
+        messageBoxBackgroundColor: "",
     }
 }
 

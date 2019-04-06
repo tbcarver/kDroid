@@ -67,7 +67,7 @@ function putWall(borderName, rowIndex, columnIndex) {
 	targetCellElement.style[borderName] = viewState.world.wallWidth + "px solid " + viewState.world.wallBackgroundColor;
 }
 
-worldView.putDownTile = function(tileCount, rowIndex, columnIndex, suppressAnimation) {
+worldView.putDownTile = function(tileCount, rowIndex, columnIndex, tileBackgroundColor, suppressAnimation) {
 
 	var tileId = "tile-" + rowIndex + "-" + columnIndex + "-" + tileCount;
 	var tileElement = dom.createElement("div", { id: tileId, className: "tile" });
@@ -79,8 +79,13 @@ worldView.putDownTile = function(tileCount, rowIndex, columnIndex, suppressAnima
 	tileElement.style.height = tileWidth + "px";
 	tileElement.style.lineHeight = tileWidth + "px";
 	tileElement.style.fontSize = (tileWidth * .4) + "px";
-	tileElement.style.color = viewState.world.tileColor;	
+	tileElement.style.color = viewState.world.tileColor;
 	tileElement.style.background = viewState.world.tileBackgroundColor;
+
+	if (tileBackgroundColor) {
+
+		tileElement.style.background = tileBackgroundColor;
+	}
 
 	if (tileCount > 1) {
 

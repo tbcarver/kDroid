@@ -13,13 +13,13 @@ consoleController.load = function() {
     consoleView.render();
 };
 
-consoleController.log = function(message) {
+consoleController.log = function(message, color) {
 
     appController.assertMaxCommands();
 
     if (consoleView) {
 
-        consoleView.log(message);
+        consoleView.log(message, color);
     }
 };
 

@@ -14,11 +14,40 @@ appView.initializeColors = function() {
 		complimentaryHue = 256 - 128 - randomHue;
 	}
 
-	viewState.robot.backgroundColor = "hsl(" + complimentaryHue + ", 40%, 35%, .90)";
-	viewState.world.borderBackgroundColor = "hsl(" + randomHue + ", 40%, 90%)";
-	viewState.world.wallBackgroundColor = "hsl(" + complimentaryHue + ", 50%, 25%)";
-	viewState.world.tileBackgroundColor = "hsl(" + randomHue + ", 45%, 65%)";
-	viewState.world.messageBoxBackgroundColor = "hsl(" + complimentaryHue + ", 40%, 40%)";
+	if (!viewState.robot.backgroundColor) {
+
+		viewState.robot.backgroundColor = "hsl(" + complimentaryHue + ", 40%, 35%, .90)";
+	}
+
+	if (!viewState.world.backgroundColor) {
+
+		viewState.world.backgroundColor = "#fff";
+	}
+
+	if (!viewState.world.borderBackgroundColor) {
+
+		viewState.world.borderBackgroundColor = "hsl(" + randomHue + ", 40%, 90%)";
+	}
+
+	if (!viewState.world.wallBackgroundColor) {
+
+		viewState.world.wallBackgroundColor = "hsl(" + complimentaryHue + ", 50%, 25%)";
+	}
+
+	if (!viewState.world.tileColor) {
+
+		viewState.world.tileColor = "#fff";
+	}
+
+	if (!viewState.world.tileBackgroundColor) {
+
+		viewState.world.tileBackgroundColor = "hsl(" + randomHue + ", 45%, 65%)";
+	}
+
+	if (!viewState.world.messageBoxBackgroundColor) {
+
+		viewState.world.messageBoxBackgroundColor = "hsl(" + complimentaryHue + ", 40%, 40%)";
+	}
 }
 
 appView.initializePlaceholders = function(rowsCount, columnsCount, consoleEnabled) {

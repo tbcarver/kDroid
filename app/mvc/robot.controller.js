@@ -163,7 +163,7 @@ robotController.isNotFacingWest = function() {
     return !this.isFacingWest();
 }
 
-robotController.putDownTile = function() {
+robotController.putDownTile = function(tileBackgroundColor) {
 
     appController.assertMaxCommands();
 
@@ -171,7 +171,7 @@ robotController.putDownTile = function() {
     tileCount++;
     worldState.tileCounts[robotState.rowIndex][robotState.columnIndex] = tileCount;
 
-    worldView.putDownTile(tileCount, robotState.rowIndex, robotState.columnIndex);
+    worldView.putDownTile(tileCount, robotState.rowIndex, robotState.columnIndex, tileBackgroundColor);
 }
 
 robotController.pickUpTile = function() {
