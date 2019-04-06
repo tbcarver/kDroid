@@ -32,10 +32,13 @@ appControllerWorld.setWorldStateSize = function(rowsCount, columnsCount) {
 	}
 }
 
-appControllerWorld.setRandomWorldStateSize = function(rowsCount, columnsCount) {
+appControllerWorld.setRandomWorldStateSize = function(rowsCount, columnsCount, minimumRowsCount, minimumColumnsCount) {
 
-	var randomRowsCount = coreMath.randomInteger(1, 12);
-	var randomColumnsCount = coreMath.randomInteger(1, 12);
+	minimumRowsCount = minimumRowsCount ? minimumRowsCount : 1;
+	minimumColumnsCount = minimumColumnsCount ? minimumRowsCount : 1;
+
+	var randomRowsCount = coreMath.randomInteger(minimumRowsCount, 12);
+	var randomColumnsCount = coreMath.randomInteger(minimumColumnsCount , 12);
 
 	if (rowsCount && rowsCount >= 1) {
 
