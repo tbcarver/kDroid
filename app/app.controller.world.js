@@ -24,21 +24,24 @@ appControllerWorld.setWorldStateSize = function(rowsCount, columnsCount) {
 
 		worldState.rowsCount = rowsCount;
 		worldState.columnsCount = worldState.rowsCount;
-	
+
 		if (columnsCount) {
-	
+
 			worldState.columnsCount = columnsCount;
 		}
 	}
 }
 
-appControllerWorld.setRandomWorldStateSize = function(rowsCount, columnsCount, minimumRowsCount, minimumColumnsCount) {
+appControllerWorld.setRandomWorldStateSize = function(rowsCount, columnsCount, minRowsCount, minColumnsCount,
+	maxRowsCount, maxColumnsCount) {
 
-	minimumRowsCount = minimumRowsCount ? minimumRowsCount : 1;
-	minimumColumnsCount = minimumColumnsCount ? minimumRowsCount : 1;
+	minRowsCount = minRowsCount ? minRowsCount : 1;
+	minColumnsCount = minColumnsCount ? minColumnsCount : 1;
+	maxRowsCount = maxRowsCount ? maxRowsCount : 12;
+	maxColumnsCount = maxColumnsCount ? maxColumnsCount : 12;
 
-	var randomRowsCount = coreMath.randomInteger(minimumRowsCount, 12);
-	var randomColumnsCount = coreMath.randomInteger(minimumColumnsCount , 12);
+	var randomRowsCount = coreMath.randomInteger(minRowsCount, maxRowsCount);
+	var randomColumnsCount = coreMath.randomInteger(minColumnsCount, maxColumnsCount);
 
 	if (rowsCount && rowsCount >= 1) {
 
@@ -130,14 +133,14 @@ appControllerWorld.setWalls = function(topWalls, leftWalls) {
 
 appControllerWorld.getTileBackgroundColor = function() {
 
-	var appView = viewFactory.getView("appView");	
+	var appView = viewFactory.getView("appView");
 
 	appView.getTileBackgroundColor(backgroundColor);
 }
 
 appControllerWorld.setTileBackgroundColor = function(backgroundColor) {
 
-	var appView = viewFactory.getView("appView");	
+	var appView = viewFactory.getView("appView");
 
 	appView.setTileBackgroundColor(backgroundColor);
 }
@@ -146,7 +149,7 @@ appControllerWorld.setTiles = function(tileCount) {
 
 	appController.initializeTilesCounts(worldState);
 
-	if (tileCount < 1) {		
+	if (tileCount < 1) {
 
 		tileCount = coreMath.randomInteger(1, 6);
 	}
@@ -198,7 +201,7 @@ appControllerWorld.setTile = function(rowNumber, columnNumber, tileCount) {
 	var rowIndex = rowNumber - 1;
 	var columnIndex = columnNumber - 1;
 
-	if (tileCount < 1) {		
+	if (tileCount < 1) {
 
 		tileCount = coreMath.randomInteger(1, 6);
 	}
