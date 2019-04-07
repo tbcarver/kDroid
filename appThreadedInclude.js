@@ -87,5 +87,6 @@ globalScope.onerror = function(error) {
 		}
 	}
 
+	consoleController.logInternal(error, null, true);
 	messageBoxController.setMessage(error, null, true);
 }

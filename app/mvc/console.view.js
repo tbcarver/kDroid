@@ -40,7 +40,7 @@ consoleView.log = function(message, color) {
 	});
 }
 
-consoleView.logInternal = function(message, isError, color) {
+consoleView.logInternal = function(message, color, isError) {
 
     if (isError) {
 

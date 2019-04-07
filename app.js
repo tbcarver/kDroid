@@ -75,5 +75,6 @@ globalScope.addEventListener("error", function(event) {
 
 	}
 
-	messageBoxController.setMessage(message, true);
+	consoleController.logInternal(error, null, true);
+	messageBoxController.setMessage(message, null, true);
 });
