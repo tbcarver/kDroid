@@ -10,6 +10,11 @@ import { AppError } from "./app/appError.js";
 
 var globalScope = window;
 
+globalScope.kDroidApp = {};
+
+globalScope.kDroidApp.getAppState = appController.getAppState.bind(appController);
+globalScope.kDroidApp.addEventListener = appController.addEventListener.bind(appController);
+
 globalScope.getWorldSize = appControllerWorld.getWorldStateSize.bind(appControllerWorld);
 globalScope.setWorldSize = appControllerWorld.setWorldStateSize.bind(appControllerWorld);
 globalScope.setRandomWorldSize = appControllerWorld.setRandomWorldStateSize.bind(appControllerWorld);

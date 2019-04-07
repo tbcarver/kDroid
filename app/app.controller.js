@@ -7,21 +7,23 @@ import { viewFactory } from "./viewFactory.js";
 import { appState } from "./appState.js";
 import { AppError } from "./appError.js";
 import { DoubleKeyHashSet } from "../lib/core/collections/double-key-hash-set.js";
+import { EventEmitter } from "../lib/core/system/event-emitter.js"
 
 var appView;
 var animationView;
 var worldState = appState.world;
+var eventEmitter = new EventEmitter();
 
 var appController = {};
 
 appController.load = function() {
 
-    appView = viewFactory.getView("appView");
+	appView = viewFactory.getView("appView");
 	animationView = viewFactory.getView("animationView");
 
 	this.initializeOuterWalls(worldState);
 	this.initializeTilesCounts(worldState);
-	
+
 	appView.initializeColors();
 	appView.initializePlaceholders(worldState.rowsCount, worldState.columnsCount, appState.console.enabled);
 
@@ -30,10 +32,11 @@ appController.load = function() {
 	messageBoxController.load();
 
 	if (appState.console.enabled) {
-		
+
 		consoleController.load();
-		consoleController.logInternal("The program started. " + worldState.rowsCount + " x " + worldState.columnsCount);
 	}
+
+	eventEmitter.emit("load", { appState: appState });
 }
 
 // SEE: worldController.loadWalls for an explanation of the walls coordinate system.
@@ -99,15 +102,25 @@ appController.initializeTilesCounts = function(worldState) {
 
 appController.assertMaxCommands = function() {
 
-    appState.currentCommandCount++;
+	appState.currentCommandCount++;
 
-    if (appState.currentCommandCount > appState.maxCommandCount) {
+	if (appState.currentCommandCount > appState.maxCommandCount) {
 
-        animationView.cancelAnimating();
+		animationView.cancelAnimating();
 		messageBoxController.forceErrorMessage("The program is in an endless loop.");
 
-        throw new AppError("The program is in an endless loop.");
-    }
+		throw new AppError("The program is in an endless loop.");
+	}
+}
+
+appController.getAppState = function() {
+
+	return appState;
+}
+
+appController.addEventListener = function(eventName, listener) {
+
+	eventEmitter.addListener(eventName, listener);
 }
 
 

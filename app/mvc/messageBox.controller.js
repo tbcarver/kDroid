@@ -10,19 +10,19 @@ messageBoxController.load = function() {
 	messageBoxView = viewFactory.getView("messageBoxView");
 };
 
-messageBoxController.setMessage = function(message, isError) {
+messageBoxController.setMessage = function(message, color, isError) {
 
 	if (messageBoxView) {
 
-		messageBoxView.render(message, isError, false);
+		messageBoxView.render(message, color, isError, false, false);
 	}
 };
 
-messageBoxController.setToast = function(message) {
+messageBoxController.setToast = function(message, color) {
 
 	if (messageBoxView) {
 
-		messageBoxView.render(message, false, false, true);
+		messageBoxView.render(message, color, false, false, true);
 	}
 };
 
@@ -30,7 +30,7 @@ messageBoxController.forceErrorMessage = function(message) {
 
 	if (messageBoxView) {
 
-		messageBoxView.render(message, true, true);
+		messageBoxView.render(message, null, true, true);
 	}
 };
 

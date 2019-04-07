@@ -1,6 +1,20 @@
 
 function test() {
 
+	kDroidApp.addEventListener("load", function(event) {
+
+		var worldState = event.appState.world;
+
+		console.log(event.appState);
+
+		logInternal("The program started. " + worldState.rowsCount + " x " + worldState.columnsCount, "green");
+		setToast("started", "green")
+		setToast
+		setMessage("more started", "blue")
+		log("more started", "blue")
+		setMessage("error", null, true);
+	});
+
 	// 	setWorldSize(sizeNumber) - sets the size of the world
 	// 	setRandomWorldSize() - sets a random world size from 1 to 16
 	// 	setWorldSpeed(speedNumber) - sets the speed of the world, 0 (slowest) to 100 (fastest)

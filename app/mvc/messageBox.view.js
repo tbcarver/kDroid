@@ -5,7 +5,7 @@ import { viewState } from "../viewState.js";
 
 var messageBoxView = {};
 
-messageBoxView.render = function(message, isError, isForced, isToast) {
+messageBoxView.render = function(message, color, isError, isForced, isToast) {
 
     var messageBoxElement = dom.createElement("div", { id: "messageBox" });
     var messageBoxWidth = viewState.world.width * .75;
@@ -19,10 +19,12 @@ messageBoxView.render = function(message, isError, isForced, isToast) {
         messageBoxWidth = 350;
     }
 
+    color = color ? color : viewState.world.messageBoxBackgroundColor;
+
     messageBoxElement.style.width = messageBoxWidth + "px";
     messageBoxElement.style.padding = "30px 20px";
     messageBoxElement.style.color = viewState.world.backgroundColor;
-    messageBoxElement.style.backgroundColor = viewState.world.messageBoxBackgroundColor;
+    messageBoxElement.style.backgroundColor = color;
     messageBoxElement.style.visibility = "hidden";
 
     messageBoxElement.style.fontSize = "28px";

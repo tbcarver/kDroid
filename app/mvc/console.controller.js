@@ -23,11 +23,11 @@ consoleController.log = function(message, color) {
     }
 };
 
-consoleController.logInternal = function(message, isError) {
+consoleController.logInternal = function(message, isError, color) {
 
     if (consoleView) {
 
-        consoleView.logInternal(message, isError);
+        consoleView.logInternal(message, isError, color);
     }
 };
 

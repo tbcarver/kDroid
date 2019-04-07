@@ -110,7 +110,7 @@ robotView.turnRight = function(nextDirection) {
     };
 
     var options = {
-        duration: viewState.animationDuration / 2,
+        duration: viewState.animationDuration / 2.5,
         easing: "linear"
     }
 

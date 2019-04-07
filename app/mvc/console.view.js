@@ -19,15 +19,10 @@ consoleView.render = function() {
 
 consoleView.log = function(message, color) {
 
-	var messageColor = viewState.robot.backgroundColor;
-
-	if (color) {
-
-		messageColor = color;
-	}
+    color = color ? color : viewState.robot.backgroundColor;
 
 	var lineElement = dom.createElement("div", { className: "consoleLine" });
-	lineElement.style.color = messageColor;
+	lineElement.style.color = color;
 	lineElement.textContent = message;
 		
 	animationView.stackNullAnimation(lineElement, function() {
@@ -45,7 +40,7 @@ consoleView.log = function(message, color) {
 	});
 }
 
-consoleView.logInternal = function(message, isError) {
+consoleView.logInternal = function(message, isError, color) {
 
     if (isError) {
 
@@ -53,7 +48,9 @@ consoleView.logInternal = function(message, isError) {
 
     } else {
 
-        this.log("* " + message, viewState.console.internalColor);
+		color = color ? color : viewState.console.internalColor;
+
+        this.log("* " + message, color);
     }
 };
 

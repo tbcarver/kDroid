@@ -39,7 +39,7 @@ window.addEventListener("error", function(event) {
 
 	}
 
-	messageBoxController.setMessage(message, true);
+	messageBoxController.setMessage(message, null, true);
 });
 
 function handleWorkerMessage(event) {

@@ -1,6 +1,21 @@
 
 importScripts("../dist/threaded/kDroidFunctions.js");
 
+kDroidApp.addEventListener("load", function(event) {
+
+	var worldState = event.appState.world;
+
+	console.log(event.appState);
+
+	logInternal("The program started. " + worldState.rowsCount + " x " + worldState.columnsCount,);
+	setToast("started", "green")
+	setToast
+	setMessage("more started", "blue")
+	log("more started", "blue")
+	setMessage("error", null, true);
+});
+
+
 setRandomWorldSize(3);
 setWorldSpeed(70);
 setRandomWorldSize(1);
