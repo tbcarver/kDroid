@@ -24,9 +24,9 @@ function test() {
 	// setRobotDirection(directionNumber) - sets the start direction of the robot
 	// setRobotTiles(number) - sets the start amount of tiles the robots has, -1 if infinite tiles
 
-
+		setRandomWorldSize()
 	// setRandomOddWorldSize(1, -1);
-	setRandomEvenWorldSize(1, -1);
+	// setRandomEvenWorldSize(1, -1);
 	// setWorldSpeed(90);
 	// setRobotDirection("south");
 	// setRandomRobotIcon("robot-square");

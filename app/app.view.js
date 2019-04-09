@@ -70,7 +70,6 @@ appView.initializePlaceholders = function(rowsCount, columnsCount, consoleEnable
 	viewState.world.cellSize = calculateCellSize(availableWidth, availableHeight, rowsCount, columnsCount);
 	viewState.world.width = viewState.world.cellSize * columnsCount;
 	viewState.world.height = viewState.world.cellSize * rowsCount;
-	viewState.console.width = viewState.world.width;
 
 	var worldPlaceholderElement = dom.createElement("div", { id: "worldPlaceholder" });
 	worldPlaceholderElement.style.width = viewState.world.width + "px";
@@ -80,6 +79,9 @@ appView.initializePlaceholders = function(rowsCount, columnsCount, consoleEnable
 	document.body.appendChild(worldPlaceholderElement);
 
 	if (consoleEnabled) {
+
+		viewState.console.width = window.innerWidth;
+		viewState.console.width -= (viewState.margin * 2);
 
 		var consolePlaceholderElement = dom.createElement("div", { id: "consolePlaceholder" });	
 		consolePlaceholderElement.style.width = viewState.console.width + "px";
