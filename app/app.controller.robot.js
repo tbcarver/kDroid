@@ -67,7 +67,7 @@ appControllerRobot.setRandomRobotLocation = function(rowNumber, columnNumber) {
 	robotState.columnIndex = randomColumnIndex;
 }
 
-appControllerRobot.setRobotStateDirection = function(direction) {
+appControllerRobot.setRobotDirection = function(direction) {
 
 	if (direction) {
 
@@ -82,7 +82,7 @@ var directions = [
 	"west"
 ]
 
-appControllerRobot.setRandomRobotStateDirection = function(direction) {
+appControllerRobot.setRandomRobotDirection = function(direction) {
 
 	var randomIndex = coreMath.randomInteger(0, directions.length - 1);
 	direction = directions[randomIndex];

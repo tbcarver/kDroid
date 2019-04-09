@@ -8,7 +8,7 @@ var worldState = appState.world;
 
 var appControllerWorld = {};
 
-appControllerWorld.getWorldStateSize = function() {
+appControllerWorld.getWorldSize = function() {
 
 	var size = {
 		rowsCount: worldState.rowsCount,
@@ -18,7 +18,7 @@ appControllerWorld.getWorldStateSize = function() {
 	return size;
 }
 
-appControllerWorld.setWorldStateSize = function(rowsCount, columnsCount) {
+appControllerWorld.setWorldSize = function(rowsCount, columnsCount) {
 
 	if (rowsCount) {
 
@@ -32,16 +32,16 @@ appControllerWorld.setWorldStateSize = function(rowsCount, columnsCount) {
 	}
 }
 
-appControllerWorld.setRandomWorldStateSize = function(rowsCount, columnsCount, minRowsCount, minColumnsCount,
-	maxRowsCount, maxColumnsCount) {
+function setRandomWorldSize(rowsCount, columnsCount, minRowsCount, minColumnsCount,
+	maxRowsCount, maxColumnsCount, randomFunction) {
 
 	minRowsCount = minRowsCount ? minRowsCount : 1;
 	minColumnsCount = minColumnsCount ? minColumnsCount : 1;
 	maxRowsCount = maxRowsCount ? maxRowsCount : 12;
 	maxColumnsCount = maxColumnsCount ? maxColumnsCount : 12;
 
-	var randomRowsCount = coreMath.randomInteger(minRowsCount, maxRowsCount);
-	var randomColumnsCount = coreMath.randomInteger(minColumnsCount, maxColumnsCount);
+	var randomRowsCount = randomFunction(minRowsCount, maxRowsCount);
+	var randomColumnsCount = randomFunction(minColumnsCount, maxColumnsCount);
 
 	if (rowsCount && rowsCount >= 1) {
 
@@ -68,6 +68,28 @@ appControllerWorld.setRandomWorldStateSize = function(rowsCount, columnsCount, m
 	worldState.rowsCount = randomRowsCount;
 	worldState.columnsCount = randomColumnsCount;
 }
+
+appControllerWorld.setRandomWorldSize = function(rowsCount, columnsCount, minRowsCount, minColumnsCount,
+	 maxRowsCount, maxColumnsCount) {
+
+		setRandomWorldSize(rowsCount, columnsCount, minRowsCount, minColumnsCount,
+			 maxRowsCount, maxColumnsCount, coreMath.randomInteger)
+}
+
+appControllerWorld.setRandomOddWorldSize = function(rowsCount, columnsCount, minRowsCount, minColumnsCount,
+	 maxRowsCount, maxColumnsCount) {
+
+	setRandomWorldSize(rowsCount, columnsCount, minRowsCount, minColumnsCount, maxRowsCount,
+		 maxColumnsCount, coreMath.randomOddInteger)
+}
+
+appControllerWorld.setRandomEvenWorldSize = function(rowsCount, columnsCount, minRowsCount, minColumnsCount,
+	 maxRowsCount, maxColumnsCount) {
+
+	setRandomWorldSize(rowsCount, columnsCount, minRowsCount, minColumnsCount, maxRowsCount,
+		 maxColumnsCount, coreMath.randomEvenInteger)
+}
+
 
 /**
  * Set the speed of the world.

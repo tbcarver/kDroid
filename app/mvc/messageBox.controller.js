@@ -18,11 +18,11 @@ messageBoxController.setMessage = function(message, color, isError) {
 	}
 };
 
-messageBoxController.setToast = function(message, color) {
+messageBoxController.setToast = function(message, color, isError) {
 
 	if (messageBoxView) {
 
-		messageBoxView.render(message, color, false, false, true);
+		messageBoxView.render(message, color, isError, false, true);
 	}
 };
 

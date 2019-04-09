@@ -15,6 +15,20 @@ robotThreadedView.renderRobot = function(robotState) {
 	self.postMessage(message);
 }
 
+robotThreadedView.setRobotBackgroundColor = function(backgroundColor, isError) {
+
+	var message = {
+		handler: "robotView",
+		method: "setRobotBackgroundColor",
+		parameters: [
+			backgroundColor,
+			isError
+		]
+	}
+
+	self.postMessage(message);
+}
+
 robotThreadedView.moveNorth = function() {
 
 	var message = {

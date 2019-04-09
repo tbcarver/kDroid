@@ -29,6 +29,11 @@ robotController.load = function() {
     robotView.renderRobot(robotState);
 };
 
+robotController.setRobotBackgroundColor = function(backgroundColor, isError) {
+
+    robotView.setRobotBackgroundColor(backgroundColor, isError)
+}
+
 var robotMoveDirectionOffsets = {
     north: {
         rowOffset: -1,

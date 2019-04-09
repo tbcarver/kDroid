@@ -31,6 +31,20 @@ robotView.renderRobot = function(robotState) {
     this.robotSvgElement.style.transform = rightDirectionRotations[robotState.direction];
 }
 
+robotView.setRobotBackgroundColor = function(backgroundColor, isError) {
+
+    if (isError) {
+
+        backgroundColor = viewState.errorColor;
+    }    
+		
+	animationView.stackNullAnimation(this.robotElement, function() {
+
+        this.robotElement.style.fill = backgroundColor;
+
+	}.bind(this));
+}
+
 robotView.moveNorth = function() {
 
     var keyframes = {

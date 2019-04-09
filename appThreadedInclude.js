@@ -21,9 +21,11 @@ globalScope.kDroidApp = {};
 globalScope.kDroidApp.getAppState = appController.getAppState.bind(appController);
 globalScope.kDroidApp.addEventListener = appController.addEventListener.bind(appController);
 
-globalScope.getWorldSize = appControllerWorld.getWorldStateSize.bind(appControllerWorld);
-globalScope.setWorldSize = appControllerWorld.setWorldStateSize.bind(appControllerWorld);
-globalScope.setRandomWorldSize = appControllerWorld.setRandomWorldStateSize.bind(appControllerWorld);
+globalScope.getWorldSize = appControllerWorld.getWorldSize.bind(appControllerWorld);
+globalScope.setWorldSize = appControllerWorld.setWorldSize.bind(appControllerWorld);
+globalScope.setRandomWorldSize = appControllerWorld.setRandomWorldSize.bind(appControllerWorld);
+globalScope.setRandomOddWorldSize = appControllerWorld.setRandomOddWorldSize.bind(appControllerWorld);
+globalScope.setRandomEvenWorldSize = appControllerWorld.setRandomEvenWorldSize.bind(appControllerWorld);
 globalScope.setWorldSpeed = appControllerWorld.setWorldSpeed.bind(appControllerWorld);
 globalScope.setWalls = appControllerWorld.setWalls.bind(appControllerWorld);
 globalScope.getTileColor = appControllerWorld.getTileBackgroundColor.bind(appControllerWorld);
@@ -36,8 +38,8 @@ globalScope.setRobotIcon = appControllerRobot.setRobotIconName.bind(appControlle
 globalScope.setRandomRobotIcon = appControllerRobot.setRandomRobotIconName.bind(appControllerRobot);
 globalScope.setRobotLocation = appControllerRobot.setRobotLocation.bind(appControllerRobot);
 globalScope.setRandomRobotLocation = appControllerRobot.setRandomRobotLocation.bind(appControllerRobot);
-globalScope.setRobotDirection = appControllerRobot.setRobotStateDirection.bind(appControllerRobot);
-globalScope.setRandomRobotDirection = appControllerRobot.setRandomRobotStateDirection.bind(appControllerRobot);
+globalScope.setRobotDirection = appControllerRobot.setRobotDirection.bind(appControllerRobot);
+globalScope.setRandomRobotDirection = appControllerRobot.setRandomRobotDirection.bind(appControllerRobot);
 
 globalScope.loadWorld = appController.load.bind(appController);
 
@@ -87,6 +89,7 @@ globalScope.onerror = function(error) {
 		}
 	}
 
+	robotController.setRobotBackgroundColor(null, true);
 	consoleController.logInternal(error, null, true);
-	messageBoxController.setMessage(error, null, true);
+	messageBoxController.setToast(error, null, true);
 }

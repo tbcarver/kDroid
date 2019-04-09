@@ -1,33 +1,35 @@
 
 importScripts("../dist/threaded/kDroidFunctions.js");
 
+
 kDroidApp.addEventListener("load", function(event) {
 
 	var worldState = event.appState.world;
 
-	console.log(event.appState);
+	// console.log(event.appState);
 
-	logInternal("The program started. " + worldState.rowsCount + " x " + worldState.columnsCount,);
-	setToast("started", "green")
-	setToast
-	setMessage("more started", "blue")
-	log("more started", "blue")
-	setMessage("error", null, true);
+	logInternal("The program started. " + worldState.rowsCount + " x " + worldState.columnsCount);
+	// setToast("started", "green")
+	// setToast
+	// setMessage("more started", "blue")
+	// log("more started", "blue")
+	// setMessage("error", null, true);
 });
 
 
-setRandomWorldSize(3);
-setWorldSpeed(70);
-setRandomWorldSize(1);
+setRandomEvenWorldSize(3);
+// setRandomWorldSize(3);
+// setWorldSpeed(70);
+// setRandomWorldSize(1);
 // setWorldSpeed(70);
 // setRobotDirection("south");
-setRandomRobotIcon("robot-square");
+// setRandomRobotIcon("robot-square");
 // setRobotIcon("android");
 
 
 // setRandomRobotDirection();
 // setRandomRobotLocation();
-setTile(1, 1, -1);
+// setTile(1, 1, -1);
 loadWorld();
 
 // while (isFrontClear()) {
@@ -37,8 +39,10 @@ loadWorld();
 // 	}
 // }
 
+turnAround()
+move()
 
-setToast("Frosty");
+// setToast("Frosty");
 
 // setTileColor("red");
 
@@ -51,17 +55,17 @@ setToast("Frosty");
 // }
 
 
-function turnRight() {
+function turnLeft() {
 
-	turnLeft();
-	turnLeft();
-	turnLeft();
+	turnRight();
+	turnRight();
+	turnRight();
 }
 
 function turnAround() {
 
-	turnLeft();
-	turnLeft();
+	turnRight();
+	turnRight();
 }
 
 function goToWall() {

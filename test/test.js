@@ -5,14 +5,14 @@ function test() {
 
 		var worldState = event.appState.world;
 
-		console.log(event.appState);
+		// console.log(event.appState);
 
-		logInternal("The program started. " + worldState.rowsCount + " x " + worldState.columnsCount, "green");
-		setToast("started", "green")
-		setToast
-		setMessage("more started", "blue")
-		log("more started", "blue")
-		setMessage("error", null, true);
+		logInternal("The program started. " + worldState.rowsCount + " x " + worldState.columnsCount);
+		// setToast("started", "green")
+		// setToast
+		// setMessage("more started", "blue")
+		// log("more started", "blue")
+		// setMessage("error", null, true);
 	});
 
 	// 	setWorldSize(sizeNumber) - sets the size of the world
@@ -25,7 +25,8 @@ function test() {
 	// setRobotTiles(number) - sets the start amount of tiles the robots has, -1 if infinite tiles
 
 
-	setRandomWorldSize(2);
+	// setRandomOddWorldSize(1, -1);
+	setRandomEvenWorldSize(1, -1);
 	// setWorldSpeed(90);
 	// setRobotDirection("south");
 	// setRandomRobotIcon("robot-square");
