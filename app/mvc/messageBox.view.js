@@ -91,13 +91,20 @@ messageBoxView.render = function(message, color, isError, isForced, isToast) {
 
     if (isToast) {
 
+        var toastDuration = viewState.toastDuration;
+
+        if (isError) {
+
+            toastDuration = toastDuration * 4;
+        }
+
         onFinishHandler = function() {
 
             setTimeout(function() {
 
                 messageBoxCloseElement.click();
 
-            }, viewState.toastDuration);
+            }, toastDuration);
         }
     }
 

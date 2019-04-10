@@ -61,6 +61,7 @@ function test() {
 	var count = 0;
 
 	setWorldSpeed(70)
+	turnAround()
 	move()
 	turnRight()
 	move()
