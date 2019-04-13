@@ -1,6 +1,7 @@
 
 import { viewFactory } from "../viewFactory.js";
 import { appState } from "../appState.js";
+import { coreArray } from "../../lib/core/extensions/core-array.js";
 
 var worldView;
 
@@ -64,6 +65,8 @@ function loadTiles() {
             }
         }
     }
+
+    worldState.loadedTileCounts = coreArray.deepCopy(worldState.tileCounts);
 }
 
 

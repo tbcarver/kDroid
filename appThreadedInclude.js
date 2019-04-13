@@ -69,6 +69,8 @@ globalScope.setMessage = messageBoxController.setMessage.bind(messageBoxControll
 globalScope.setToast = messageBoxController.setToast.bind(messageBoxController);
 globalScope.log = consoleController.log.bind(consoleController);
 globalScope.logInternal = consoleController.logInternal.bind(consoleController);
+globalScope.logQuestion = consoleController.logQuestion.bind(consoleController);
+globalScope.logAnswer = consoleController.logAnswer.bind(consoleController);
 
 globalScope.onerror = function(error) {
 

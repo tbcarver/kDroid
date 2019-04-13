@@ -1,5 +1,6 @@
 
 import { appController } from "../app.controller.js";
+import { appState } from "../appState.js";
 import { viewFactory } from "../viewFactory.js";
 
 var consoleView;
@@ -28,6 +29,25 @@ consoleController.logInternal = function(message, color, isError) {
     if (consoleView) {
 
         consoleView.logInternal(message, color, isError);
+    }
+};
+
+consoleController.logQuestion = function(message) {
+
+    if (consoleView) {
+
+        consoleView.logQuestion(message);
+    }
+};
+
+consoleController.logAnswer = function(message) {
+
+    appController.assertMaxCommands();
+
+    if (consoleView) {
+
+        appState.console.answers.push(message);
+        consoleView.logAnswer(message);
     }
 };
 

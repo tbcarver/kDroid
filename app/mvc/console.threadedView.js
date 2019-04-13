@@ -41,5 +41,31 @@ consoleThreadedView.logInternal = function(message, color, isError) {
 	self.postMessage(message);
 };
 
+consoleThreadedView.logQuestion = function(message) {
+
+	var message = {
+		handler: "consoleView",
+		method: "logQuestion",
+		parameters: [
+			message
+		]
+	}
+
+	self.postMessage(message);
+};
+
+consoleThreadedView.logAnswer = function(message) {
+
+	var message = {
+		handler: "consoleView",
+		method: "logAnswer",
+		parameters: [
+			message
+		]
+	}
+
+	self.postMessage(message);
+};
+
 
 export { consoleThreadedView }

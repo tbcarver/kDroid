@@ -39,8 +39,15 @@ loadWorld();
 // 	}
 // }
 
-turnAround()
-move()
+
+
+logQuestion("how many")
+logAnswer("100")
+
+console.log("asdf", kDroidApp.getAppState())
+
+// turnAround()
+// move()
 
 // setToast("Frosty");
 

@@ -3,7 +3,8 @@ var appState = {
     currentCommandCount: 0,
     maxCommandCount: 3500,
     console: {
-        enabled: true
+        enabled: true,
+        answers: []
     },
     robot: {
         rowIndex: 0,
@@ -15,6 +16,7 @@ var appState = {
         columnsCount: 3,
         topWalls: {},
         leftWalls: {},
+        loadedTileCounts: [],
         tileCounts: []
     }
 };

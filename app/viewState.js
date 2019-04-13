@@ -10,7 +10,8 @@ var viewState = {
 		fontSize: 14,
 		lineHeight: 20,
 		borderWidth: 1,
-		internalColor: "#2424a9"
+		internalColor: "#2424a9",
+		questionColor: "#2fa52f"
 	},
     robot: {
         iconName: "arrow-alt-circle-right",

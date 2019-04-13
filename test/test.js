@@ -61,16 +61,22 @@ function test() {
 	var count = 0;
 
 	setWorldSpeed(70)
-	turnAround()
-	move()
-	turnRight()
-	move()
-	turnRight()
-	move()
-	turnRight()
-	move()
-	turnRight()
-	move()
+
+	logQuestion("how many")
+	logAnswer("10")
+
+	console.log("asdf", kDroidApp.getAppState())
+
+	// turnAround()
+	// move()
+	// turnRight()
+	// move()
+	// turnRight()
+	// move()
+	// turnRight()
+	// move()
+	// turnRight()
+	// move()
 
 	// putDownTile();
 	// putDownTile();
