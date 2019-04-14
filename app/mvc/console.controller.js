@@ -20,6 +20,7 @@ consoleController.log = function(message, color) {
 
     if (consoleView) {
 
+        appState.console.logs.push(message);
         consoleView.log(message, color);
     }
 };
@@ -37,17 +38,6 @@ consoleController.logQuestion = function(message) {
     if (consoleView) {
 
         consoleView.logQuestion(message);
-    }
-};
-
-consoleController.logAnswer = function(message) {
-
-    appController.assertMaxCommands();
-
-    if (consoleView) {
-
-        appState.console.answers.push(message);
-        consoleView.logAnswer(message);
     }
 };
 

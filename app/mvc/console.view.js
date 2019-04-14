@@ -59,11 +59,6 @@ consoleView.logQuestion = function(message) {
 	this.log("> " + message, viewState.console.questionColor);
 };
 
-consoleView.logAnswer = function(message) {
-
-	this.log("< " + message, viewState.console.questionColor);
-};
-
 function scrollToBottom() {
 
 	if (consoleElement.scrollHeight - consoleElement.clientHeight) {

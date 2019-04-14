@@ -4,7 +4,7 @@ var appState = {
     maxCommandCount: 3500,
     console: {
         enabled: true,
-        answers: []
+        logs: []
     },
     robot: {
         rowIndex: 0,
