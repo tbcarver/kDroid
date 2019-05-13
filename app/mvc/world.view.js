@@ -123,6 +123,13 @@ worldView.pickUpTile = function(previousTileCount, rowIndex, columnIndex) {
 	var tileId = "tile-" + rowIndex + "-" + columnIndex + "-" + previousTileCount;
 	var tileElement = dom("#" + tileId);
 
+	if (tileElement.length) {
+
+		// NOTE: Because of the delay in DOM changes until after the animation is ran
+		//  there may be multiple tiles with the same id. Take the elements in LIFO order
+		tileElement = tileElement[tileElement.length - 1];
+	}
+
 	var targetCellId = "cell-" + rowIndex + "-" + columnIndex;
 	var targetCellElement = dom("#" + targetCellId);
 	

@@ -1,19 +1,19 @@
 
 function test() {
 
-	kDroidApp.addEventListener("load", function(event) {
+	// kDroidApp.addEventListener("load", function(event) {
 
-		var worldState = event.appState.world;
+	// 	var worldState = event.appState.world;
 
-		// console.log(event.appState);
+	// 	// console.log(event.appState);
 
-		logInternal("The program started. " + worldState.rowsCount + " x " + worldState.columnsCount);
-		// setToast("started", "green")
-		// setToast
-		// setMessage("more started", "blue")
-		// log("more started", "blue")
-		// setMessage("error", null, true);
-	});
+	// 	logInternal("The program started. " + worldState.rowsCount + " x " + worldState.columnsCount);
+	// 	// setToast("started", "green")
+	// 	// setToast
+	// 	// setMessage("more started", "blue")
+	// 	// log("more started", "blue")
+	// 	// setMessage("error", null, true);
+	// });
 
 	// 	setWorldSize(sizeNumber) - sets the size of the world
 	// 	setRandomWorldSize() - sets a random world size from 1 to 16
@@ -24,7 +24,7 @@ function test() {
 	// setRobotDirection(directionNumber) - sets the start direction of the robot
 	// setRobotTiles(number) - sets the start amount of tiles the robots has, -1 if infinite tiles
 
-		setRandomWorldSize()
+		// setRandomWorldSize()
 	// setRandomOddWorldSize(1, -1);
 	// setRandomEvenWorldSize(1, -1);
 	// setWorldSpeed(90);
@@ -32,40 +32,45 @@ function test() {
 	// setRandomRobotIcon("robot-square");
 	// setRobotIcon("android");
 
-	setTileColor("red")
+	// setTileColor("red")
 
 	// setRandomRobotDirection();
 	// setRandomRobotLocation();
 	// setTile(1, 1, -1);
 
-	var topWalls = [];
-	var leftWalls = [];
+	// var topWalls = [];
+	// var leftWalls = [];
 
-	// topWalls.push([1, 0]);
-	// topWalls.push([2, 0]);
-	// topWalls.push([3, 0]);
-	topWalls.push([1, 1]);
-	topWalls.push([2, 2]);
-	topWalls.push([3, 3]);
+	// // topWalls.push([1, 0]);
+	// // topWalls.push([2, 0]);
+	// // topWalls.push([3, 0]);
+	// topWalls.push([1, 1]);
+	// topWalls.push([2, 2]);
+	// topWalls.push([3, 3]);
 
-	leftWalls.push([1, 1]);
-	leftWalls.push([2, 2]);
-	leftWalls.push([3, 3]);
+	// leftWalls.push([1, 1]);
+	// leftWalls.push([2, 2]);
+	// leftWalls.push([3, 3]);
 
 	// setWalls(topWalls, leftWalls);
 
-	setTileColor("red")
+	// setTileColor("red")
 
 	loadWorld();
 
-	var count = 0;
+	putDownTile()
+	pickUpTile()
+	putDownTile()
+	pickUpTile()
 
-	setWorldSpeed(70)
+	// var count = 0;
 
-	logQuestion("how many")
-	logAnswer("10")
+	// setWorldSpeed(70)
 
-	console.log("asdf", kDroidApp.getAppState())
+	// logQuestion("how many")
+	// logAnswer("10")
+
+	// console.log("asdf", kDroidApp.getAppState())
 
 	// turnAround()
 	// move()
