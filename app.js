@@ -3,6 +3,7 @@ import { appController } from "./app/app.controller.js";
 import { appControllerWorld } from "./app/app.controller.world.js";
 import { appControllerRobot } from "./app/app.controller.robot.js";
 import { robotController } from "./app/mvc/robot.controller.js";
+import { worldController } from "./app/mvc/world.controller.js";
 import { messageBoxController } from "./app/mvc/messageBox.controller.js"
 import { consoleController } from "./app/mvc/console.controller.js"
 import { html } from "./lib/core/web/html.js"
@@ -53,6 +54,8 @@ globalScope.enableCompass = function() {
 	globalScope.isFacingWest = robotController.isFacingWest.bind(robotController);	
 	globalScope.isNotFacingWest = robotController.isNotFacingWest.bind(robotController);	
 }
+
+globalScope.worldPutDownTile = worldController.putDownTile.bind(worldController);
 
 globalScope.putDownTile = robotController.putDownTile.bind(robotController);
 globalScope.pickUpTile = robotController.pickUpTile.bind(robotController);

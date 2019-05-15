@@ -1,4 +1,5 @@
 
+import { appController } from "../app.controller.js";
 import { viewFactory } from "../viewFactory.js";
 import { appState } from "../appState.js";
 import { coreArray } from "../../lib/core/extensions/core-array.js";
@@ -18,6 +19,20 @@ worldController.load = function() {
     loadWalls();
     loadTiles();
 };
+
+worldController.putDownTile = function(rowNumber, columnNumber, tileBackgroundColor, suppressAnimation) {
+
+    appController.assertMaxCommands();
+
+    var rowIndex = rowNumber - 1;
+    var columnIndex = columnNumber - 1;
+    
+    var tileCount = worldState.tileCounts[rowIndex][columnIndex];
+    tileCount++;
+    worldState.tileCounts[rowIndex][columnIndex] = tileCount;
+
+    worldView.putDownTile(tileCount, rowIndex, columnIndex, tileBackgroundColor, suppressAnimation);
+}
 
 // Top and left walls use the same coordinate system as the robot. However, this does
 //  not provide a coordinate for the far bottom or far right walls.  This wall would
@@ -61,7 +76,7 @@ function loadTiles() {
 
             for (var currentTileCount = 1; currentTileCount <= tileCount; currentTileCount++) {
 
-                worldView.putDownTile(currentTileCount, rowIndex, columnIndex, worldState, true);
+                worldView.putDownTile(currentTileCount, rowIndex, columnIndex, null, true);
             }
         }
     }

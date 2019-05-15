@@ -36,7 +36,8 @@ function test() {
 
 	// setRandomRobotDirection();
 	// setRandomRobotLocation();
-	// setTile(1, 1, -1);
+	setTile(1, 1);
+	setTile(2, 1, -1);
 
 	// var topWalls = [];
 	// var leftWalls = [];
@@ -57,11 +58,13 @@ function test() {
 	// setTileColor("red")
 
 	loadWorld();
+	
+worldPutDownTile(3, 3, "grey", true);
 
-	putDownTile()
-	pickUpTile()
-	putDownTile()
-	pickUpTile()
+	// putDownTile()
+	// pickUpTile()
+	// putDownTile()
+	// pickUpTile()
 
 	// var count = 0;
 
