@@ -2,7 +2,8 @@
   "name": "kDroid",
   "version": "1.0.1",
   "description": "kDroid is a Karel World built in JavaScript. Threaded version allows for synchronous debugging.",
-  "author": "Tyler Carver <carver230620@cua.edu>",
+  "author": "Tyler Carver <tbcarver2@gmail.com>",
+  "license": "BSD 3-Clause, Commons Clause",
   "scripts": {
     "build": "webpack"
   },
